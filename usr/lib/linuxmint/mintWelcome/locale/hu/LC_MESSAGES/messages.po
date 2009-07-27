@@ -1,0 +1,41 @@
+msgid "Welcome to Linux Mint"
+msgstr "Üdvözli a Linux Mint"
+
+msgid "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback."
+msgstr "Üdvözöljük és köszönjük, hogy a Linux Mint-et választotta. Reméljük, hogy legalább annyira fogja élvezni a használatát, mint amennyire mi élveztük az elkészítését. Kérjük, ismerkedjen meg az új funkciókkal és a dokumentációval, és ne habozzon visszajelzést küldeni nekünk."
+
+msgid "Discover %s"
+msgstr "A %s felfedezése"
+
+msgid "Find help"
+msgstr "Ha segítségre van szüksége"
+
+msgid "Contribute to Linux Mint"
+msgstr "A Linux Mint támogatása"
+
+msgid "Browse the list of new features"
+msgstr "Böngéssze át az új funkciók listáját"
+
+msgid "Read the release notes"
+msgstr "Olvassa el a kiadási megjegyzéseket"
+
+msgid "Download the user guide (PDF)"
+msgstr "Töltse le a felhasználói leírást (PDF)"
+
+msgid "Visit the forums"
+msgstr "Látogassa meg a fórumokat"
+
+msgid "Connect to the chat room"
+msgstr "Lépjen be a chat szobába"
+
+msgid "Become a sponsor"
+msgstr "Legyen szponzor"
+
+msgid "Make a donation"
+msgstr "Ajánljon fel adományt"
+
+msgid "Get involved"
+msgstr "Vegyen részt a fejlesztésben"
+
+msgid "Show this dialog at startup"
+msgstr "Mutassa ezt az ablakot az indításnál"

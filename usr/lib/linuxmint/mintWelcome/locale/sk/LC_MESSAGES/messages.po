@@ -1,0 +1,41 @@
+msgid "Welcome to Linux Mint"
+msgstr "Vitajte v Linux Mint"
+
+msgid "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback."
+msgstr "Vitajte. Ďakujeme, že ste si vybrali Linux Mint. Dúfame, že sa vám bude ľúbiť, tak ako nám, ktorí ho tvoríme. Prosíme, zoznámte sa s novými funkciami a dokumentáciou a neváhajte nám poslať vaše pripomienky ."
+
+msgid "Discover %s"
+msgstr "Preskúmať %s"
+
+msgid "Find help"
+msgstr "Nájsť pomoc"
+
+msgid "Contribute to Linux Mint"
+msgstr "Podieľať sa na Linux Mint"
+
+msgid "Browse the list of new features"
+msgstr "Prezrieť zoznam nových funkcií"
+
+msgid "Read the release notes"
+msgstr "Prečítať poznámky k vydaniu"
+
+msgid "Download the user guide (PDF)"
+msgstr "Stiahnuť užívateľskú príručku (PDF)"
+
+msgid "Visit the forums"
+msgstr "Navštíviť fórum"
+
+msgid "Connect to the chat room"
+msgstr "Pripojiť sa k chat miestnosti"
+
+msgid "Become a sponsor"
+msgstr "Stať sa sponzorom"
+
+msgid "Make a donation"
+msgstr "Prispieť"
+
+msgid "Get involved"
+msgstr "Zapojiť sa"
+
+msgid "Show this dialog at startup"
+msgstr "Zobraziť tento dialóg pri štarte"

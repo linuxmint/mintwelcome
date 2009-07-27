@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xgettext --language=Python --keyword=_ --output=mintwelcome.pot usr/lib/linuxmint/mintWelcome/mintWelcome.py

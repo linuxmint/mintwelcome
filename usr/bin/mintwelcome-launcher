@@ -1,0 +1,8 @@
+#!/usr/bin/python
+
+import os
+from user import home
+
+if (not os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag")) and (not os.path.exists("/usr/bin/os-prober")):
+	os.system("mintwelcome")
+

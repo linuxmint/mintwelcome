@@ -1,0 +1,36 @@
+mintwelcome (1.2.3) gloria; urgency=low
+
+  * Updated translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue,  19 May 2009 18:09:00 +0000
+
+mintwelcome (1.2.2) gloria; urgency=low
+
+  * Updated translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun,  17 May 2009 17:49:00 +0000
+
+mintwelcome (1.2.1) gloria; urgency=low
+
+  * Added translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun,  17 May 2009 17:07:00 +0000
+
+mintwelcome (1.2) gloria; urgency=low
+
+  * Conflicts/Replaces mintassistant, mintassistant-gnome, mintassistant-kde
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed,  29 Apr 2009 10:28:00 +0000
+
+mintwelcome (1.1) gloria; urgency=low
+
+  * Doesn't run if os-prober is install (liveCD mode)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed,  22 Apr 2009 22:11:00 +0000
+
+mintwelcome (1.0) gloria; urgency=low
+
+  * Initial release
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue,  21 Apr 2009 20:11:00 +0000
+

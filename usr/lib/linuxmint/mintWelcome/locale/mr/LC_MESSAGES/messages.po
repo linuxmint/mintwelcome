@@ -1,0 +1,41 @@
+msgid "Welcome to Linux Mint"
+msgstr "आपले स्वागत आहे लिनक्स मिंट साठी"
+
+msgid "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback."
+msgstr "आपले स्वागत आहे, लिनक्स मिंटला निवडण्यासाठी धन्यवाद. आम्हाला आशा आहे की आपण याचा तेव्हडा आनंद उपभोगाल जेव्हडा आम्हाला याला बनवताना झाला. कृपया स्वत:ला नव्या सुविधा व प्रलेखन परिचीत व्हा. आणी आपली प्रतिक्रिया आम्हाला पाठवा "
+
+msgid "Discover %s"
+msgstr "शोध %s"
+
+msgid "Find help"
+msgstr "मदत शोधा"
+
+msgid "Contribute to Linux Mint"
+msgstr "लिनक्स मिंटला आपले योगदान द्या"
+
+msgid "Browse the list of new features"
+msgstr "नव्या सुविंधाची यादी बघा"
+
+msgid "Read the release notes"
+msgstr "प्रकाशन पत्र वाचा"
+
+msgid "Download the user guide (PDF)"
+msgstr "उपयोगकर्ता गाइड डाउनलोड करा"
+
+msgid "Visit the forums"
+msgstr "फोरम ला भेट द्या"
+
+msgid "Connect to the chat room"
+msgstr "चॅट रुमशी संयोजन करा"
+
+msgid "Become a sponsor"
+msgstr "प्रायोजक बना"
+
+msgid "Make a donation"
+msgstr "देणगी द्या"
+
+msgid "Get involved"
+msgstr "भाग घ्या"
+
+msgid "Show this dialog at startup"
+msgstr "हा संवाद प्रारंभी प्रदर्शीत करा"

@@ -1,0 +1,41 @@
+msgid "Welcome to Linux Mint"
+msgstr "Benvido a Linux Mint"
+
+msgid "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback."
+msgstr "Benvido e grazas por escoller Linux Mint. Agardamos que o desfrute, tanto coma nós desfrutamos facéndoo realidade. Coñeza as novas funcionalidades, a documentación, e non dubide en enviarno-las súas suxerencias."
+
+msgid "Discover %s"
+msgstr "Descobra %s"
+
+msgid "Find help"
+msgstr "Procure axuda"
+
+msgid "Contribute to Linux Mint"
+msgstr "Contribúa a Linux Mint"
+
+msgid "Browse the list of new features"
+msgstr "Explore as novas funcionalidades"
+
+msgid "Read the release notes"
+msgstr "Lea as notas de lanzamento"
+
+msgid "Download the user guide (PDF)"
+msgstr "Descargue o Manual do Usuario (PDF)"
+
+msgid "Visit the forums"
+msgstr "Visite os foros"
+
+msgid "Connect to the chat room"
+msgstr "Conéctese á sala de chat"
+
+msgid "Become a sponsor"
+msgstr "Fágase Patrocinador"
+
+msgid "Make a donation"
+msgstr "Faga unha doazón"
+
+msgid "Get involved"
+msgstr "Colabore"
+
+msgid "Show this dialog at startup"
+msgstr "Mostre esta mensaxe ao inicio"

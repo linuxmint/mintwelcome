@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=mintWelcome
+Comment=Linux Mint Welcome Screen
+Icon=gnome-info
+Exec=mintwelcome-launcher
+Terminal=false
+Type=Application
+Categories=
+OnlyShowIn=GNOME;XFCE;KDE;
+

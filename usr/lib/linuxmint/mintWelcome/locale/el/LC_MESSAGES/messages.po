@@ -1,0 +1,41 @@
+msgid "Welcome to Linux Mint"
+msgstr "Καλωσορίσατε στο Linux Mint"
+
+msgid "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback."
+msgstr "Καλωσορίσατε και ευχαριστούμε για την επιλογή σας του Linux Mint. Ελπίζουμε ότι θα ευχαριστηθήτε την χρήση του όπως εμείς ευχαριστηθήκαμε κατά την δημιουργία του. Παρακαλούμε εξοικειωθείτε με τις νέες δυνατότητες και τα έγγραφα τεκμηρίωσης και μη δυστάσετε να μας στείλετε τυχον παρατηρήσεις."
+
+msgid "Discover %s"
+msgstr "Ανακάλυψε %s"
+
+msgid "Find help"
+msgstr "Εύρεση βοήθειας"
+
+msgid "Contribute to Linux Mint"
+msgstr "Συνεισφέρατε στο Linux Mint"
+
+msgid "Browse the list of new features"
+msgstr "Έλεγχο της λίστας των νέων δυνατοτήτων"
+
+msgid "Read the release notes"
+msgstr "Διαβάστε τισ σημειώσεις απελευθέρωσης"
+
+msgid "Download the user guide (PDF)"
+msgstr "Πατεβάστε τον οδηγό χρήσης (PDF)"
+
+msgid "Visit the forums"
+msgstr "Επισκευτείτε το forums"
+
+msgid "Connect to the chat room"
+msgstr "Συνδεθείτε στο chat room"
+
+msgid "Become a sponsor"
+msgstr "Γίνετε χορηγός"
+
+msgid "Make a donation"
+msgstr "Κάντε μια δωρεά"
+
+msgid "Get involved"
+msgstr "Πάρετε μέρος"
+
+msgid "Show this dialog at startup"
+msgstr "Εμφάνιση αυτού του κειμένου κατά την εκκίνηση"

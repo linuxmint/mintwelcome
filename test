@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo rm -rf /usr/lib/linuxmint/mintWelcome
+sudo cp -R usr /
+sudo cp -R etc /
+mintwelcome
