@@ -1,3 +1,9 @@
+mintwelcome (1.2.4) helena; urgency=low
+
+  * Blueprint implemented: https://blueprints.launchpad.net/linuxmint/+spec/mintwelcome-too-big
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue,  28 Jul 2009 02:04:00 +0000
+
 mintwelcome (1.2.3) gloria; urgency=low
 
   * Updated translations
