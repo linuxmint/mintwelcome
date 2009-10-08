@@ -34,9 +34,9 @@ try:
 	gladefile = "/usr/lib/linuxmint/mintWelcome/mintWelcome.glade"
 	wTree = gtk.glade.XML(gladefile,"main_window")
 	wTree.get_widget("main_window").set_title(_("Welcome to Linux Mint"))
-	wTree.get_widget("main_window").set_icon_from_file("/usr/lib/linuxmint/mintSystem/icon.png")	
+	wTree.get_widget("main_window").set_icon_from_file("/usr/share/linuxmint/logo.png")	
 	wTree.get_widget("button_irc").connect("clicked", launch_irc)
-	sys.path.append('/usr/lib/linuxmint/mintSystem/python')
+	sys.path.append('/usr/lib/linuxmint/common')
 	from configobj import ConfigObj
 	config = ConfigObj("/etc/linuxmint/info")
 	description = config['DESCRIPTION']

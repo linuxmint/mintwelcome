@@ -27,7 +27,7 @@
                     <property name="height_request">43</property>
                     <property name="visible">True</property>
                     <property name="xalign">1</property>
-                    <property name="pixbuf">/usr/lib/linuxmint/mintSystem/icon.png</property>
+                    <property name="pixbuf">/usr/share/linuxmint/logo.png</property>
                   </widget>
                   <packing>
                     <property name="padding">3</property>
@@ -38,7 +38,7 @@
                   <widget class="GtkLabel" id="label_title">
                     <property name="visible">True</property>
                     <property name="xalign">0</property>
-                    <property name="label" translatable="yes">&lt;b&gt;This is Linux Mint 7 "Gloria" - Main Edition&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;This is Linux Mint 8 "Helena" - Main Edition&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="justify">center</property>
                   </widget>
@@ -91,7 +91,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="relief">none</property>
-                                <property name="uri">http://www.linuxmint.com/rel_gloria_whatsnew.php</property>
+                                <property name="uri">http://www.linuxmint.com/rel_helena_whatsnew.php</property>
                                 <child>
                                   <widget class="GtkHBox" id="hbox7">
                                     <property name="visible">True</property>
@@ -218,7 +218,7 @@
                     <child>
                       <widget class="GtkLabel" id="frame_discover">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Discover Linux Mint 7&lt;/b&gt;</property>
+                        <property name="label" translatable="yes">&lt;b&gt;Discover Linux Mint 8&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </widget>
                       <packing>
