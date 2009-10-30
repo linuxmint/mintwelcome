@@ -1,3 +1,9 @@
+mintwelcome (1.2.6) helena; urgency=low
+
+  * Changed liveCD detection from os-prober to ubiquity
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri,  30 Oct 2009 14:41:00 +0000
+
 mintwelcome (1.2.5) helena; urgency=low
 
   * Dependency on mint-common
