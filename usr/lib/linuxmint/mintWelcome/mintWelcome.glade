@@ -7,7 +7,7 @@
     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
     <property name="border_width">6</property>
     <property name="title" translatable="yes">mintAssistant</property>
-    <property name="window_position">center</property>
+    <property name="window_position">center-always</property>
     <child>
       <widget class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -55,16 +55,15 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkLabel" id="label_welcome">
+              <widget class="GtkTextView" id="label_welcome">
                 <property name="visible">True</property>
-                <property name="label">&lt;i&gt;Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback.&lt;/i&gt;</property>
-                <property name="use_markup">True</property>
-                <property name="justify">fill</property>
-                <property name="wrap">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">True</property>
+                <property name="border_width">4</property>
+                <property name="editable">False</property>
+                <property name="wrap_mode">word</property>
               </widget>
               <packing>
-                <property name="fill">False</property>
-                <property name="padding">7</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -543,7 +542,7 @@
             </child>
             <child>
               <widget class="GtkButton" id="close_button">
-                <property name="label" translatable="yes">gtk-close</property>
+                <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>

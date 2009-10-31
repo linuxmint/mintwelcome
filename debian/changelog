@@ -1,3 +1,10 @@
+mintwelcome (1.2.7) helena; urgency=low
+
+  * Window now "always center"s itself
+  * Replaced welcome label with textview for a better layout. 
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat,  31 Oct 2009 14:28:00 +0000
+
 mintwelcome (1.2.6) helena; urgency=low
 
   * Changed liveCD detection from os-prober to ubiquity

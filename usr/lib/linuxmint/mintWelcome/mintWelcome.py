@@ -61,8 +61,7 @@ try:
 	wTree.get_widget("close_button").connect("clicked", exit_app, wTree)
 
 	#i18n
-	wTree.get_widget("label_welcome").set_label("<i>" + _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback.") + "</i>")
-	wTree.get_widget("label_welcome").set_use_markup(True)
+	wTree.get_widget("label_welcome").get_buffer().set_text(_("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback."))
 	wTree.get_widget("frame_discover").set_label("<b>" + _("Discover %s") % ("Linux Mint " + release) + "</b>")
 	wTree.get_widget("frame_discover").set_use_markup(True)
 	wTree.get_widget("frame_help").set_label("<b>" + _("Find help") + "</b>")
