@@ -11,7 +11,7 @@ import gettext
 from user import home
 
 # i18n
-gettext.install("messages", "/usr/lib/linuxmint/mintWelcome/locale")  
+gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 
 def launch_irc(widget):
 	if os.path.exists("/usr/bin/xchat-gnome"):
