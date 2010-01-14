@@ -20,6 +20,8 @@ def launch_irc(widget):
 		os.system("/usr/bin/xchat &")
 	elif os.path.exists("/usr/bin/konversation"):
 		os.system("/usr/bin/konversation &")
+	elif os.path.exists("/usr/bin/quassel"):
+		os.system("/usr/bin/quassel &")
 
 def exit_app(widget, wTree):
 	if wTree.get_widget("checkbutton_show").get_active() == True:

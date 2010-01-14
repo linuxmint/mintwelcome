@@ -1,3 +1,9 @@
+mintwelcome (1.2.9) helena; urgency=low
+
+  * Added quassel to the list of IRC clients
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu,  14 Jan 2009 10:39:00 +0000
+
 mintwelcome (1.2.8) helena; urgency=low
 
   * Changed translation framework
