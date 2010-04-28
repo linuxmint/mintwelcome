@@ -1,3 +1,9 @@
+mintwelcome (1.3.0) isadora; urgency=low
+
+  * Beautified the welcome screen
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed,  28 Apr 2010 12:14:00 +0000
+
 mintwelcome (1.2.9) helena; urgency=low
 
   * Added quassel to the list of IRC clients

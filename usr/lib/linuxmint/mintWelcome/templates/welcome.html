@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" DIR="LTR">
+<head>
+ <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+ <title></title>
+ <script type="text/javascript">
+  function changeTitle(title) {    
+    document.title = title; 
+    document.title = "nop"; 
+  } 
+  function closeWindow() {
+    if (document.myForm.showDialog.checked == true) {
+	    changeTitle("event_close_true");
+    }
+    else {
+	    changeTitle("event_close_false");
+    }
+   }
+   function assessCheckbox() {
+	if (document.myForm.showDialog.checked == true) {
+	    changeTitle("checkbox_checked");
+	}
+	else {
+	   changeTitle("checkbox_unchecked");
+	}
+   }
+  
+ </script>
+  <style type="text/css">
+    body {
+	background-image: url('/usr/lib/linuxmint/mintWelcome/templates/background.jpg');
+      background-repeat: no-repeat;        
+      margin-left: 500; 
+      padding-left: 10em; 
+      color:#000;      
+    }
+
+ </style>
+ </head>
+<h3>$title</h3>
+<body>
+<font size="1"><b>$release_title:</b> $release</font><br/><font size="1"><b>$edition_title:</b> $edition</font>
+<br/>
+<br/>
+<font size="1">$welcome</font>
+<hr/>
+<font size="1">
+<table>
+<tr>
+<td valign="top"><b>$discover_title</b><br/>
+<ul>
+<li><a href='javascript:changeTitle("event_new_features")'">$new_features</a></li>
+<li><a href='javascript:changeTitle("event_known_problems")'">$know_problems</a></li>
+<li><a href='javascript:changeTitle("event_user_guide")'">$user_guide</a></li>
+</ul>
+</td>
+<td valign="top"><b>$find_help_title</b><br/>
+<ul>
+<li><a href='javascript:changeTitle("event_tutorials")'">$tutorials</a></li>
+<li><a href='javascript:changeTitle("event_forums")'">$forums</a></li>
+<li><a href='javascript:changeTitle("event_irc")'>$irc</a></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top"><b>$contribute_title</b><br/>
+<ul>
+<li><a href='javascript:changeTitle("event_sponsor")'">$sponsor</a></li>
+<li><a href='javascript:changeTitle("event_donation")'">$donation</a></li>
+<li><a href='javascript:changeTitle("event_get_involved")'">$get_involved</a></li>
+</ul>
+</td>
+<td valign="top"><b>$community_title</b><br/>
+<ul>
+<li><a href='javascript:changeTitle("event_ideas")'">$ideas</a></li>
+<li><a href='javascript:changeTitle("event_software")'">$software</a></li>
+<li><a href='javascript:changeTitle("event_hardware")'">$hardware</a></li>
+</ul>
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+<div align="right">
+<form action="#" name="myForm">
+  <input type=checkbox name="showDialog" $checked onclick='javascript:assessCheckbox()'>$show
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=submit name="closebutton" value="$close" onclick='javascript:closeWindow()' />
+</form>
+</div>
+</font>
+</body>
+</html>
+

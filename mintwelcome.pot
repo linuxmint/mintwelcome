@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 12:38+0200\n"
+"POT-Creation-Date: 2010-04-28 12:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,62 +16,94 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:36
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:22
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:45
 msgid "Welcome to Linux Mint"
 msgstr ""
 
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:46
+msgid "Release"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:47
+msgid "Edition"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:48
+msgid "Documentation"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:49
+msgid "Support"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:50
+msgid "Project"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:51
+msgid "Community"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:52
+msgid "New features"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:53
+msgid "Known problems"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:54
+msgid "Download the user guide (PDF)"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:55
+msgid "Forums"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:56
+msgid "Chat room"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:57
+msgid "Sponsors"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:58
+msgid "Donations"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:59
+msgid "How to get involved"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:60
+msgid "Idea pool"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:61
+msgid "Software reviews"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:62
+msgid "Hardware database"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:63
+msgid "Tutorials"
+msgstr ""
+
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:64
+msgid "Show this dialog at startup"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:65
+msgid "Close"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:71
 msgid ""
 "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it "
 "as much as we did making it. Please make yourself familiar with the new "
 "features and the documentation and don't hesitate to send us your feedback."
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:66
-#, python-format
-msgid "Discover %s"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:68
-msgid "Find help"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:70
-msgid "Contribute to Linux Mint"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:72
-msgid "Browse the list of new features"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:73
-msgid "Read the release notes"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:74
-msgid "Download the user guide (PDF)"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:75
-msgid "Visit the forums"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:76
-msgid "Connect to the chat room"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:77
-msgid "Become a sponsor"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:78
-msgid "Make a donation"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:79
-msgid "Get involved"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:80
-msgid "Show this dialog at startup"
 msgstr ""

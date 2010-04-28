@@ -9,78 +9,126 @@ import commands
 import os
 import gettext
 from user import home
+import webkit
+import string
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 
-def launch_irc(widget):
-	if os.path.exists("/usr/bin/xchat-gnome"):
-		os.system("/usr/bin/xchat-gnome &")
-	elif os.path.exists("/usr/bin/xchat"):
-		os.system("/usr/bin/xchat &")
-	elif os.path.exists("/usr/bin/konversation"):
-		os.system("/usr/bin/konversation &")
-	elif os.path.exists("/usr/bin/quassel"):
-		os.system("/usr/bin/quassel &")
+class MintWelcome():
+	def __init__(self):
+		gladefile = "/usr/lib/linuxmint/mintWelcome/mintWelcome.glade"
+		wTree = gtk.glade.XML(gladefile,"main_window")
+		wTree.get_widget("main_window").set_title(_("Welcome to Linux Mint"))
+		wTree.get_widget("main_window").set_icon_from_file("/usr/share/linuxmint/logo.png")	
 
-def exit_app(widget, wTree):
-	if wTree.get_widget("checkbutton_show").get_active() == True:
-		if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
-			os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
-	else:
-		os.system("mkdir -p " + home + "/.linuxmint/mintWelcome")		
-		os.system("touch " + home + "/.linuxmint/mintWelcome/norun.flag")
-	gtk.main_quit()
-
-try:
-	gladefile = "/usr/lib/linuxmint/mintWelcome/mintWelcome.glade"
-	wTree = gtk.glade.XML(gladefile,"main_window")
-	wTree.get_widget("main_window").set_title(_("Welcome to Linux Mint"))
-	wTree.get_widget("main_window").set_icon_from_file("/usr/share/linuxmint/logo.png")	
-	wTree.get_widget("button_irc").connect("clicked", launch_irc)
-	sys.path.append('/usr/lib/linuxmint/common')
-	from configobj import ConfigObj
-	config = ConfigObj("/etc/linuxmint/info")
-	description = config['DESCRIPTION']
-	release = config['RELEASE']
-	description = description.replace("\"", "")
-	release_notes = config['RELEASE_NOTES_URL']
-	user_guide = config['USER_GUIDE_URL']
-	new_features = config['NEW_FEATURES_URL']
+		sys.path.append('/usr/lib/linuxmint/common')
+		from configobj import ConfigObj
+		config = ConfigObj("/etc/linuxmint/info")
+		description = config['DESCRIPTION']
+		codename = config['CODENAME']
+		edition = config['EDITION']
+		release = config['RELEASE']
+		description = description.replace("\"", "")
+		self.release_notes = config['RELEASE_NOTES_URL']
+		self.user_guide = config['USER_GUIDE_URL']
+		self.new_features = config['NEW_FEATURES_URL']
 	
-	wTree.get_widget("label_title").set_label("<b>" + description + "</b>")
-	wTree.get_widget("label_title").set_use_markup(True)
-	wTree.get_widget("button_new_features").set_uri(new_features)
-	wTree.get_widget("button_release_notes").set_uri(release_notes)
-	wTree.get_widget("button_user_guide").set_uri(user_guide)
+		wTree.get_widget("main_window").connect("destroy", gtk.main_quit)	
 
-	if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):		
-		wTree.get_widget("checkbutton_show").set_active(False)
-	else:
-		wTree.get_widget("checkbutton_show").set_active(True)
+		browser = webkit.WebView()
+		wTree.get_widget("scrolled_welcome").add(browser)
+		browser.connect("button-press-event", lambda w, e: e.button == 3)
+		subs = {}
+		subs['release'] = release + " (" + codename + ")"
+		subs['edition'] = edition
+		subs['title'] = _("Welcome to Linux Mint")
+		subs['release_title'] = _("Release")
+		subs['edition_title'] = _("Edition")
+		subs['discover_title'] = _("Documentation")
+		subs['find_help_title'] = _("Support")
+		subs['contribute_title'] = _("Project")
+		subs['community_title'] = _("Community")
+		subs['new_features'] = _("New features")
+		subs['know_problems'] = _("Known problems")
+		subs['user_guide'] = _("Download the user guide (PDF)")
+		subs['forums'] = _("Forums")
+		subs['irc'] = _("Chat room")
+		subs['sponsor'] = _("Sponsors")
+		subs['donation'] = _("Donations")
+		subs['get_involved'] = _("How to get involved")
+		subs['ideas'] = _("Idea pool")
+		subs['software'] = _("Software reviews")
+		subs['hardware'] = _("Hardware database")
+		subs['tutorials'] = _("Tutorials")
+		subs['show'] = _("Show this dialog at startup")
+		subs['close'] = _("Close")
+		if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):		
+			subs['checked'] = ("")
+		else:
+			subs['checked'] = ("CHECKED")
 
-	wTree.get_widget("main_window").connect("destroy", exit_app, wTree)
-	wTree.get_widget("close_button").connect("clicked", exit_app, wTree)
+		subs['welcome'] = _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback.")
+		template = open("/usr/lib/linuxmint/mintWelcome/templates/welcome.html").read()		
+		html = string.Template(template).safe_substitute(subs)
+		browser.load_html_string(html, "file:/")	
+		browser.connect('title-changed', self.title_changed)
+		wTree.get_widget("main_window").show_all()
 
-	#i18n
-	wTree.get_widget("label_welcome").get_buffer().set_text(_("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback."))
-	wTree.get_widget("frame_discover").set_label("<b>" + _("Discover %s") % ("Linux Mint " + release) + "</b>")
-	wTree.get_widget("frame_discover").set_use_markup(True)
-	wTree.get_widget("frame_help").set_label("<b>" + _("Find help") + "</b>")
-	wTree.get_widget("frame_help").set_use_markup(True)
-	wTree.get_widget("frame_contribute").set_label("<b>" + _("Contribute to Linux Mint") + "</b>")
-	wTree.get_widget("frame_contribute").set_use_markup(True)
-	wTree.get_widget("label_new_features").set_label(_("Browse the list of new features"))
-	wTree.get_widget("label_release_notes").set_label(_("Read the release notes"))
-	wTree.get_widget("label_user_guide").set_label(_("Download the user guide (PDF)"))
-	wTree.get_widget("label_forums").set_label(_("Visit the forums"))
-	wTree.get_widget("label_irc").set_label(_("Connect to the chat room"))
-	wTree.get_widget("label_sponsor").set_label(_("Become a sponsor"))
-	wTree.get_widget("label_donor").set_label(_("Make a donation"))
-	wTree.get_widget("label_get_involved").set_label(_("Get involved"))
-	wTree.get_widget("checkbutton_show").set_label(_("Show this dialog at startup"))
+	def title_changed(self, view, frame, title):	
+		if title.startswith("nop"):
+		    return
+		# call directive looks like:
+		#  "call:func:arg1,arg2"
+		#  "call:func"
+		if title == "event_irc":
+			if os.path.exists("/usr/bin/xchat-gnome"):
+				os.system("/usr/bin/xchat-gnome &")
+			elif os.path.exists("/usr/bin/xchat"):
+				os.system("/usr/bin/xchat &")
+			elif os.path.exists("/usr/bin/konversation"):
+				os.system("/usr/bin/konversation &")
+			elif os.path.exists("/usr/bin/quassel"):
+				os.system("/usr/bin/quassel &")
+		elif title == "event_new_features":
+			os.system("xdg-open " + self.new_features)
+		elif title == "event_known_problems":
+			os.system("xdg-open " + self.release_notes)
+		elif title == "event_user_guide":
+			os.system("xdg-open " + self.user_guide)
+		elif title == "event_forums":
+			os.system("xdg-open http://forums.linuxmint.com")
+		elif title == "event_tutorials":
+			os.system("xdg-open http://community.linuxmint.com/tutorial")
+		elif title == "event_ideas":
+			os.system("xdg-open http://community.linuxmint.com/idea")
+		elif title == "event_software":
+			os.system("xdg-open http://community.linuxmint.com/software")
+		elif title == "event_hardware":
+			os.system("xdg-open http://community.linuxmint.com/hardware")
+		elif title == "event_get_involved":
+			os.system("xdg-open http://www.linuxmint.com/get_involved.php")
+		elif title == "event_sponsor":
+			os.system("xdg-open http://www.linuxmint.com/sponsors.php")
+		elif title == "event_donation":
+			os.system("xdg-open http://www.linuxmint.com/donors.php")
+		elif title == "event_close_true":
+			if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
+				os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
+			gtk.main_quit()
+		elif title == "event_close_false":
+			os.system("mkdir -p " + home + "/.linuxmint/mintWelcome")		
+			os.system("touch " + home + "/.linuxmint/mintWelcome/norun.flag")
+			gtk.main_quit()
+		elif title == "checkbox_checked":
+			if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
+				os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
+		elif title == "checkbox_unchecked":
+			os.system("mkdir -p " + home + "/.linuxmint/mintWelcome")		
+			os.system("touch " + home + "/.linuxmint/mintWelcome/norun.flag")		
 
+
+if __name__ == "__main__":
+	MintWelcome()	
 	gtk.main()
-except Exception, detail:
-	print detail
 
