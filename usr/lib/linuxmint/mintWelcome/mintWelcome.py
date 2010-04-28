@@ -51,7 +51,7 @@ class MintWelcome():
 		subs['community_title'] = _("Community")
 		subs['new_features'] = _("New features")
 		subs['know_problems'] = _("Known problems")
-		subs['user_guide'] = _("Download the user guide (PDF)")
+		subs['user_guide'] = _("User guide (PDF)")
 		subs['forums'] = _("Forums")
 		subs['irc'] = _("Chat room")
 		subs['sponsor'] = _("Sponsors")
@@ -68,7 +68,7 @@ class MintWelcome():
 		else:
 			subs['checked'] = ("CHECKED")
 
-		subs['welcome'] = _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did making it. Please make yourself familiar with the new features and the documentation and don't hesitate to send us your feedback.")
+		subs['welcome'] = _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. The links below will help you get started with your new operating system. Have a great time and don't hesitate to send us your feedback.")
 		template = open("/usr/lib/linuxmint/mintWelcome/templates/welcome.html").read()		
 		html = string.Template(template).safe_substitute(subs)
 		browser.load_html_string(html, "file:/")	

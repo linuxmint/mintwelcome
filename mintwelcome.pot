@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 12:13+0100\n"
+"POT-Creation-Date: 2010-04-28 14:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgid "Known problems"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:54
-msgid "Download the user guide (PDF)"
+msgid "User guide (PDF)"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:55
@@ -104,6 +104,7 @@ msgstr ""
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:71
 msgid ""
 "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it "
-"as much as we did making it. Please make yourself familiar with the new "
-"features and the documentation and don't hesitate to send us your feedback."
+"as much as we did designing it. The links below will help you get started "
+"with your new operating system. Have a great time and don't hesitate to send "
+"us your feedback."
 msgstr ""
