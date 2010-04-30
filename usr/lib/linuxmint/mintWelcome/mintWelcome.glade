@@ -8,7 +8,7 @@
     <property name="title" translatable="yes">mintAssistant</property>
     <property name="window_position">center-always</property>
     <property name="default_width">600</property>
-    <property name="default_height">400</property>
+    <property name="default_height">410</property>
     <property name="type_hint">splashscreen</property>
     <child>
       <widget class="GtkVBox" id="vbox1">
