@@ -107,7 +107,7 @@ class MintWelcome():
 		elif title == "event_hardware":
 			os.system("xdg-open http://community.linuxmint.com/hardware")
 		elif title == "event_get_involved":
-			os.system("xdg-open http://www.linuxmint.com/get_involved.php")
+			os.system("xdg-open http://www.linuxmint.com/getinvolved.php")
 		elif title == "event_sponsor":
 			os.system("xdg-open http://www.linuxmint.com/sponsors.php")
 		elif title == "event_donation":
