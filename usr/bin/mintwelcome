@@ -2,7 +2,7 @@
 
 import os
 
-os.system("/usr/lib/linuxmint/mintWelcome/mintWelcome.py")
+os.system("python /usr/lib/linuxmint/mintWelcome/mintWelcome.py")
 
 
 
