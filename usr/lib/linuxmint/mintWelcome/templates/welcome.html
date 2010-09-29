@@ -29,69 +29,70 @@
  </script>
   <style type="text/css">
     body {
-	background-image: url('/usr/lib/linuxmint/mintWelcome/templates/background.jpg');
-      background-repeat: no-repeat;        
-      margin-left: 500; 
-      padding-left: 10em; 
+	background-image: url('/usr/lib/linuxmint/mintWelcome/templates/bc.png');
+      background-repeat: repeat;                     
       color:#000;      
     }
+    A:link, A:visited {text-decoration: none; color:#000000;}
 
  </style>
  </head>
-<h3>$title</h3>
 <body>
-<font size="1"><b>$release_title:</b> $release</font><br/><font size="1"><b>$edition_title:</b> $edition</font>
-<br/>
-<br/>
-<font size="1">$welcome</font>
-
-<hr/>
-<font size="1">
-<table>
-<tr>
-<td valign="top"><b>$discover_title</b><br/>
-<ul>
-<li><a href='javascript:changeTitle("event_new_features")'">$new_features</a></li>
-<li><a href='javascript:changeTitle("event_known_problems")'">$know_problems</a></li>
-<li><a href='javascript:changeTitle("event_user_guide")'">$user_guide</a></li>
-</ul>
-</td>
-<td valign="top"><b>$find_help_title</b><br/>
-<ul>
-<li><a href='javascript:changeTitle("event_tutorials")'">$tutorials</a></li>
-<li><a href='javascript:changeTitle("event_forums")'">$forums</a></li>
-<li><a href='javascript:changeTitle("event_irc")'>$irc</a></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td valign="top"><b>$contribute_title</b><br/>
-<ul>
-<li><a href='javascript:changeTitle("event_sponsor")'">$sponsor</a></li>
-<li><a href='javascript:changeTitle("event_donation")'">$donation</a></li>
-<li><a href='javascript:changeTitle("event_get_involved")'">$get_involved</a></li>
-</ul>
-</td>
-<td valign="top"><b>$community_title</b><br/>
-<ul>
-<li><a href='javascript:changeTitle("event_ideas")'">$ideas</a></li>
-<li><a href='javascript:changeTitle("event_software")'">$software</a></li>
-<li><a href='javascript:changeTitle("event_hardware")'">$hardware</a></li>
-</ul>
-</td>
-</tr>
-</table>
-<br/>
-<br/>
-<br/>
-<div align="right">
-<form action="#" name="myForm">
-  <input type=checkbox name="showDialog" $checked onclick='javascript:assessCheckbox()'>$show
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input type=submit name="closebutton" value="$close" onclick='javascript:closeWindow()' />
-</form>
+<img align="left" src="/usr/lib/linuxmint/mintWelcome/templates/logo.svg" width="128"/>
+<div style="margin-left: 500; padding-left: 10em;">
+    <h3>$title</h3>
+    <font size="1"><b>$release_title:</b> $release</font><br/><font size="1"><b>$edition_title:</b> $edition</font>
+    <br/>
+    <br/>
+    <font size="1">$welcome</font>
 </div>
-</font>
+<div>
+    <hr/>
+    <font size="1">
+    <table width="100%">
+    <tr>
+    <td valign="top" width="25%"><b>$discover_title</b><br/><br/>
+    <a href='javascript:changeTitle("event_new_features")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/new.png"/> $new_features</a><br/>
+    <a href='javascript:changeTitle("event_known_problems")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/warning.png"/> $know_problems</a><br/>
+    <a href='javascript:changeTitle("event_user_guide")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/acroread.png"/> $user_guide</a><br/>    
+    </td>
+    <td valign="top" width="25%"><b>$find_help_title</b><br/><br/>
+    <a href='javascript:changeTitle("event_tutorials")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/info.png"/> $tutorials</a><br/>
+    <a href='javascript:changeTitle("event_forums")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/question.png"/> $forums</a><br/>
+    <a href='javascript:changeTitle("event_irc")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/xchat.png"/> $irc</a><br/>    
+    </td>
+    <td valign="top" width="25%"><b>$contribute_title</b><br/><br/>  
+    <a href='javascript:changeTitle("event_sponsor")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/man.png"/> $sponsor</a><br/>
+    <a href='javascript:changeTitle("event_donation")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/portrait.png"/> $donation</a><br/>
+    <a href='javascript:changeTitle("event_get_involved")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/message.png"/> $get_involved</a><br/> 
+    </td>
+    <td valign="top" width="25%"><b>$community_title</b><br/><br/>   
+    <a href='javascript:changeTitle("event_ideas")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/idea.png"/> $ideas</a><br/>
+    <a href='javascript:changeTitle("event_software")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/review.svg"/> $software</a><br/>
+    <a href='javascript:changeTitle("event_hardware")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/hardware.png"/> $hardware</a><br/>
+    </td>
+    </tr>
+    </table>
+    
+    <br/>
+    
+    <table width="100%" height="100%">        
+    <tr>
+    <td valign="top"><b>$system_title</b><br/><br/>   
+    <a href='javascript:changeTitle("event_codecs")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/codecs.png"/> $codecs</a><br/>
+    <a href='javascript:changeTitle("event_extra_software")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/review.svg"/> $extra_apps</a><br/>    
+    </td>
+    <td align="right" valign="bottom">        
+        <form action="#" name="myForm">
+          <input type=checkbox name="showDialog" $checked onclick='javascript:assessCheckbox()'>$show
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type=submit name="closebutton" value="$close" onclick='javascript:closeWindow()' />
+        </form>        
+    </td>
+    </tr>
+    </table>    
+    </font>
+</div>
 </body>
 </html>
 
