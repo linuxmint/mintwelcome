@@ -62,8 +62,38 @@ class MintWelcome():
         subs['software'] = _("Software reviews")
         subs['hardware'] = _("Hardware database")
         subs['tutorials'] = _("Tutorials")
-        subs['codecs'] = _("Add Multimedia Codecs")
-        subs['extra_apps'] = _("Add Extra Applications")
+        subs['extra_apps'] = _("Upgrade to the DVD Edition")
+        subs['visibilitysystem'] = "hidden"
+        subs['visibilitycodecs'] = "hidden"
+        subs['visibilityextraapps'] = "hidden" 
+        
+        self.codecs_pkg = None
+        self.extra_pkg = None
+               
+        if "Gnome" in commands.getoutput("cat /etc/linuxmint/info | grep DESKTOP"):
+            # Gnome edition comes as CD/DVD with/without codecs
+            import apt
+            cache = apt.Cache()
+            if "mint-meta-codecs" in cache:
+                pkg = cache["mint-meta-codecs"]
+                if not pkg.isInstalled:
+                    subs['codecs'] = _("Add Multimedia Codecs")
+                    subs['visibilitycodecs'] = "visible"
+                    subs['visibilitysystem'] = "visible"
+                    self.codecs_pkg = "mint-meta-codecs"
+            if "mint-meta-main" in cache:
+                pkg = cache["mint-meta-main"]
+                if not pkg.isInstalled:
+                    subs['visibilityextraapps'] = "visible"
+                    subs['visibilitysystem'] = "visible"
+                    self.extra_pkg = "mint-meta-main"
+            elif "mint-meta-x64" in cache:
+                pkg = cache["mint-meta-x64"]
+                if not pkg.isInstalled:
+                    subs['visibilityextraapps'] = "visible"
+                    subs['visibilitysystem'] = "visible"
+                    self.extra_pkg = "mint-meta-x64"
+            
         subs['show'] = _("Show this dialog at startup")
         subs['close'] = _("Close")
         if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
@@ -114,7 +144,13 @@ class MintWelcome():
         elif title == "event_sponsor":
             os.system("xdg-open http://www.linuxmint.com/sponsors.php")
         elif title == "event_donation":
-            os.system("xdg-open http://www.linuxmint.com/donors.php")
+            os.system("xdg-open http://www.linuxmint.com/donors.php")            
+        elif title == "event_codecs":
+            if self.codecs_pkg is not None:
+                os.system("xdg-open apt://%s" % self.codecs_pkg)            
+        elif title == "event_extra_software":
+            if self.extra_pkg is not None:
+                os.system("xdg-open apt://%s" % self.extra_pkg)
         elif title == "event_close_true":
             if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
                 os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")

@@ -34,6 +34,15 @@
       color:#000;      
     }
     A:link, A:visited {text-decoration: none; color:#000000;}
+    #system {
+        visibility: $visibilitysystem;
+    }
+    #codecs {
+        visibility: $visibilitycodecs;
+    }
+    #extraApps {
+        visibility: $visibilityextraapps;
+    }
 
  </style>
  </head>
@@ -78,17 +87,19 @@
     
     <table width="100%" height="100%">        
     <tr>
-    <td valign="top"><b>$system_title</b><br/><br/>   
-    <a href='javascript:changeTitle("event_codecs")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/codecs.png"/> $codecs</a><br/>
-    <a href='javascript:changeTitle("event_extra_software")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/review.svg"/> $extra_apps</a><br/>    
-    </td>
-    <td align="right" valign="bottom">        
-        <form action="#" name="myForm">
-          <input type=checkbox name="showDialog" $checked onclick='javascript:assessCheckbox()'>$show
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type=submit name="closebutton" value="$close" onclick='javascript:closeWindow()' />
-        </form>        
-    </td>
+    
+        <td valign="top"><div id="system"><b>$system_title</b></div><br/><br/>  
+        <div id="codecs"><a href='javascript:changeTitle("event_codecs")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/codecs.png"/> $codecs</a><br/></div> 
+        <div id="extraApps"><a href='javascript:changeTitle("event_extra_software")'><img align=absmiddle border=0 src="/usr/lib/linuxmint/mintWelcome/templates/review.svg"/> $extra_apps</a><br/></div>    
+        </td>
+        <td align="right" valign="bottom">        
+            <form action="#" name="myForm">
+              <input type=checkbox name="showDialog" $checked onclick='javascript:assessCheckbox()'>$show
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type=submit name="closebutton" value="$close" onclick='javascript:closeWindow()' />
+            </form>        
+        </td>
+    
     </tr>
     </table>    
     </font>

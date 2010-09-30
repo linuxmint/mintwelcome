@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 14:05+0100\n"
+"POT-Creation-Date: 2010-09-30 10:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,62 +46,74 @@ msgid "Community"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:52
-msgid "New features"
+msgid "System status"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:53
-msgid "Known problems"
+msgid "New features"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:54
-msgid "User guide (PDF)"
+msgid "Known problems"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:55
-msgid "Forums"
+msgid "User guide (PDF)"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:56
-msgid "Chat room"
+msgid "Forums"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:57
-msgid "Sponsors"
+msgid "Chat room"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:58
-msgid "Donations"
+msgid "Sponsors"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:59
-msgid "How to get involved"
+msgid "Donations"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:60
-msgid "Idea pool"
+msgid "Get involved"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:61
-msgid "Software reviews"
+msgid "Idea pool"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:62
-msgid "Hardware database"
+msgid "Software reviews"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:63
-msgid "Tutorials"
+msgid "Hardware database"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:64
-msgid "Show this dialog at startup"
+msgid "Tutorials"
 msgstr ""
 
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:65
+msgid "Upgrade to the DVD Edition"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:80
+msgid "Add Multimedia Codecs"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:97
+msgid "Show this dialog at startup"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:98
 msgid "Close"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:71
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:104
 msgid ""
 "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it "
 "as much as we did designing it. The links below will help you get started "
