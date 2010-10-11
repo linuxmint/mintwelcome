@@ -70,7 +70,7 @@ class MintWelcome():
         self.codecs_pkg = None
         self.extra_pkg = None
                
-        if "Gnome" in commands.getoutput("cat /etc/linuxmint/info | grep DESKTOP"):
+        if "Gnome" in commands.getoutput("cat /etc/linuxmint/info | grep DESKTOP") and "debian" not in commands.getoutput("cat /etc/linuxmint/info | grep CODENAME"):
             # Gnome edition comes as CD/DVD with/without codecs
             import apt
             cache = apt.Cache()
@@ -81,18 +81,12 @@ class MintWelcome():
                     subs['visibilitycodecs'] = "visible"
                     subs['visibilitysystem'] = "visible"
                     self.codecs_pkg = "mint-meta-codecs"
-            if "mint-meta-main" in cache:
-                pkg = cache["mint-meta-main"]
+            if "mint-meta-gnome-dvd" in cache:
+                pkg = cache["mint-meta-gnome-dvd"]
                 if not pkg.isInstalled:
                     subs['visibilityextraapps'] = "visible"
                     subs['visibilitysystem'] = "visible"
-                    self.extra_pkg = "mint-meta-main"
-            elif "mint-meta-x64" in cache:
-                pkg = cache["mint-meta-x64"]
-                if not pkg.isInstalled:
-                    subs['visibilityextraapps'] = "visible"
-                    subs['visibilitysystem'] = "visible"
-                    self.extra_pkg = "mint-meta-x64"
+                    self.extra_pkg = "mint-meta-gnome-dvd"
             
         subs['show'] = _("Show this dialog at startup")
         subs['close'] = _("Close")
