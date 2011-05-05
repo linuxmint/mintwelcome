@@ -3,4 +3,6 @@
 sudo rm -rf /usr/lib/linuxmint/mintWelcome
 sudo cp -R usr /
 sudo cp -R etc /
+sudo cp mint-meta-gnome-dvd.desktop /usr/share/applications/
+sudo cp mint-meta-codecs.desktop /usr/share/applications/
 mintwelcome

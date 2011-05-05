@@ -2,58 +2,58 @@
 
 import commands, os
 
-sourceFile = "usr/lib/linuxmint/mintWelcome/mintWelcome.py"
 
-menuName = commands.getoutput("cat " + sourceFile + " | grep menuName")
-menuName = menuName.replace("menuName", "")
-menuName = menuName.replace("=", "")
-menuName = menuName.replace("_(", "")
-menuName = menuName.replace("\"", "")
-menuName = menuName.replace(")", "")
-menuName = menuName.strip()
 
-menuComment = commands.getoutput("cat " + sourceFile + " | grep menuComment")
-menuComment = menuComment.replace("menuComment", "")
-menuComment = menuComment.replace("=", "")
-menuComment = menuComment.replace("_(", "")
-menuComment = menuComment.replace("\"", "")
-menuComment = menuComment.replace(")", "")
-menuComment = menuComment.strip()
+def generate_file(sourceFile, filename, menuNameTitle, menuCommentTitle, name, comment, launcher, icon, categories):
+    menuName = commands.getoutput("cat " + sourceFile + " | grep " + menuNameTitle)
+    menuName = menuName.replace(menuNameTitle, "")
+    menuName = menuName.replace("=", "")
+    menuName = menuName.replace("_(", "")
+    menuName = menuName.replace("\"", "")
+    menuName = menuName.replace(")", "")
+    menuName = menuName.strip()
 
-desktopFile = open("usr/share/applications/mintWelcome.desktop", "w")
-desktopFile.writelines("""[Desktop Entry]
-Name=Welcome Screen
-""")
+    menuComment = commands.getoutput("cat " + sourceFile + " | grep " + menuCommentTitle)
+    menuComment = menuComment.replace(menuCommentTitle, "")
+    menuComment = menuComment.replace("=", "")
+    menuComment = menuComment.replace("_(", "")
+    menuComment = menuComment.replace("\"", "")
+    menuComment = menuComment.replace(")", "")
+    menuComment = menuComment.strip()
 
-import gettext
-gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
+    desktopFile = open(filename, "w")
+    desktopFile.writelines("[Desktop Entry]\nName=%s\n" % name)
 
-for directory in os.listdir("/usr/share/linuxmint/locale"):
-	if os.path.isdir(os.path.join("/usr/share/linuxmint/locale", directory)):
-		try:
-			language = gettext.translation('mintwelcome', "/usr/share/linuxmint/locale", languages=[directory])
-			language.install()
-			desktopFile.writelines("Name[%s]=%s\n" % (directory, _(menuName)))
-		except:
-			pass
+    import gettext
+    gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 
-desktopFile.writelines("Comment=Introduction to Linux Mint\n")
+    for directory in os.listdir("/usr/share/linuxmint/locale"):
+        if os.path.isdir(os.path.join("/usr/share/linuxmint/locale", directory)):
+            try:
+                language = gettext.translation('mintwelcome', "/usr/share/linuxmint/locale", languages=[directory])
+                language.install()
+                desktopFile.writelines("Name[%s]=%s\n" % (directory, _(menuName)))
+            except:
+                pass
 
-for directory in os.listdir("/usr/share/linuxmint/locale"):
-	if os.path.isdir(os.path.join("/usr/share/linuxmint/locale", directory)):
-		try:
-			language = gettext.translation('mintwelcome', "/usr/share/linuxmint/locale", languages=[directory])
-			language.install()			
-			desktopFile.writelines("Comment[%s]=%s\n" % (directory, _(menuComment)))
-		except:
-			pass
+    desktopFile.writelines("Comment=%s\n" % comment)
 
-desktopFile.writelines("""Exec=mintwelcome
-Icon=/usr/lib/linuxmint/mintWelcome/templates/logo.svg
-Terminal=false
-Type=Application
-Encoding=UTF-8
-Categories=GNOME;GTK;Settings;DesktopSettings;
-StartupNotify=false
-""")
+    for directory in os.listdir("/usr/share/linuxmint/locale"):
+        if os.path.isdir(os.path.join("/usr/share/linuxmint/locale", directory)):
+            try:
+                language = gettext.translation('mintwelcome', "/usr/share/linuxmint/locale", languages=[directory])
+                language.install()			
+                desktopFile.writelines("Comment[%s]=%s\n" % (directory, _(menuComment)))
+            except:
+                pass
+
+    desktopFile.writelines("Exec=%s\nIcon=%ls\nTerminal=false\nType=Application\nEncoding=UTF-8\nCategories=%s\nStartupNotify=false\n" % (launcher, icon, categories))
+
+if __name__ == '__main__':
+    sourceFile = "usr/lib/linuxmint/mintWelcome/mintWelcome.py"
+    generate_file(sourceFile, "usr/share/applications/mintWelcome.desktop", "menuName", "menuComment", "Welcome Screen", "Introduction to Linux Mint", "mintwelcome", "/usr/lib/linuxmint/mintWelcome/templates/logo.svg", "GNOME;GTK;Settings;DesktopSettings;")
+    generate_file(sourceFile, "mint-meta-codecs.desktop", "codecsMenuName", "codecsMenuComment", "Install Multimedia Codecs", "Add all the missing multimedia codecs", "apturl apt://mint-meta-codecs", "applications-multimedia", "Application;AudioVideo;Audio;")
+    generate_file(sourceFile, "mint-meta-gnome-dvd.desktop", "dvdMenuName", "dvdMenuComment", "Upgrade to the DVD Edition", "Add all the missing applications", "apturl apt://mint-meta-gnome-dvd", "applications-other", "System;Settings;GTK;HardwareSettings;")
+
+
 

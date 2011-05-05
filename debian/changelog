@@ -1,3 +1,9 @@
+mintwelcome (1.4.0) katya; urgency=low
+
+  * Generate desktop files for mint-meta-codecs and mint-meta-gnome-dvd
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu,  5 May 2011 13:18:00 +0000
+
 mintwelcome (1.3.9) katya; urgency=low
 
   * Menu item added in preferences

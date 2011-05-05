@@ -19,6 +19,12 @@ gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 menuName = _("Welcome Screen")
 menuComment = _("Introduction to Linux Mint")
 
+# i18n for mint-meta-codecs and mint-meta-gnome-dvd menu items
+codecsMenuName = _("Install Multimedia Codecs")
+codecsMenuComment = _("Add all the missing multimedia codecs")
+dvdMenuName = _("Upgrade to the DVD Edition")
+dvdMenuComment = _("Add all the missing applications")
+
 class MintWelcome():
     def __init__(self):
         gladefile = "/usr/lib/linuxmint/mintWelcome/mintWelcome.glade"
