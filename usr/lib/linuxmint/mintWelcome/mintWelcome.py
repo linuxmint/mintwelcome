@@ -15,6 +15,10 @@ import string
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 
+# i18n for menu item
+menuName = _("Welcome Screen")
+menuComment = _("Introduction to Linux Mint")
+
 class MintWelcome():
     def __init__(self):
         gladefile = "/usr/lib/linuxmint/mintWelcome/mintWelcome.glade"
