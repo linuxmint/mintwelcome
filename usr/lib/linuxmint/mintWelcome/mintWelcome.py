@@ -151,10 +151,10 @@ class MintWelcome():
             os.system("xdg-open http://www.linuxmint.com/donors.php")            
         elif title == "event_codecs":
             if self.codecs_pkg is not None:
-                os.system("xdg-open apt://%s" % self.codecs_pkg)            
+                os.system("xdg-open apt://%s?refresh=yes" % self.codecs_pkg)            
         elif title == "event_extra_software":
             if self.extra_pkg is not None:
-                os.system("xdg-open apt://%s" % self.extra_pkg)
+                os.system("xdg-open apt://%s?refresh=yes" % self.extra_pkg)
         elif title == "event_close_true":
             if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
                 os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")

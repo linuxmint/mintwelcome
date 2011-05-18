@@ -52,8 +52,8 @@ def generate_file(sourceFile, filename, menuNameTitle, menuCommentTitle, name, c
 if __name__ == '__main__':
     sourceFile = "usr/lib/linuxmint/mintWelcome/mintWelcome.py"
     generate_file(sourceFile, "usr/share/applications/mintWelcome.desktop", "menuName", "menuComment", "Welcome Screen", "Introduction to Linux Mint", "mintwelcome", "/usr/lib/linuxmint/mintWelcome/templates/logo.svg", "GNOME;GTK;Settings;DesktopSettings;")
-    generate_file(sourceFile, "mint-meta-codecs.desktop", "codecsMenuName", "codecsMenuComment", "Install Multimedia Codecs", "Add all the missing multimedia codecs", "apturl apt://mint-meta-codecs", "applications-multimedia", "Application;AudioVideo;Audio;")
-    generate_file(sourceFile, "mint-meta-gnome-dvd.desktop", "dvdMenuName", "dvdMenuComment", "Upgrade to the DVD Edition", "Add all the missing applications", "apturl apt://mint-meta-gnome-dvd", "applications-other", "System;Settings;GTK;HardwareSettings;")
+    generate_file(sourceFile, "mint-meta-codecs.desktop", "codecsMenuName", "codecsMenuComment", "Install Multimedia Codecs", "Add all the missing multimedia codecs", "apturl apt://mint-meta-codecs?refresh=yes", "applications-multimedia", "Application;AudioVideo;Audio;")
+    generate_file(sourceFile, "mint-meta-gnome-dvd.desktop", "dvdMenuName", "dvdMenuComment", "Upgrade to the DVD Edition", "Add all the missing applications", "apturl apt://mint-meta-gnome-dvd?refresh=yes", "applications-other", "System;Settings;GTK;HardwareSettings;")
 
 
 

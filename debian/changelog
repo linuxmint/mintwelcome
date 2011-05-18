@@ -1,3 +1,9 @@
+mintwelcome (1.4.1) katya; urgency=low
+
+  * Use refresh option in calls to apturl
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed,  18 May 2011 11:49:00 +0000
+
 mintwelcome (1.4.0) katya; urgency=low
 
   * Generate desktop files for mint-meta-codecs and mint-meta-gnome-dvd
