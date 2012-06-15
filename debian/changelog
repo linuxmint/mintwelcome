@@ -1,3 +1,9 @@
+mintwelcome (1.4.5) maya; urgency=low
+
+  * Use casper/live instead of ubiquity/live-installer to detect live session
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 15 Jun 2012 10:24:06 +0100
+
 mintwelcome (1.4.4) lisa; urgency=low
 
   * version conflict with Isadora, increasing the version artificially from 1.4.3 to 1.4.4
