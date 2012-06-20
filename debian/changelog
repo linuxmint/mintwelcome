@@ -1,3 +1,9 @@
+mintwelcome (1.4.6) maya; urgency=low
+
+  * Changed type hint to dock (KDE compatibility)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 20 Jun 2012 09:54:05 +0100
+
 mintwelcome (1.4.5) maya; urgency=low
 
   * Use casper/live instead of ubiquity/live-installer to detect live session
