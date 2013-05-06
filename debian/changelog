@@ -1,3 +1,9 @@
+mintwelcome (1.4.7) olivia; urgency=low
+
+  * 1.4.7
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 06 May 2013 13:16:55 +0100
+
 mintwelcome (1.4.6) maya; urgency=low
 
   * Changed type hint to dock (KDE compatibility)
