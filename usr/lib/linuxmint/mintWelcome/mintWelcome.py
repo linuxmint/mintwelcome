@@ -131,33 +131,33 @@ class MintWelcome():
             elif os.path.exists("/usr/bin/quassel"):
                 os.system("/usr/bin/quassel &")
         elif title == "event_new_features":
-            os.system("xdg-open " + self.new_features)
+            os.system("xdg-open %s &" % self.new_features)
         elif title == "event_known_problems":
-            os.system("xdg-open " + self.release_notes)
+            os.system("xdg-open %s &" % self.release_notes)
         elif title == "event_user_guide":
-            os.system("xdg-open " + self.user_guide)
+            os.system("xdg-open %s &" % self.user_guide)
         elif title == "event_forums":
-            os.system("xdg-open http://forums.linuxmint.com")
+            os.system("xdg-open http://forums.linuxmint.com &")
         elif title == "event_tutorials":
-            os.system("xdg-open http://community.linuxmint.com/tutorial")
+            os.system("xdg-open http://community.linuxmint.com/tutorial &")
         elif title == "event_ideas":
-            os.system("xdg-open http://community.linuxmint.com/idea")
+            os.system("xdg-open http://community.linuxmint.com/idea &")
         elif title == "event_software":
-            os.system("xdg-open http://community.linuxmint.com/software")
+            os.system("xdg-open http://community.linuxmint.com/software &")
         elif title == "event_hardware":
-            os.system("xdg-open http://community.linuxmint.com/hardware")
+            os.system("xdg-open http://community.linuxmint.com/hardware &")
         elif title == "event_get_involved":
-            os.system("xdg-open http://www.linuxmint.com/getinvolved.php")
+            os.system("xdg-open http://www.linuxmint.com/getinvolved.php &")
         elif title == "event_sponsor":
-            os.system("xdg-open http://www.linuxmint.com/sponsors.php")
+            os.system("xdg-open http://www.linuxmint.com/sponsors.php &")
         elif title == "event_donation":
-            os.system("xdg-open http://www.linuxmint.com/donors.php")            
+            os.system("xdg-open http://www.linuxmint.com/donors.php &")            
         elif title == "event_codecs":
             if self.codecs_pkg is not None:
-                os.system("xdg-open apt://%s?refresh=yes" % self.codecs_pkg)            
+                os.system("xdg-open apt://%s?refresh=yes &" % self.codecs_pkg)            
         elif title == "event_extra_software":
             if self.extra_pkg is not None:
-                os.system("xdg-open apt://%s?refresh=yes" % self.extra_pkg)
+                os.system("xdg-open apt://%s?refresh=yes &" % self.extra_pkg)
         elif title == "event_close_true":
             if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
                 os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
