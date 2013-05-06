@@ -50,7 +50,10 @@ class MintWelcome():
         wTree.get_widget("scrolled_welcome").add(browser)
         browser.connect("button-press-event", lambda w, e: e.button == 3)
         subs = {}
-        subs['release'] = "Linux Mint %s \"%s\"" % (release, codename)
+        if (codename == "debian"):
+            subs['release'] = "LMDE"
+        else:
+            subs['release'] = "Linux Mint %s \"%s\"" % (release, codename)
         subs['edition'] = edition
         subs['title'] = _("Welcome to Linux Mint")
         subs['release_title'] = _("Release")
