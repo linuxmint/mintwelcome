@@ -1,0 +1,31 @@
+body {
+	background-image: url('/usr/lib/linuxmint/mintWelcome/templates/bc.png');
+	background-repeat: repeat;                     
+	color:#000;      
+}
+
+A:link, A:visited {
+	text-decoration: none;
+	color:#000000;
+}
+
+table {
+	height: 100%;
+	width: 100%;
+}
+
+#mint_logo {
+	width: 128px;
+	float: left;
+	content:url("/usr/lib/linuxmint/mintWelcome/templates/logo.svg");
+}
+
+#welcome_middle table td {
+	 valign: top;
+	 width: 25%;
+	 nowrap;
+}
+
+#closebutton{
+	margin-left: 30px;
+}
