@@ -29,7 +29,7 @@ class MintWelcome():
     def __init__(self):
         gladefile = "/usr/lib/linuxmint/mintWelcome/mintWelcome.glade"
         wTree = gtk.glade.XML(gladefile,"main_window")
-        wTree.get_widget("main_window").set_title(_("Welcome to Linux Mint"))
+        wTree.get_widget("main_window").set_title(_("Welcome Screen"))
         wTree.get_widget("main_window").set_icon_from_file("/usr/share/linuxmint/logo.png")
 
         sys.path.append('/usr/lib/linuxmint/common')
@@ -50,7 +50,7 @@ class MintWelcome():
         wTree.get_widget("scrolled_welcome").add(browser)
         browser.connect("button-press-event", lambda w, e: e.button == 3)
         subs = {}
-        subs['release'] = release + " (" + codename + ")"
+        subs['release'] = "Linux Mint %s \"%s\"" % (release, codename)
         subs['edition'] = edition
         subs['title'] = _("Welcome to Linux Mint")
         subs['release_title'] = _("Release")
