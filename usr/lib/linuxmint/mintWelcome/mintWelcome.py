@@ -89,14 +89,14 @@ class MintWelcome():
             cache = apt.Cache()
             if "mint-meta-codecs" in cache:
                 pkg = cache["mint-meta-codecs"]
-                if not pkg.isInstalled:
+                if not pkg.is_installed:
                     subs['codecs'] = _("Add Multimedia Codecs")
                     subs['visibilitycodecs'] = "visible"
                     subs['visibilitysystem'] = "visible"
                     self.codecs_pkg = "mint-meta-codecs"
             if "mint-meta-gnome-dvd" in cache:
                 pkg = cache["mint-meta-gnome-dvd"]
-                if not pkg.isInstalled:
+                if not pkg.is_installed:
                     subs['visibilityextraapps'] = "visible"
                     subs['visibilitysystem'] = "visible"
                     self.extra_pkg = "mint-meta-gnome-dvd"
