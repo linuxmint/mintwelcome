@@ -1,3 +1,9 @@
+mintwelcome (1.4.9) petra; urgency=low
+
+  * Added margin on the right of the logo
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 31 Oct 2013 10:49:21 +0000
+
 mintwelcome (1.4.8) petra; urgency=low
 
   * Update apt api call "pkg.is_installed()"

@@ -17,6 +17,7 @@ table {
 #mint_logo {
 	width: 128px;
 	float: left;
+	margin-right: 10px;
 	content:url("/usr/lib/linuxmint/mintWelcome/templates/logo.svg");
 }
 
