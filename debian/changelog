@@ -1,3 +1,9 @@
+mintwelcome (1.4.10) petra; urgency=low
+
+  * Fix desktop file
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Fri, 08 Nov 2013 10:13:18 +0100
+
 mintwelcome (1.4.9) petra; urgency=low
 
   * Added margin on the right of the logo
