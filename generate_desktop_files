@@ -47,7 +47,7 @@ def generate_file(sourceFile, filename, menuNameTitle, menuCommentTitle, name, c
             except:
                 pass
 
-    desktopFile.writelines("Exec=%s\nIcon=%ls\nTerminal=false\nType=Application\nEncoding=UTF-8\nCategories=%s\nStartupNotify=false\n" % (launcher, icon, categories))
+    desktopFile.writelines("Exec=%s\nIcon=%ls\nTerminal=false\nType=Application\nEncoding=UTF-8\nCategories=%s\nStartupNotify=false\nNotShowIn=KDE;\n" % (launcher, icon, categories))
 
 if __name__ == '__main__':
     sourceFile = "usr/lib/linuxmint/mintWelcome/mintWelcome.py"
