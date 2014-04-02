@@ -53,7 +53,7 @@ class MintWelcome():
         if (codename == "debian"):
             subs['release'] = "LMDE"
         else:
-            subs['release'] = "Linux Mint %s \"%s\"" % (release, codename)
+            subs['release'] = "Linux Mint %s \"%s\"" % (release, codename.capitalize())
         subs['edition'] = edition
         subs['title'] = _("Welcome to Linux Mint")
         subs['release_title'] = _("Release")
