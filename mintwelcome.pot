@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-05 13:19+0100\n"
+"POT-Creation-Date: 2014-04-03 15:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,128 +17,135 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:19
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:24 generate_desktop_files:58
+#: generate_desktop_files:72
 msgid "Welcome Screen"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:20
-msgid "Introduction to Linux Mint"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:23
-msgid "Install Multimedia Codecs"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:24
-msgid "Add all the missing multimedia codecs"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:25
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:75
-msgid "Upgrade to the DVD Edition"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:26
-msgid "Add all the missing applications"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:32
 #: usr/lib/linuxmint/mintWelcome/mintWelcome.py:55
-msgid "Welcome to Linux Mint"
+msgid "Welcome"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:56
-msgid "Release"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:57
-msgid "Edition"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:58
-msgid "Documentation"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:59
-msgid "Support"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:60
-msgid "Project"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:61
-msgid "Community"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:62
-msgid "System status"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:63
-msgid "New features"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:64
-msgid "Known problems"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:65
-msgid "User guide (PDF)"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:66
-msgid "Forums"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:67
-msgid "Chat room"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:68
-msgid "Sponsors"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:69
-msgid "Donations"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:70
-msgid "Get involved"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:71
-msgid "Idea pool"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:72
-msgid "Software reviews"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:73
-msgid "Hardware database"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:74
-msgid "Tutorials"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:90
-msgid "Add Multimedia Codecs"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:101
-msgid "Show this dialog at startup"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:102
-msgid "Close"
-msgstr ""
-
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:108
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:86
 msgid ""
 "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it "
 "as much as we did designing it. The links below will help you get started "
 "with your new operating system. Have a great time and don't hesitate to send "
 "us your feedback."
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:115
+msgid "New features"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:115
+msgid "See what is new in this release"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:116
+msgid "Important information"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:116
+msgid ""
+"Find out about important information, limitations, known issues and their "
+"solution"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:117
+msgid "Software reviews"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:117
+msgid "Install additional software"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:118
+msgid "Hardware database"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:118
+msgid ""
+"Find hardware that is compatible with Linux, or information about your "
+"hardware"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:120
+msgid "User guide (PDF)"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:120
+msgid "Learn all the basics to get started with Linux Mint"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:121
+msgid "Forums"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:121
+msgid "Seek help from other users in the Linux Mint forums"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:122
+msgid "Chat room"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:122
+msgid "Chat live with other users in the chat room"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:123
+msgid "Tutorials"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:123
+msgid "Find tutorials about Linux Mint"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:125
+msgid "Get involved"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:125
+msgid "Find out how to get involved in the Linux Mint project"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:126
+msgid "Idea pool"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:126
+msgid "Submit new ideas to the development team"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:127
+msgid "Donations"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:127
+msgid "Make a donation to the Linux Mint project"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:128
+msgid "Sponsors"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:128
+msgid "Apply to become a Linux Mint sponsor"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:137 generate_desktop_files:86
+msgid "Install Multimedia Codecs"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:137 generate_desktop_files:86
+msgid "Add all the missing multimedia codecs"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:148
+msgid "Show this dialog at startup"
+msgstr ""
+
+#: generate_desktop_files:58 generate_desktop_files:72
+msgid "Introduction to Linux Mint"
 msgstr ""
