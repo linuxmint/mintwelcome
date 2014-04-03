@@ -1,3 +1,9 @@
+mintwelcome (2.0.0) qiana; urgency=medium
+
+  * Complete re-design
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 03 Apr 2014 15:42:30 +0100
+
 mintwelcome (1.4.11) petra; urgency=low
 
   * Add KDE desktop file
