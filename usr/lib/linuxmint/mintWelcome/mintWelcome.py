@@ -47,7 +47,7 @@ class MintWelcome():
         titlebox = Gtk.HBox()
         titlebox.set_spacing(6)
         label = Gtk.Label()
-        label.set_markup("<b><big>%s</big></b>" % _("Welcome"))
+        label.set_markup(" <b><big>%s</big></b>" % _("Welcome"))        
         titlebox.add(label)
         headerbar.pack_start(titlebox)
         window.set_titlebar(headerbar)
