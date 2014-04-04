@@ -38,7 +38,7 @@ class MintWelcome():
         self.new_features = config['NEW_FEATURES_URL']
         
         bgcolor =  Gdk.RGBA()
-        bgcolor.parse("#f7f7f7")
+        bgcolor.parse("rgba(0,0,0,0)")
         fgcolor =  Gdk.RGBA()
         fgcolor.parse("#3e3e3e")
 
@@ -46,14 +46,8 @@ class MintWelcome():
         headerbar.set_show_close_button(True)
         titlebox = Gtk.HBox()
         titlebox.set_spacing(6)
-        logo = Gtk.Image()
-        if "KDE" in desktop:
-            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_kde.png")
-        else:
-            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo.png")
         label = Gtk.Label()
         label.set_markup("<b><big>%s</big></b>" % _("Welcome"))
-        titlebox.add(logo)
         titlebox.add(label)
         headerbar.pack_start(titlebox)
         window.set_titlebar(headerbar)
@@ -61,6 +55,7 @@ class MintWelcome():
         main_box = Gtk.VBox()   
 
         event_box = Gtk.EventBox()
+        event_box.set_name("event_box")
         event_box.override_background_color(Gtk.StateType.NORMAL, bgcolor)
         event_box.override_color(Gtk.StateType.NORMAL, fgcolor)
         main_box.pack_start(event_box, True, True, 0)
@@ -71,6 +66,12 @@ class MintWelcome():
         event_box.add(vbox)   
         
         headerbox = Gtk.VBox()
+        logo = Gtk.Image()
+        if "KDE" in desktop:
+            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header_kde.png")
+        else:
+            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header.png")
+        headerbox.pack_start(logo, False, False, 0)    
         label = Gtk.Label()
         if "KDE" in desktop:
             label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>Linux Mint %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (release, codename))
@@ -155,7 +156,26 @@ class MintWelcome():
         
         window.add(main_box)
         window.set_size_request(640, 520)
-        window.set_default_size(640, 520)                            
+        window.set_default_size(640, 520)  
+
+        css_provider = Gtk.CssProvider()
+        css = """
+ #event_box {
+      background-image: -gtk-gradient (linear,
+                                       left top,
+       left bottom,
+       from (#cecece),
+       color-stop (0.1, #f7f7f7),
+       to (#d6d6d6));
+    } 
+"""
+
+        css_provider.load_from_data(css.encode('UTF-8'))
+        screen = Gdk.Screen.get_default()
+        style_context = window.get_style_context()
+        style_context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
+
         window.show_all()
 
     def on_button_toggled(self, button):
