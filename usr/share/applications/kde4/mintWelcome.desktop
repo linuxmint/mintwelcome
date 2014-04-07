@@ -4,6 +4,7 @@ Icon=/usr/lib/linuxmint/mintWelcome/icons/logo_kde.svg
 Terminal=false
 Type=Application
 Encoding=UTF-8
+OnlyShowIn=KDE;
 Categories=System;
 StartupNotify=false
 Name=Welcome Screen

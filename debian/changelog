@@ -1,3 +1,9 @@
+mintwelcome (2.0.3) qiana; urgency=medium
+
+  * Added OnlyShowIn=KDE to KDE desktop file
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 07 Apr 2014 15:50:29 +0100
+
 mintwelcome (2.0.2) qiana; urgency=medium
 
   * Added a space for MATE compatibility
