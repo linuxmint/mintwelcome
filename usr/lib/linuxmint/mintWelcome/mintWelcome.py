@@ -102,7 +102,7 @@ class MintWelcome():
         iconview.set_columns(4)
         iconview.set_margin(0)
         iconview.set_spacing(6)
-        iconview.set_item_padding(4)
+        iconview.set_item_padding(0)
         iconview.set_row_spacing(20)
         iconview.set_column_spacing(20)
         iconview.override_background_color(Gtk.StateType.NORMAL, bgcolor)
@@ -155,7 +155,7 @@ class MintWelcome():
         statusbar.pack_end(hbox, False, False, 2)
         
         window.add(main_box)
-        window.set_size_request(640, 520)
+        # window.set_size_request(640, 520)
         window.set_default_size(640, 520)  
 
         css_provider = Gtk.CssProvider()
