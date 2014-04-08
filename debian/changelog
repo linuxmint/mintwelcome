@@ -1,3 +1,10 @@
+mintwelcome (2.0.5) qiana; urgency=medium
+
+  * UI changes
+  * Added restore_data
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 08 Apr 2014 10:39:55 +0100
+
 mintwelcome (2.0.4) qiana; urgency=medium
 
   * Size adjustments
