@@ -42,16 +42,6 @@ class MintWelcome():
         fgcolor =  Gdk.RGBA()
         fgcolor.parse("#3e3e3e")
 
-        headerbar = Gtk.HeaderBar()
-        headerbar.set_show_close_button(True)
-        titlebox = Gtk.HBox()
-        titlebox.set_spacing(6)
-        label = Gtk.Label()
-        label.set_markup(" <b><big>%s</big></b>" % _("Welcome"))        
-        titlebox.add(label)
-        headerbar.pack_start(titlebox)
-        window.set_titlebar(headerbar)
-
         main_box = Gtk.VBox()   
 
         event_box = Gtk.EventBox()
@@ -99,7 +89,7 @@ class MintWelcome():
         iconview.set_pixbuf_column(0)
         iconview.set_text_column(2)
         iconview.set_tooltip_column(3)
-        iconview.set_columns(4)
+        iconview.set_columns(5)
         iconview.set_margin(0)
         iconview.set_spacing(6)
         iconview.set_item_padding(0)
@@ -115,18 +105,19 @@ class MintWelcome():
         actions = []
         actions.append(['new_features', _("New features"), _("See what is new in this release")])
         actions.append(['known_problems', _("Important information"), _("Find out about important information, limitations, known issues and their solution")])
-        actions.append(['software', _("Software reviews"), _("Install additional software")])
-        actions.append(['hardware', _("Hardware database"), _("Find hardware that is compatible with Linux, or information about your hardware")])
-
         actions.append(['user_guide', _("User guide (PDF)"), _("Learn all the basics to get started with Linux Mint")])
-        actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
+        actions.append(['restore_data', _("Restore data"), _("Restore data or applications from a previous installation")])
+        actions.append(['software', _("Software manager"), _("Install additional software")])
+                
         actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
-        actions.append(['tutorials', _("Tutorials"), _("Find tutorials about Linux Mint")])        
+        actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])        
+        actions.append(['tutorials', _("Tutorials"), _("Find tutorials about Linux Mint")])                            
+        actions.append(['hardware', _("Hardware database"), _("Find hardware that is compatible with Linux, or information about your hardware")])
+        actions.append(['ideas', _("Idea pool"), _("Submit new ideas to the development team")])
         
         actions.append(['get_involved', _("Get involved"), _("Find out how to get involved in the Linux Mint project")])
-        actions.append(['ideas', _("Idea pool"), _("Submit new ideas to the development team")])
         actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
-        actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])   
+        actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])        
 
         if "Gnome" in desktop and "debian" not in codename:
             # Some GNOME editions (Cinnamon, MATE) can come without codecs
@@ -134,8 +125,8 @@ class MintWelcome():
             cache = apt.Cache()
             if "mint-meta-codecs" in cache:
                 pkg = cache["mint-meta-codecs"]
-                if not pkg.is_installed:
-                    actions.append(['codecs', _("Install Multimedia Codecs"), _("Add all the missing multimedia codecs")])
+                # if not pkg.is_installed:
+                #     actions.append(['codecs', _("Install multimedia codecs"), _("Add all the missing multimedia codecs")])
 
         for action in actions:
             pixbuf = Pixbuf.new_from_file('/usr/lib/linuxmint/mintWelcome/icons/%s.png' % action[0])
@@ -196,6 +187,9 @@ class MintWelcome():
                 for client in ["/usr/bin/xchat-gnome", "/usr/bin/xchat", "/usr/bin/hexchat", "/usr/bin/konversation", "/usr/bin/quassel"]:
                     if os.path.exists(client):
                         os.system("%s &" % client)
+            elif value == "restore_data":            
+                if os.path.exists("/usr/bin/mintbackup"):
+                    os.system("/usr/bin/mintbackup &")
             elif value == "new_features":
                 os.system("xdg-open %s &" % self.new_features)
             elif value == "known_problems":
