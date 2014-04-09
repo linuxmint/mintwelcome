@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import gi
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GLib
 from gi.repository import WebKit
 from gi.repository.GdkPixbuf import Pixbuf
 
@@ -76,15 +76,16 @@ class MintWelcome():
         if "KDE" in desktop:
             label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>Linux Mint %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (release, codename))
         else:
-            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>Linux Mint %s '<span fgcolor='#709937'>%s</span>'</span>" % (release, codename))
+            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>Linux Mint %s '<span fgcolor='#94B276'>%s</span>'</span>" % (release, codename))
         headerbox.pack_start(label, False, False, 0)
         label = Gtk.Label()
         label.set_markup("<span font='8' fgcolor='#3e3e3e'><i>%s</i></span>" % edition)
         headerbox.pack_start(label, False, False, 2)
         vbox.pack_start(headerbox, False, False, 10)
 
+        real_name = GLib.get_real_name()
         welcome_label = Gtk.Label()
-        welcome_message = _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. The links below will help you get started with your new operating system. Have a great time and don't hesitate to send us your feedback.")
+        welcome_message = _("Welcome " + real_name + ", and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. The links below will help you get started with your new operating system. Have a great time and don't hesitate to send us your feedback.")
         welcome_label.set_markup("<span font='9' fgcolor='#3e3e3e'>%s</span>" % welcome_message)
         welcome_label.set_line_wrap(True)
         vbox.pack_start(welcome_label, False, False, 10)
@@ -99,12 +100,12 @@ class MintWelcome():
         iconview.set_pixbuf_column(0)
         iconview.set_text_column(2)
         iconview.set_tooltip_column(3)
-        iconview.set_columns(4)
+        iconview.set_columns(5)
         iconview.set_margin(0)
         iconview.set_spacing(6)
         iconview.set_item_padding(4)
         iconview.set_row_spacing(20)
-        iconview.set_column_spacing(20)
+        iconview.set_column_spacing(10)
         iconview.override_background_color(Gtk.StateType.NORMAL, bgcolor)
         iconview.override_color(Gtk.StateType.NORMAL, fgcolor)
         iconview.connect("selection-changed", self.item_activated)        
@@ -115,18 +116,22 @@ class MintWelcome():
         actions = []
         actions.append(['new_features', _("New features"), _("See what is new in this release")])
         actions.append(['known_problems', _("Important information"), _("Find out about important information, limitations, known issues and their solution")])
+        if os.path.exists("/usr/bin/mintBackup"):
+            actions.append(['backup', _("Restore data"), _("Restore files backed up from a previous install")])
+        actions.append(['user_guide', _("User guide (PDF)"), _("Learn all the basics to get started with Linux Mint")])
+        
+        actions.append(['tutorials', _("Tutorials"), _("Find tutorials about Linux Mint")])
+        actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
+        actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
         actions.append(['software', _("Software reviews"), _("Install additional software")])
         actions.append(['hardware', _("Hardware database"), _("Find hardware that is compatible with Linux, or information about your hardware")])
 
-        actions.append(['user_guide', _("User guide (PDF)"), _("Learn all the basics to get started with Linux Mint")])
-        actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
-        actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
-        actions.append(['tutorials', _("Tutorials"), _("Find tutorials about Linux Mint")])        
-        
         actions.append(['get_involved', _("Get involved"), _("Find out how to get involved in the Linux Mint project")])
         actions.append(['ideas', _("Idea pool"), _("Submit new ideas to the development team")])
         actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
-        actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])   
+        actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])
+        actions.append(['shop', _("Linux Mint Store"), _("Purchase some Linux Mint branded items.")])
+        
 
         if "Gnome" in desktop and "debian" not in codename:
             # Some GNOME editions (Cinnamon, MATE) can come without codecs
@@ -145,13 +150,13 @@ class MintWelcome():
         main_box.pack_end(statusbar, False, False, 0)
 
         hbox = Gtk.HBox()
-        checkbox = Gtk.CheckButton()
-        checkbox.set_label(_("Show this dialog at startup"))
-        checkbox.override_color(Gtk.StateType.NORMAL, fgcolor)
+        switch = Gtk.Switch()
+        switch_label = Gtk.Label(_("Show this dialog at startup"))
         if not os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
-            checkbox.set_active(True)
-        checkbox.connect("toggled", self.on_button_toggled)
-        hbox.pack_end(checkbox, False, False, 2)
+            switch.set_active(True)
+        switch.connect("notify::active", self.on_switch_toggled)
+        hbox.pack_end(switch, False, False, 2)
+        hbox.pack_end(switch_label, False, False, 2)
         statusbar.pack_end(hbox, False, False, 2)
         
         window.add(main_box)
@@ -178,8 +183,8 @@ class MintWelcome():
 
         window.show_all()
 
-    def on_button_toggled(self, button):
-        if button.get_active():
+    def on_switch_toggled(self, switch, muf):
+        if switch.get_active():
             if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
                 os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
         else:  
@@ -217,7 +222,11 @@ class MintWelcome():
             elif value == "sponsors":
                 os.system("xdg-open http://www.linuxmint.com/sponsors.php &")
             elif value == "donors":
-                os.system("xdg-open http://www.linuxmint.com/donors.php &")            
+                os.system("xdg-open http://www.linuxmint.com/donors.php &")
+            elif value == "shop":
+                os.system("xdg-open http://www.linuxmint.com/store.php &")    
+            elif value == "backup":
+                os.system("mintBackup")
             elif value == "codecs":
                 if self.codecs_pkg is not None:
                     os.system("xdg-open apt://mint-meta-codecs?refresh=yes &")
