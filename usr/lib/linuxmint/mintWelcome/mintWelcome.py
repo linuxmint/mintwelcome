@@ -136,13 +136,13 @@ class MintWelcome():
         main_box.pack_end(statusbar, False, False, 0)
 
         hbox = Gtk.HBox()
-        checkbox = Gtk.CheckButton()
-        checkbox.set_label(_("Show this dialog at startup"))
-        checkbox.override_color(Gtk.StateType.NORMAL, fgcolor)
+        switch = Gtk.Switch()
+        switch_label = Gtk.Label(_("Show this dialog at startup"))
         if not os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
-            checkbox.set_active(True)
-        checkbox.connect("toggled", self.on_button_toggled)
-        hbox.pack_end(checkbox, False, False, 2)
+            switch.set_active(True)
+        switch.connect("notify::active", self.on_switch_toggled)
+        hbox.pack_end(switch, False, False, 2)
+        hbox.pack_end(switch_label, False, False, 2)
         statusbar.pack_end(hbox, False, False, 2)
         
         window.add(main_box)
@@ -169,8 +169,8 @@ class MintWelcome():
 
         window.show_all()
 
-    def on_button_toggled(self, button):
-        if button.get_active():
+    def on_switch_toggled(self, switch, muf):
+        if switch.get_active():
             if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
                 os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
         else:  
