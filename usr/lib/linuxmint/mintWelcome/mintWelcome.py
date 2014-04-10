@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import gi
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GLib
 from gi.repository import WebKit
 from gi.repository.GdkPixbuf import Pixbuf
 
@@ -74,7 +74,8 @@ class MintWelcome():
         vbox.pack_start(headerbox, False, False, 10)
 
         welcome_label = Gtk.Label()
-        welcome_message = _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. The links below will help you get started with your new operating system. Have a great time and don't hesitate to send us your feedback.")
+        text_name = GLib.get_real_name()
+        welcome_message = _("Welcome " + "<b>%s</b>" % text_name + ", and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. The links below will help you get started with your new operating system. Have a great time and don't hesitate to send us your feedback.")
         welcome_label.set_markup("<span font='9' fgcolor='#3e3e3e'>%s</span>" % welcome_message)
         welcome_label.set_line_wrap(True)
         vbox.pack_start(welcome_label, False, False, 10)
