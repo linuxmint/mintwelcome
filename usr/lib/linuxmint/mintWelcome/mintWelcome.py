@@ -125,8 +125,8 @@ class MintWelcome():
             cache = apt.Cache()
             if "mint-meta-codecs" in cache:
                 pkg = cache["mint-meta-codecs"]
-                # if not pkg.is_installed:
-                #     actions.append(['codecs', _("Install multimedia codecs"), _("Add all the missing multimedia codecs")])
+                if not pkg.is_installed:
+                    actions.append(['codecs', _("Install multimedia codecs"), _("Add all the missing multimedia codecs")])
 
         for action in actions:
             pixbuf = Pixbuf.new_from_file('/usr/lib/linuxmint/mintWelcome/icons/%s.png' % action[0])
