@@ -119,7 +119,7 @@ class MintWelcome():
         actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
         actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])        
 
-        if "Gnome" in desktop and "debian" not in codename:
+        if ("Gnome" in desktop or "MATE" in desktop) and "debian" not in codename:
             # Some GNOME editions (Cinnamon, MATE) can come without codecs
             import apt
             cache = apt.Cache()
@@ -213,8 +213,7 @@ class MintWelcome():
             elif value == "donors":
                 os.system("xdg-open http://www.linuxmint.com/donors.php &")            
             elif value == "codecs":
-                if self.codecs_pkg is not None:
-                    os.system("xdg-open apt://mint-meta-codecs?refresh=yes &")
+                os.system("xdg-open apt://mint-meta-codecs?refresh=yes &")
 
 if __name__ == "__main__":
     MintWelcome()
