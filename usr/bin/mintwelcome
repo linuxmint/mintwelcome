@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import os
 
-os.system("python /usr/lib/linuxmint/mintWelcome/mintWelcome.py")
+os.system("python /usr/share/linuxmint/mintWelcome/mintWelcome.py")
 
 
 

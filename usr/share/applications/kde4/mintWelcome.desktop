@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=mintwelcome
-Icon=/usr/lib/linuxmint/mintWelcome/icons/logo_kde.svg
+Icon=/usr/share/linuxmint/mintWelcome/icons/logo_kde.svg
 Terminal=false
 Type=Application
 Encoding=UTF-8
