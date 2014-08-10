@@ -58,9 +58,9 @@ class MintWelcome():
         headerbox = Gtk.VBox()
         logo = Gtk.Image()
         if "KDE" in desktop:
-            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header_kde.png")
+            logo.set_from_file("/usr/share/linuxmint/mintWelcome/icons/logo_header_kde.png")
         else:
-            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header.png")
+            logo.set_from_file("/usr/share/linuxmint/mintWelcome/icons/logo_header.png")
         headerbox.pack_start(logo, False, False, 0)    
         label = Gtk.Label()
         if "KDE" in desktop:
@@ -80,7 +80,7 @@ class MintWelcome():
         vbox.pack_start(welcome_label, False, False, 10)
 
         separator = Gtk.Image()
-        separator.set_from_file('/usr/lib/linuxmint/mintWelcome/icons/separator.png')
+        separator.set_from_file('/usr/share/linuxmint/mintWelcome/icons/separator.png')
         vbox.pack_start(separator, False, False, 10)
                 
         liststore = Gtk.ListStore(Pixbuf, str, str, str)
@@ -129,7 +129,7 @@ class MintWelcome():
                     actions.append(['codecs', _("Install multimedia codecs"), _("Add all the missing multimedia codecs")])
 
         for action in actions:
-            pixbuf = Pixbuf.new_from_file('/usr/lib/linuxmint/mintWelcome/icons/%s.png' % action[0])
+            pixbuf = Pixbuf.new_from_file('/usr/share/linuxmint/mintWelcome/icons/%s.png' % action[0])
             liststore.append([pixbuf, action[0], action[1], action[2]])
         
         statusbar = Gtk.Statusbar()
