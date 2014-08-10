@@ -1,7 +1,8 @@
 mintwelcome (2.0.8) qiana; urgency=medium
 
   * Fixed DE detection in MATE (info changed in Qiana)
-  * Fixed the installation of codecs (an unused variable was left after the refactoring)
+  * Fixed the installation of codecs (an unused variable was left
+    after the refactoring)
 
  -- Clement Lefebvre <root@linuxmint.com>  Wed, 04 Jun 2014 10:19:25 +0100
 
