@@ -105,7 +105,7 @@ class MintWelcome():
         actions = []
         actions.append(['new_features', _("New features"), _("See what is new in this release")])
         actions.append(['known_problems', _("Important information"), _("Find out about important information, limitations, known issues and their solution")])
-        actions.append(['user_guide', _("User guide (PDF)"), _("Learn all the basics to get started with Linux Mint")])
+        actions.append(['user_guide', _("User guide"), _("Learn all the basics to get started with Linux Mint")])
         actions.append(['restore_data', _("Restore data"), _("Restore data or applications from a previous installation")])
         actions.append(['software', _("Software manager"), _("Install additional software")])
                 
