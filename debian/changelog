@@ -1,3 +1,9 @@
+mintwelcome (2.0.9) rebecca; urgency=medium
+
+  * Changed user guide text and icon (integrated in yelp now)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 15 Sep 2014 14:45:28 +0200
+
 mintwelcome (2.0.8) qiana; urgency=medium
 
   * Fixed DE detection in MATE (info changed in Qiana)
