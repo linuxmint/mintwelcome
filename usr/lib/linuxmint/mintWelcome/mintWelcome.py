@@ -184,9 +184,7 @@ class MintWelcome():
             treeiter = view.get_model().get_iter(path)
             value = view.get_model().get_value(treeiter, 1)
             if value == "chatroom":
-                for client in ["/usr/bin/xchat-gnome", "/usr/bin/xchat", "/usr/bin/hexchat", "/usr/bin/konversation", "/usr/bin/quassel"]:
-                    if os.path.exists(client):
-                        os.system("%s &" % client)
+                os.system("xdg-open irc://irc.spotchat.org/linuxmint-help")
             elif value == "restore_data":            
                 if os.path.exists("/usr/bin/mintbackup"):
                     os.system("/usr/bin/mintbackup &")
