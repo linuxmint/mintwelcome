@@ -1,3 +1,9 @@
+mintwelcome (2.1.0) rebecca; urgency=medium
+
+  * Use xdg-open to open the IRC channel
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 17 Oct 2014 10:29:51 +0200
+
 mintwelcome (2.0.9) rebecca; urgency=medium
 
   * Changed user guide text and icon (integrated in yelp now)
