@@ -1,3 +1,10 @@
+mintwelcome (2.1.1) betsy; urgency=medium
+
+  * Added LMDE detection
+  * Removed trailing white spaces
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 02 Feb 2015 14:05:54 +0100
+
 mintwelcome (2.1.0) rebecca; urgency=medium
 
   * Use xdg-open to open the IRC channel
