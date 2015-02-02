@@ -63,10 +63,13 @@ class MintWelcome():
             logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header.png")
         headerbox.pack_start(logo, False, False, 0)    
         label = Gtk.Label()
+        dist_name = "Linux Mint"
+        if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
+            dist_name = "LMDE"
         if "KDE" in desktop:
-            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>Linux Mint %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (release, codename))
+            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (dist_name, release, codename))
         else:
-            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>Linux Mint %s '<span fgcolor='#709937'>%s</span>'</span>" % (release, codename))
+            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (dist_name, release, codename))
         headerbox.pack_start(label, False, False, 0)
         label = Gtk.Label()
         label.set_markup("<span font='8' fgcolor='#3e3e3e'><i>%s</i></span>" % edition)
