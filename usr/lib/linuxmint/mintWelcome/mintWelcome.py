@@ -36,13 +36,13 @@ class MintWelcome():
         self.release_notes = config['RELEASE_NOTES_URL']
         self.user_guide = config['USER_GUIDE_URL']
         self.new_features = config['NEW_FEATURES_URL']
-        
+
         bgcolor =  Gdk.RGBA()
         bgcolor.parse("rgba(0,0,0,0)")
         fgcolor =  Gdk.RGBA()
         fgcolor.parse("#3e3e3e")
 
-        main_box = Gtk.VBox()   
+        main_box = Gtk.VBox()
 
         event_box = Gtk.EventBox()
         event_box.set_name("event_box")
@@ -53,15 +53,15 @@ class MintWelcome():
         vbox = Gtk.VBox()
         vbox.set_border_width(6)
         vbox.set_spacing(0)
-        event_box.add(vbox)   
-        
+        event_box.add(vbox)
+
         headerbox = Gtk.VBox()
         logo = Gtk.Image()
         if "KDE" in desktop:
             logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header_kde.png")
         else:
             logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header.png")
-        headerbox.pack_start(logo, False, False, 0)    
+        headerbox.pack_start(logo, False, False, 0)
         label = Gtk.Label()
         dist_name = "Linux Mint"
         if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
@@ -85,7 +85,7 @@ class MintWelcome():
         separator = Gtk.Image()
         separator.set_from_file('/usr/lib/linuxmint/mintWelcome/icons/separator.png')
         vbox.pack_start(separator, False, False, 10)
-                
+
         liststore = Gtk.ListStore(Pixbuf, str, str, str)
         iconview = Gtk.IconView.new()
         iconview.set_model(liststore)
@@ -100,7 +100,7 @@ class MintWelcome():
         iconview.set_column_spacing(20)
         iconview.override_background_color(Gtk.StateType.NORMAL, bgcolor)
         iconview.override_color(Gtk.StateType.NORMAL, fgcolor)
-        iconview.connect("selection-changed", self.item_activated)        
+        iconview.connect("selection-changed", self.item_activated)
         hbox = Gtk.HBox()
         hbox.pack_start(iconview, True, True, 30)
         vbox.pack_start(hbox, False, False, 10)
@@ -111,16 +111,16 @@ class MintWelcome():
         actions.append(['user_guide', _("User guide"), _("Learn all the basics to get started with Linux Mint")])
         actions.append(['restore_data', _("Restore data"), _("Restore data or applications from a previous installation")])
         actions.append(['software', _("Software manager"), _("Install additional software")])
-                
+
         actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
-        actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])        
-        actions.append(['tutorials', _("Tutorials"), _("Find tutorials about Linux Mint")])                            
+        actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
+        actions.append(['tutorials', _("Tutorials"), _("Find tutorials about Linux Mint")])
         actions.append(['hardware', _("Hardware database"), _("Find hardware that is compatible with Linux, or information about your hardware")])
         actions.append(['ideas', _("Idea pool"), _("Submit new ideas to the development team")])
-        
+
         actions.append(['get_involved', _("Get involved"), _("Find out how to get involved in the Linux Mint project")])
         actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
-        actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])        
+        actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])
 
         if ("Gnome" in desktop or "MATE" in desktop) and "debian" not in codename:
             # Some GNOME editions (Cinnamon, MATE) can come without codecs
@@ -134,7 +134,7 @@ class MintWelcome():
         for action in actions:
             pixbuf = Pixbuf.new_from_file('/usr/lib/linuxmint/mintWelcome/icons/%s.png' % action[0])
             liststore.append([pixbuf, action[0], action[1], action[2]])
-        
+
         statusbar = Gtk.Statusbar()
         main_box.pack_end(statusbar, False, False, 0)
 
@@ -147,10 +147,10 @@ class MintWelcome():
         checkbox.connect("toggled", self.on_button_toggled)
         hbox.pack_end(checkbox, False, False, 2)
         statusbar.pack_end(hbox, False, False, 2)
-        
+
         window.add(main_box)
         # window.set_size_request(640, 520)
-        window.set_default_size(640, 520)  
+        window.set_default_size(640, 520)
 
         css_provider = Gtk.CssProvider()
         css = """
@@ -161,7 +161,7 @@ class MintWelcome():
        from (#cecece),
        color-stop (0.1, #f7f7f7),
        to (#d6d6d6));
-    } 
+    }
 """
 
         css_provider.load_from_data(css.encode('UTF-8'))
@@ -176,19 +176,19 @@ class MintWelcome():
         if button.get_active():
             if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
                 os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
-        else:  
+        else:
             os.system("mkdir -p " + home + "/.linuxmint/mintWelcome")
             os.system("touch " + home + "/.linuxmint/mintWelcome/norun.flag")
 
     def item_activated(self, view):
-        paths = view.get_selected_items()        
+        paths = view.get_selected_items()
         if (len(paths) > 0):
             path = paths[0]
             treeiter = view.get_model().get_iter(path)
             value = view.get_model().get_value(treeiter, 1)
             if value == "chatroom":
                 os.system("xdg-open irc://irc.spotchat.org/linuxmint-help")
-            elif value == "restore_data":            
+            elif value == "restore_data":
                 if os.path.exists("/usr/bin/mintbackup"):
                     os.system("/usr/bin/mintbackup &")
             elif value == "new_features":
@@ -212,7 +212,7 @@ class MintWelcome():
             elif value == "sponsors":
                 os.system("xdg-open http://www.linuxmint.com/sponsors.php &")
             elif value == "donors":
-                os.system("xdg-open http://www.linuxmint.com/donors.php &")            
+                os.system("xdg-open http://www.linuxmint.com/donors.php &")
             elif value == "codecs":
                 os.system("xdg-open apt://mint-meta-codecs?refresh=yes &")
 
