@@ -37,6 +37,13 @@ class MintWelcome():
         self.user_guide = config['USER_GUIDE_URL']
         self.new_features = config['NEW_FEATURES_URL']
 
+        # distro-specific
+        self.dist_name = "Linux Mint"
+        self.codec_pkg_name = "mint-meta-codecs"
+        if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
+            self.dist_name = "LMDE"
+            self.codec_pkg_name = "mint-meta-debian-codecs"
+
         bgcolor =  Gdk.RGBA()
         bgcolor.parse("rgba(0,0,0,0)")
         fgcolor =  Gdk.RGBA()
@@ -63,13 +70,10 @@ class MintWelcome():
             logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header.png")
         headerbox.pack_start(logo, False, False, 0)
         label = Gtk.Label()
-        dist_name = "Linux Mint"
-        if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
-            dist_name = "LMDE"
         if "KDE" in desktop:
-            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (dist_name, release, codename))
+            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (self.dist_name, release, codename))
         else:
-            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (dist_name, release, codename))
+            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (self.dist_name, release, codename))
         headerbox.pack_start(label, False, False, 0)
         label = Gtk.Label()
         label.set_markup("<span font='8' fgcolor='#3e3e3e'><i>%s</i></span>" % edition)
@@ -126,8 +130,8 @@ class MintWelcome():
             # Some GNOME editions (Cinnamon, MATE) can come without codecs
             import apt
             cache = apt.Cache()
-            if "mint-meta-codecs" in cache:
-                pkg = cache["mint-meta-codecs"]
+            if self.codec_pkg_name in cache:
+                pkg = cache[self.codec_pkg_name]
                 if not pkg.is_installed:
                     actions.append(['codecs', _("Install multimedia codecs"), _("Add all the missing multimedia codecs")])
 
@@ -214,7 +218,7 @@ class MintWelcome():
             elif value == "donors":
                 os.system("xdg-open http://www.linuxmint.com/donors.php &")
             elif value == "codecs":
-                os.system("xdg-open apt://mint-meta-codecs?refresh=yes &")
+                os.system("xdg-open apt://%s?refresh=yes &" % self.codec_pkg_name)
 
 if __name__ == "__main__":
     MintWelcome()
