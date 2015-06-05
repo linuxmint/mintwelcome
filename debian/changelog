@@ -1,3 +1,9 @@
+mintwelcome (2.1.2) betsy; urgency=medium
+
+  * Properly detect codecs in LMDE
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 05 Jun 2015 15:37:46 +0200
+
 mintwelcome (2.1.1) betsy; urgency=medium
 
   * Added LMDE detection
