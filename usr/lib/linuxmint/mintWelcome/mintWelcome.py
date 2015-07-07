@@ -139,10 +139,9 @@ class MintWelcome():
             pixbuf = Pixbuf.new_from_file('/usr/lib/linuxmint/mintWelcome/icons/%s.png' % action[0])
             liststore.append([pixbuf, action[0], action[1], action[2]])
 
-        statusbar = Gtk.Statusbar()
-        main_box.pack_end(statusbar, False, False, 0)
-
         hbox = Gtk.HBox()
+        hbox.set_border_width(6)
+        main_box.pack_end(hbox, False, False, 0)
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
         checkbox.override_color(Gtk.StateType.NORMAL, fgcolor)
@@ -150,7 +149,6 @@ class MintWelcome():
             checkbox.set_active(True)
         checkbox.connect("toggled", self.on_button_toggled)
         hbox.pack_end(checkbox, False, False, 2)
-        statusbar.pack_end(hbox, False, False, 2)
 
         window.add(main_box)
         # window.set_size_request(640, 520)
