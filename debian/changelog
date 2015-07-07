@@ -1,3 +1,9 @@
+mintwelcome (2.1.3) rafaela; urgency=medium
+
+  * Don't use a statusbar (Xfwm randomly decides to draw a border around it..)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 07 Jul 2015 12:36:19 +0200
+
 mintwelcome (2.1.2) betsy; urgency=medium
 
   * Properly detect codecs in LMDE
