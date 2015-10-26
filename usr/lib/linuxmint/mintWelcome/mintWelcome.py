@@ -116,12 +116,13 @@ class MintWelcome():
         actions.append(['restore_data', _("Restore data"), _("Restore data or applications from a previous installation")])
         actions.append(['software', _("Software manager"), _("Install additional software")])
 
+        actions.append(['driver', _("Driver manager"), _("Manage the drivers for your devices")])
         actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
         actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
         actions.append(['tutorials', _("Tutorials"), _("Find tutorials about Linux Mint")])
         actions.append(['hardware', _("Hardware database"), _("Find hardware that is compatible with Linux, or information about your hardware")])
-        actions.append(['ideas', _("Idea pool"), _("Submit new ideas to the development team")])
 
+        actions.append(['ideas', _("Idea pool"), _("Submit new ideas to the development team")])
         actions.append(['get_involved', _("Get involved"), _("Find out how to get involved in the Linux Mint project")])
         actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
         actions.append(['sponsors', _("Sponsors"), _("Apply to become a Linux Mint sponsor")])
@@ -207,6 +208,8 @@ class MintWelcome():
                 os.system("xdg-open http://community.linuxmint.com/idea &")
             elif value == "software":
                 os.system("mintinstall &")
+            elif value == "driver":
+                os.system("mintdrivers &")
             elif value == "hardware":
                 os.system("xdg-open http://community.linuxmint.com/hardware &")
             elif value == "get_involved":

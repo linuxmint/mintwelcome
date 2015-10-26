@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-08 10:39+0100\n"
+"POT-Creation-Date: 2015-10-26 23:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:24 generate_desktop_files:58
-#: generate_desktop_files:72
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:24 generate_desktop_files:24
+#: generate_desktop_files:37
 msgid "Welcome Screen"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:77
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:84
 msgid ""
 "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it "
 "as much as we did designing it. The links below will help you get started "
@@ -30,126 +30,138 @@ msgid ""
 "us your feedback."
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:106
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:113
 msgid "New features"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:106
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:113
 msgid "See what is new in this release"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:107
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:114
 msgid "Important information"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:107
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:114
 msgid ""
 "Find out about important information, limitations, known issues and their "
 "solution"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:108
-msgid "User guide (PDF)"
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:115
+msgid "User guide"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:108
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:115
 msgid "Learn all the basics to get started with Linux Mint"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:109
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:116
 msgid "Restore data"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:109
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:116
 msgid "Restore data or applications from a previous installation"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:110
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:117
 msgid "Software manager"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:110
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:117
 msgid "Install additional software"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:112
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:119
+msgid "Driver manager"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:119
+msgid "Manage the drivers for your devices"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:120
 msgid "Chat room"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:112
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:120
 msgid "Chat live with other users in the chat room"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:113
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:121
 msgid "Forums"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:113
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:121
 msgid "Seek help from other users in the Linux Mint forums"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:114
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:122
 msgid "Tutorials"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:114
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:122
 msgid "Find tutorials about Linux Mint"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:115
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:123
 msgid "Hardware database"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:115
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:123
 msgid ""
 "Find hardware that is compatible with Linux, or information about your "
 "hardware"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:116
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:125
 msgid "Idea pool"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:116
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:125
 msgid "Submit new ideas to the development team"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:118
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:126
 msgid "Get involved"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:118
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:126
 msgid "Find out how to get involved in the Linux Mint project"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:119
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:127
 msgid "Donations"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:119
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:127
 msgid "Make a donation to the Linux Mint project"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:120
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:128
 msgid "Sponsors"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:120
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:128
 msgid "Apply to become a Linux Mint sponsor"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:140
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:137
+msgid "Install multimedia codecs"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:137 generate_desktop_files:49
+msgid "Add all the missing multimedia codecs"
+msgstr ""
+
+#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:147
 msgid "Show this dialog at startup"
 msgstr ""
 
-#: generate_desktop_files:58 generate_desktop_files:72
+#: generate_desktop_files:24 generate_desktop_files:37
 msgid "Introduction to Linux Mint"
 msgstr ""
 
-#: generate_desktop_files:86
+#: generate_desktop_files:49
 msgid "Install Multimedia Codecs"
-msgstr ""
-
-#: generate_desktop_files:86
-msgid "Add all the missing multimedia codecs"
 msgstr ""
