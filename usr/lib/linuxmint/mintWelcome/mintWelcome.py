@@ -130,7 +130,7 @@ class MintWelcome():
         if add_codecs:
             actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
             actions.append(['software', _("Apps"), _("Install additional software")])
-            actions.append(['driver', _("Drivers"), _("Manage the drivers for your devices")])
+            actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
             actions.append(['codecs', _("Multimedia codecs"), _("Add all the missing multimedia codecs")])
             actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
             actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
@@ -140,7 +140,7 @@ class MintWelcome():
             actions.append(['new_features', _("New features"), _("See what is new in this release")])
             actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
             actions.append(['software', _("Apps"), _("Install additional software")])
-            actions.append(['driver', _("Drivers"), _("Manage the drivers for your devices")])
+            actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
             actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
             actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
             actions.append(['get_involved', _("Getting involved"), _("Find out how to get involved in the Linux Mint project")])
