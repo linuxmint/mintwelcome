@@ -33,7 +33,7 @@ class MintWelcome():
         release = config['RELEASE']
         desktop = config['DESKTOP']
         self.release_notes = config['RELEASE_NOTES_URL']
-        self.user_guide = config['USER_GUIDE_URL']
+        self.user_guide = "http://www.linuxmint.com/documentation.php" # Switch to config['USER_GUIDE_URL'] when mintdoc is ready and localized
         self.new_features = config['NEW_FEATURES_URL']
 
         # distro-specific
