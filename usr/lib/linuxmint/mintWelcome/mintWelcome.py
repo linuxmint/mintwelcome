@@ -2,7 +2,6 @@
 
 import gi
 from gi.repository import Gtk, Gdk
-from gi.repository import WebKit
 from gi.repository.GdkPixbuf import Pixbuf
 
 import sys
