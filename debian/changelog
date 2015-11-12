@@ -1,3 +1,11 @@
+mintwelcome (2.1.5) rosa; urgency=medium
+
+  * Removed Webkit import
+  * Switch user guide back to online version (until mintdoc is finalized and localized)
+  * Refreshed mintwelcome UI
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 12 Nov 2015 15:23:33 +0000
+
 mintwelcome (2.1.4) rosa; urgency=medium
 
   [ Kálmán Szalai - KAMI ]
