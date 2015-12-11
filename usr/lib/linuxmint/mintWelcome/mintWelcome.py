@@ -37,9 +37,11 @@ class MintWelcome():
         self.new_features = config['NEW_FEATURES_URL']
 
         # distro-specific
+        self.is_lmde = False
         self.dist_name = "Linux Mint"
         self.codec_pkg_name = "mint-meta-codecs"
         if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
+            self.is_lmde = True
             self.dist_name = "LMDE"
             self.codec_pkg_name = "mint-meta-debian-codecs"
 
@@ -116,7 +118,7 @@ class MintWelcome():
         actions = []
 
         add_codecs = False
-        if ("Gnome" in desktop or "MATE" in desktop) and "debian" not in codename:
+        if ("Gnome" in desktop or "MATE" in desktop):
             # Some GNOME editions (Cinnamon, MATE) can come without codecs
             import apt
             cache = apt.Cache()
@@ -128,9 +130,12 @@ class MintWelcome():
         self.last_selected_path = None
 
         if add_codecs:
+            if self.is_lmde:
+                actions.append(['new_features', _("New features"), _("See what is new in this release")])
             actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
             actions.append(['software', _("Apps"), _("Install additional software")])
-            actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
+            if not self.is_lmde:
+                actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
             actions.append(['codecs', _("Multimedia codecs"), _("Add all the missing multimedia codecs")])
             actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
             actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
@@ -138,9 +143,12 @@ class MintWelcome():
             actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
         else:
             actions.append(['new_features', _("New features"), _("See what is new in this release")])
+            if self.is_lmde:
+                actions.append(['release_notes', _("Release notes"), _("Read the release notes")])
             actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
             actions.append(['software', _("Apps"), _("Install additional software")])
-            actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
+            if not self.is_lmde:
+                actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
             actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
             actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
             actions.append(['get_involved', _("Getting involved"), _("Find out how to get involved in the Linux Mint project")])
@@ -230,7 +238,7 @@ class MintWelcome():
                 os.system("/usr/bin/mintbackup &")
         elif value == "new_features":
             os.system("xdg-open %s &" % self.new_features)
-        elif value == "known_problems":
+        elif value == "release_notes":
             os.system("xdg-open %s &" % self.release_notes)
         elif value == "user_guide":
             os.system("xdg-open %s &" % self.user_guide)
