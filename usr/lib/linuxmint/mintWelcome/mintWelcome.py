@@ -27,9 +27,8 @@ class MintWelcome():
         window.set_position(Gtk.WindowPosition.CENTER)
         window.connect("destroy", Gtk.main_quit)
 
-        sys.path.insert(1, '/usr/lib/linuxmint/common')
-        from configobj import ConfigObj
-        config = ConfigObj("/etc/linuxmint/info")
+        with open("/etc/linuxmint/info") as f:
+            config = dict([line.strip().split("=") for line in f])
         codename = config['CODENAME'].capitalize()
         edition = config['EDITION']
         release = config['RELEASE']
