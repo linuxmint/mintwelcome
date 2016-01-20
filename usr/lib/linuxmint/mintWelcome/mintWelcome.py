@@ -166,7 +166,6 @@ class MintWelcome():
         main_box.pack_end(hbox, False, False, 0)
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
-        checkbox.override_color(Gtk.StateType.NORMAL, fgcolor)
         if not os.path.exists(NORUN_FLAG):
             checkbox.set_active(True)
         checkbox.connect("toggled", self.on_button_toggled)
