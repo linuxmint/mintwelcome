@@ -10,7 +10,7 @@ import os
 import gettext
 import signal
 
-HOME = os.path.expanduser("~")
+NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintWelcome/norun.flag")
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
@@ -167,7 +167,7 @@ class MintWelcome():
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
         checkbox.override_color(Gtk.StateType.NORMAL, fgcolor)
-        if not os.path.exists(HOME + "/.linuxmint/mintWelcome/norun.flag"):
+        if not os.path.exists(NORUN_FLAG):
             checkbox.set_active(True)
         checkbox.connect("toggled", self.on_button_toggled)
         hbox.pack_end(checkbox, False, False, 2)
@@ -216,11 +216,11 @@ class MintWelcome():
 
     def on_button_toggled(self, button):
         if button.get_active():
-            if os.path.exists(HOME + "/.linuxmint/mintWelcome/norun.flag"):
-                os.system("rm -rf " + HOME + "/.linuxmint/mintWelcome/norun.flag")
+            if os.path.exists(NORUN_FLAG):
+                os.system("rm -rf %s" % NORUN_FLAG)
         else:
-            os.system("mkdir -p " + HOME + "/.linuxmint/mintWelcome")
-            os.system("touch " + HOME + "/.linuxmint/mintWelcome/norun.flag")
+            os.system("mkdir -p ~/.linuxmint/mintWelcome")
+            os.system("touch %s" % NORUN_FLAG)
 
     def on_mouse_click(self,widget, event):
         if event.type == Gdk.EventType.BUTTON_PRESS:
