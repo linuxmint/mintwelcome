@@ -2,17 +2,20 @@ Source: mintwelcome
 Section: admin
 Priority: optional
 Maintainer: Clement Lefebvre <root@linuxmint.com>
-Build-Depends: debhelper (>= 9), python
+Build-Depends: debhelper (>= 9),
+               dh-python
 Standards-Version: 3.9.5
 
 Package: mintwelcome
 Architecture: all
-Depends:
- ${python:Depends}, ${misc:Depends},
- python (>= 2.4), python (<< 3),
- python-gtk2, python-glade2,
- mint-info, mint-common, apturl | apturl-kde
+Depends: python3 (>= 3.3),
+         python3-gi,
+         mint-info,
+         mint-common,
+         apturl | apturl-kde,
+         ${misc:Depends},
+         ${python3:Depends},
 Conflicts: mintassistant, mintassistant-gnome, mintassistant-kde
 Replaces: mintassistant, mintassistant-gnome, mintassistant-kde
 Description: Welcome screen for Linux Mint
- Shows important information about the release/edition of Linux Mint. 
+ Shows important information about the release/edition of Linux Mint.

@@ -1,9 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-import os, commands
-from user import home
+import os
+import subprocess
 
-cmdline = commands.getoutput("cat /proc/cmdline")
+HOME = os.path.expanduser("~")
 
-if ((not os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag")) and (not "boot=casper" in cmdline) and (not "boot=live" in cmdline)):
-	os.system("mintwelcome")
+cmdline = subprocess.getoutput("cat /proc/cmdline")
+
+if ((not os.path.exists(HOME + "/.linuxmint/mintWelcome/norun.flag")) and ("boot=casper" not in cmdline) and ("boot=live" not in cmdline)):
+    os.system("mintwelcome")

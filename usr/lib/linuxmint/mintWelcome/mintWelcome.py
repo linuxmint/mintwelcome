@@ -1,23 +1,25 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 import gi
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 from gi.repository.GdkPixbuf import Pixbuf
 
 import sys
-import commands
 import os
 import gettext
-from user import home
-import string
+import signal
+
+HOME = os.path.expanduser("~")
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 
-import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
+
 class MintWelcome():
+
     def __init__(self):
         window = Gtk.Window()
         window.set_title(_("Welcome Screen"))
@@ -25,9 +27,8 @@ class MintWelcome():
         window.set_position(Gtk.WindowPosition.CENTER)
         window.connect("destroy", Gtk.main_quit)
 
-        sys.path.append('/usr/lib/linuxmint/common')
-        from configobj import ConfigObj
-        config = ConfigObj("/etc/linuxmint/info")
+        with open("/etc/linuxmint/info") as f:
+            config = dict([line.strip().split("=") for line in f])
         codename = config['CODENAME'].capitalize()
         edition = config['EDITION']
         release = config['RELEASE']
@@ -45,9 +46,9 @@ class MintWelcome():
             self.dist_name = "LMDE"
             self.codec_pkg_name = "mint-meta-debian-codecs"
 
-        bgcolor =  Gdk.RGBA()
+        bgcolor = Gdk.RGBA()
         bgcolor.parse("rgba(0,0,0,0)")
-        fgcolor =  Gdk.RGBA()
+        fgcolor = Gdk.RGBA()
         fgcolor.parse("#3e3e3e")
 
         main_box = Gtk.VBox()
@@ -166,7 +167,7 @@ class MintWelcome():
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
         checkbox.override_color(Gtk.StateType.NORMAL, fgcolor)
-        if not os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
+        if not os.path.exists(HOME + "/.linuxmint/mintWelcome/norun.flag"):
             checkbox.set_active(True)
         checkbox.connect("toggled", self.on_button_toggled)
         hbox.pack_end(checkbox, False, False, 2)
@@ -215,11 +216,11 @@ class MintWelcome():
 
     def on_button_toggled(self, button):
         if button.get_active():
-            if os.path.exists(home + "/.linuxmint/mintWelcome/norun.flag"):
-                os.system("rm -rf " + home + "/.linuxmint/mintWelcome/norun.flag")
+            if os.path.exists(HOME + "/.linuxmint/mintWelcome/norun.flag"):
+                os.system("rm -rf " + HOME + "/.linuxmint/mintWelcome/norun.flag")
         else:
-            os.system("mkdir -p " + home + "/.linuxmint/mintWelcome")
-            os.system("touch " + home + "/.linuxmint/mintWelcome/norun.flag")
+            os.system("mkdir -p " + HOME + "/.linuxmint/mintWelcome")
+            os.system("touch " + HOME + "/.linuxmint/mintWelcome/norun.flag")
 
     def on_mouse_click(self,widget, event):
         if event.type == Gdk.EventType.BUTTON_PRESS:

@@ -1,9 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 DOMAIN = "mintwelcome"
 PATH = "/usr/share/linuxmint/locale"
 
-import os, gettext, sys
+import os
+import gettext
+import sys
+
 sys.path.append('/usr/lib/linuxmint/common')
 import additionalfiles
 
@@ -47,4 +50,3 @@ StartupNotify=false
 """
 
 additionalfiles.generate(DOMAIN, PATH, "mint-meta-codecs.desktop", prefix, _("Install Multimedia Codecs"), _("Add all the missing multimedia codecs"), "")
-
