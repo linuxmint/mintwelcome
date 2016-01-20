@@ -1,3 +1,18 @@
+mintwelcome (2.1.7) sarah; urgency=medium
+
+  [ Daniel Alley ]
+  * complete conversion to Python 3
+  * updated debian/control file
+
+  [ Clement Lefebvre ]
+  * Don't use ConfigObj
+  * Clean up HOME and run_flag paths
+  * Moved icons to /usr/share
+  * Updated desktop files
+  * Don't override the color of the checkbutton in the statusbar
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 20 Jan 2016 15:04:39 +0000
+
 mintwelcome (2.1.6) rosa; urgency=medium
 
   * LMDE: Replace mintdrivers link with release notes
