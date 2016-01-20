@@ -67,9 +67,9 @@ class MintWelcome():
         headerbox = Gtk.VBox()
         logo = Gtk.Image()
         if "KDE" in desktop:
-            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header_kde.png")
+            logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header_kde.png")
         else:
-            logo.set_from_file("/usr/lib/linuxmint/mintWelcome/icons/logo_header.png")
+            logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header.png")
         headerbox.pack_start(logo, False, False, 0)
         label = Gtk.Label()
         if "KDE" in desktop:
@@ -89,7 +89,7 @@ class MintWelcome():
         vbox.pack_start(welcome_label, False, False, 10)
 
         separator = Gtk.Image()
-        separator.set_from_file('/usr/lib/linuxmint/mintWelcome/icons/separator.png')
+        separator.set_from_file('/usr/share/linuxmint/mintwelcome/icons/separator.png')
         vbox.pack_start(separator, False, False, 10)
 
         liststore = Gtk.ListStore(Pixbuf, str, str, str, Pixbuf, Pixbuf)
@@ -156,8 +156,8 @@ class MintWelcome():
             actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
 
         for action in actions:
-            desat_pixbuf = Pixbuf.new_from_file('/usr/lib/linuxmint/mintWelcome/icons/desat/%s.png' % action[0])
-            color_pixbuf = Pixbuf.new_from_file('/usr/lib/linuxmint/mintWelcome/icons/color/%s.png' % action[0])
+            desat_pixbuf = Pixbuf.new_from_file('/usr/share/linuxmint/mintwelcome/icons/desat/%s.png' % action[0])
+            color_pixbuf = Pixbuf.new_from_file('/usr/share/linuxmint/mintwelcome/icons/color/%s.png' % action[0])
             pixbuf = desat_pixbuf
             liststore.append([pixbuf, action[0], action[1], action[2], desat_pixbuf, color_pixbuf])
 
