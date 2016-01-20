@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=mintwelcome
-Icon=/usr/lib/linuxmint/mintWelcome/icons/logo.svg
+Icon=/usr/share/linuxmint/mintwelcome/icons/logo.svg
 Terminal=false
 Type=Application
 Encoding=UTF-8
@@ -47,6 +47,7 @@ Name[id]=Layar Selamat Datang
 Name[is]=Upphafsskjár
 Name[it]=Schermata di benvenuto
 Name[jv]=Tirai layar sugeng rawuh
+Name[ka]=მისალმების ეკრანი
 Name[ko]=환영합니다
 Name[ku]=Bixêrhatî dîmenderê
 Name[ky]=Учурашуу экраны
@@ -73,6 +74,7 @@ Name[pt_BR]=Tela de Boas Vindas
 Name[pt_PT]=Ecrã de boas vindas
 Name[ro]=Bun venit
 Name[ru]=Экран приветствия
+Name[shn]=ၽိဝ်ၼႃႈ ႁူမ်ၸုမ်းႁပ့်တွၼ်ႈ
 Name[si]=පිළිගැනීමේ තිරය
 Name[sk]=Uvítacia obrazovka
 Name[sl]=Pozdravni zaslon
