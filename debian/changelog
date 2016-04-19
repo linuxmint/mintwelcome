@@ -1,3 +1,10 @@
+mintwelcome (2.1.8) sarah; urgency=medium
+
+  [ Daniel Alley ]
+  * removed dh_python from build
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 19 Feb 2016 12:01:04 +0000
+
 mintwelcome (2.1.7) sarah; urgency=medium
 
   [ Daniel Alley ]
