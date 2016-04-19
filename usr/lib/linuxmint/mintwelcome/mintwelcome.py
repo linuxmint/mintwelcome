@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 
+import os
+import gettext
+import signal
+
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 from gi.repository.GdkPixbuf import Pixbuf
 
-import sys
-import os
-import gettext
-import signal
-
-NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintWelcome/norun.flag")
+NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
@@ -29,18 +28,20 @@ class MintWelcome():
 
         with open("/etc/linuxmint/info") as f:
             config = dict([line.strip().split("=") for line in f])
+
         codename = config['CODENAME'].capitalize()
         edition = config['EDITION']
         release = config['RELEASE']
         desktop = config['DESKTOP']
         self.release_notes = config['RELEASE_NOTES_URL']
-        self.user_guide = "http://www.linuxmint.com/documentation.php" # Switch to config['USER_GUIDE_URL'] when mintdoc is ready and localized
+        self.user_guide = "http://www.linuxmint.com/documentation.php"  # Switch to config['USER_GUIDE_URL'] when mintdoc is ready and localized
         self.new_features = config['NEW_FEATURES_URL']
 
         # distro-specific
         self.is_lmde = False
         self.dist_name = "Linux Mint"
         self.codec_pkg_name = "mint-meta-codecs"
+
         if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
             self.is_lmde = True
             self.dist_name = "LMDE"
@@ -66,16 +67,20 @@ class MintWelcome():
 
         headerbox = Gtk.VBox()
         logo = Gtk.Image()
+
         if "KDE" in desktop:
             logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header_kde.png")
         else:
             logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header.png")
+
         headerbox.pack_start(logo, False, False, 0)
         label = Gtk.Label()
+
         if "KDE" in desktop:
             label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (self.dist_name, release, codename))
         else:
             label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (self.dist_name, release, codename))
+
         headerbox.pack_start(label, False, False, 0)
         label = Gtk.Label()
         label.set_markup("<span font='8' fgcolor='#3e3e3e'><i>%s</i></span>" % edition)
@@ -115,10 +120,10 @@ class MintWelcome():
         hbox.pack_start(self.iconview, True, True, 30)
         vbox.pack_start(hbox, False, False, 10)
 
-
         actions = []
 
         add_codecs = False
+
         if ("Gnome" in desktop or "MATE" in desktop):
             # Some GNOME editions (Cinnamon, MATE) can come without codecs
             import apt
@@ -133,10 +138,13 @@ class MintWelcome():
         if add_codecs:
             if self.is_lmde:
                 actions.append(['new_features', _("New features"), _("See what is new in this release")])
+
             actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
             actions.append(['software', _("Apps"), _("Install additional software")])
+
             if not self.is_lmde:
                 actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
+
             actions.append(['codecs', _("Multimedia codecs"), _("Add all the missing multimedia codecs")])
             actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
             actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
@@ -144,12 +152,16 @@ class MintWelcome():
             actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
         else:
             actions.append(['new_features', _("New features"), _("See what is new in this release")])
+
             if self.is_lmde:
                 actions.append(['release_notes', _("Release notes"), _("Read the release notes")])
+
             actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
             actions.append(['software', _("Apps"), _("Install additional software")])
+
             if not self.is_lmde:
                 actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
+
             actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
             actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
             actions.append(['get_involved', _("Getting involved"), _("Find out how to get involved in the Linux Mint project")])
@@ -166,8 +178,10 @@ class MintWelcome():
         main_box.pack_end(hbox, False, False, 0)
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
+
         if not os.path.exists(NORUN_FLAG):
             checkbox.set_active(True)
+
         checkbox.connect("toggled", self.on_button_toggled)
         hbox.pack_end(checkbox, False, False, 2)
 
@@ -194,14 +208,14 @@ class MintWelcome():
         window.show_all()
 
     def on_pointer_motion(self, widget, event):
-        path= self.iconview.get_path_at_pos(event.x, event.y)
-        if path !=None:
-                if path == self.last_selected_path:
-                    return
-                self.unhighlight_icon(widget)
-                treeiter = widget.get_model().get_iter(path)
-                widget.get_model().set_value(treeiter, 0, widget.get_model().get_value(treeiter, 5))
-                self.last_selected_path = path
+        path = self.iconview.get_path_at_pos(event.x, event.y)
+        if path != None:
+            if path == self.last_selected_path:
+                return
+            self.unhighlight_icon(widget)
+            treeiter = widget.get_model().get_iter(path)
+            widget.get_model().set_value(treeiter, 0, widget.get_model().get_value(treeiter, 5))
+            self.last_selected_path = path
         #If we're outside of an item, deselect all items (turn off highlighting)
         if path == None:
             self.unhighlight_icon(widget)
@@ -209,21 +223,21 @@ class MintWelcome():
 
     def unhighlight_icon(self, widget):
         if self.last_selected_path != None:
-                treeiter = widget.get_model().get_iter(self.last_selected_path)
-                widget.get_model().set_value(treeiter, 0, widget.get_model().get_value(treeiter, 4))
-                self.last_selected_path = None
+            treeiter = widget.get_model().get_iter(self.last_selected_path)
+            widget.get_model().set_value(treeiter, 0, widget.get_model().get_value(treeiter, 4))
+            self.last_selected_path = None
 
     def on_button_toggled(self, button):
         if button.get_active():
             if os.path.exists(NORUN_FLAG):
                 os.system("rm -rf %s" % NORUN_FLAG)
         else:
-            os.system("mkdir -p ~/.linuxmint/mintWelcome")
+            os.system("mkdir -p ~/.linuxmint/mintwelcome")
             os.system("touch %s" % NORUN_FLAG)
 
-    def on_mouse_click(self,widget, event):
+    def on_mouse_click(self, widget, event):
         if event.type == Gdk.EventType.BUTTON_PRESS:
-            path= self.iconview.get_path_at_pos(event.x, event.y)
+            path = self.iconview.get_path_at_pos(event.x, event.y)
             #if left click, activate the item to execute
             if event.button == 1 and path != None:
                 self.item_activated(widget, path)
@@ -231,6 +245,7 @@ class MintWelcome():
     def item_activated(self, view, path):
         treeiter = view.get_model().get_iter(path)
         value = view.get_model().get_value(treeiter, 1)
+
         if value == "chatroom":
             os.system("xdg-open irc://irc.spotchat.org/linuxmint-help")
         elif value == "restore_data":

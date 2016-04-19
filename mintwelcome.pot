@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-11 11:56+0000\n"
+"POT-Creation-Date: 2016-04-19 17:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:23 generate_desktop_files:24
-#: generate_desktop_files:37
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:24 generate_desktop_files:27
+#: generate_desktop_files:40
 msgid "Welcome Screen"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:85
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:91
 msgid ""
 "Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it "
 "as much as we did designing it. The links below will help you get started "
@@ -30,110 +30,110 @@ msgid ""
 "us your feedback."
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:134
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:145
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:140
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:154
 msgid "New features"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:134
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:145
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:140
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:154
 msgid "See what is new in this release"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:135
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:148
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:142
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:159
 msgid "Documentation"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:135
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:148
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:142
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:159
 msgid "Learn all the basics to get started with Linux Mint"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:136
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:149
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:143
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:160
 msgid "Apps"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:136
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:149
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:143
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:160
 msgid "Install additional software"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:138
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:151
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:146
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:163
 msgid "Drivers"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:138
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:151
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:146
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:163
 msgid "Install hardware drivers"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:139
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:148
 msgid "Multimedia codecs"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:139 generate_desktop_files:49
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:148 generate_desktop_files:52
 msgid "Add all the missing multimedia codecs"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:140
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:152
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:149
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:165
 msgid "Forums"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:140
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:152
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:149
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:165
 msgid "Seek help from other users in the Linux Mint forums"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:141
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:153
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:150
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:166
 msgid "Chat room"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:141
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:153
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:150
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:166
 msgid "Chat live with other users in the chat room"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:142
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:154
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:151
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:167
 msgid "Getting involved"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:142
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:154
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:151
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:167
 msgid "Find out how to get involved in the Linux Mint project"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:143
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:155
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:152
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:168
 msgid "Donations"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:143
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:155
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:152
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:168
 msgid "Make a donation to the Linux Mint project"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:147
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:157
 msgid "Release notes"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:147
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:157
 msgid "Read the release notes"
 msgstr ""
 
-#: usr/lib/linuxmint/mintWelcome/mintWelcome.py:167
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:180
 msgid "Show this dialog at startup"
 msgstr ""
 
-#: generate_desktop_files:24 generate_desktop_files:37
+#: generate_desktop_files:27 generate_desktop_files:40
 msgid "Introduction to Linux Mint"
 msgstr ""
 
-#: generate_desktop_files:49
+#: generate_desktop_files:52
 msgid "Install Multimedia Codecs"
 msgstr ""

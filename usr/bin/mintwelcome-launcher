@@ -7,5 +7,5 @@ HOME = os.path.expanduser("~")
 
 cmdline = subprocess.getoutput("cat /proc/cmdline")
 
-if ((not os.path.exists(HOME + "/.linuxmint/mintWelcome/norun.flag")) and ("boot=casper" not in cmdline) and ("boot=live" not in cmdline)):
+if ((not os.path.exists(HOME + "/.linuxmint/mintwelcome/norun.flag")) and ("boot=casper" not in cmdline) and ("boot=live" not in cmdline)):
     os.system("mintwelcome")
