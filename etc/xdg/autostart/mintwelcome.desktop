@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=mintWelcome
+Name=mintwelcome
 Comment=Linux Mint Welcome Screen
 Icon=gnome-info
 Exec=mintwelcome-launcher

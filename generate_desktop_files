@@ -24,7 +24,7 @@ NotShowIn=KDE;
 StartupNotify=false
 """
 
-additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintWelcome.desktop", prefix, _("Welcome Screen"), _("Introduction to Linux Mint"), "")
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintwelcome.desktop", prefix, _("Welcome Screen"), _("Introduction to Linux Mint"), "")
 
 prefix = """[Desktop Entry]
 Exec=mintwelcome
@@ -37,7 +37,7 @@ Categories=System;
 StartupNotify=false
 """
 
-additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/mintWelcome.desktop", prefix, _("Welcome Screen"), _("Introduction to Linux Mint"), "", genericName=_("Welcome Screen"))
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/mintwelcome.desktop", prefix, _("Welcome Screen"), _("Introduction to Linux Mint"), "", genericName=_("Welcome Screen"))
 
 prefix = """[Desktop Entry]
 Exec=apturl apt://mint-meta-codecs?refresh=yes
