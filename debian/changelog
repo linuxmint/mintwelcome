@@ -1,3 +1,13 @@
+mintwelcome (2.1.9) sarah; urgency=medium
+
+  [ Daniel Alley ]
+  * Formatting + changed folder structure from camelCase to lowercase
+
+  [ Clement Lefebvre ]
+  * Made icon themeable and updated generated files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 22 Apr 2016 10:32:51 +0100
+
 mintwelcome (2.1.8) sarah; urgency=medium
 
   [ Daniel Alley ]
