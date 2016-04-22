@@ -15,7 +15,7 @@ gettext.install(DOMAIN, PATH)
 
 prefix = """[Desktop Entry]
 Exec=mintwelcome
-Icon=/usr/share/linuxmint/mintwelcome/icons/logo.svg
+Icon=mintwelcome
 Terminal=false
 Type=Application
 Encoding=UTF-8
@@ -28,7 +28,7 @@ additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintwelcome.deskt
 
 prefix = """[Desktop Entry]
 Exec=mintwelcome
-Icon=/usr/share/linuxmint/mintwelcome/icons/logo_kde.svg
+Icon=mintwelcome-kde
 Terminal=false
 Type=Application
 Encoding=UTF-8
