@@ -1,3 +1,9 @@
+mintwelcome (2.2.0) sarah; urgency=medium
+
+  * Adapt to new codecs packages and the fact that all editions now come without them
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 05 May 2016 11:31:06 +0100
+
 mintwelcome (2.1.9) sarah; urgency=medium
 
   [ Daniel Alley ]
