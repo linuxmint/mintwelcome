@@ -46,6 +46,9 @@ class MintWelcome():
             self.is_lmde = True
             self.dist_name = "LMDE"
             self.codec_pkg_name = "mint-meta-debian-codecs"
+        else:
+            if "KDE" in desktop:
+                self.codec_pkg_name = "mint-meta-codecs-kde"
 
         bgcolor = Gdk.RGBA()
         bgcolor.parse("rgba(0,0,0,0)")
@@ -124,14 +127,12 @@ class MintWelcome():
 
         add_codecs = False
 
-        if ("Gnome" in desktop or "MATE" in desktop):
-            # Some GNOME editions (Cinnamon, MATE) can come without codecs
-            import apt
-            cache = apt.Cache()
-            if self.codec_pkg_name in cache:
-                pkg = cache[self.codec_pkg_name]
-                if not pkg.is_installed:
-                    add_codecs = True
+        import apt
+        cache = apt.Cache()
+        if self.codec_pkg_name in cache:
+            pkg = cache[self.codec_pkg_name]
+            if not pkg.is_installed:
+                add_codecs = True
 
         self.last_selected_path = None
 
