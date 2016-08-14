@@ -1,3 +1,9 @@
+mintwelcome (2.2.2) sarah; urgency=medium
+
+  * KDE: Revert to green logo in menu
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 14 Aug 2016 12:32:16 +0200
+
 mintwelcome (2.2.1) sarah; urgency=medium
 
   * KDE: Revert to default logo
