@@ -1,3 +1,9 @@
+mintwelcome (2.2.1) sarah; urgency=medium
+
+  * KDE: Revert to default logo
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 14 Aug 2016 11:08:37 +0200
+
 mintwelcome (2.2.0) sarah; urgency=medium
 
   * Adapt to new codecs packages and the fact that all editions now come without them
