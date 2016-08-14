@@ -71,18 +71,12 @@ class MintWelcome():
         headerbox = Gtk.VBox()
         logo = Gtk.Image()
 
-        if "KDE" in desktop:
-            logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header_kde.png")
-        else:
-            logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header.png")
+        logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header.png")
 
         headerbox.pack_start(logo, False, False, 0)
         label = Gtk.Label()
 
-        if "KDE" in desktop:
-            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#3267b8'>%s</span>'</span>" % (self.dist_name, release, codename))
-        else:
-            label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (self.dist_name, release, codename))
+        label.set_markup("<span font='12.5' fgcolor='#3e3e3e'>%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (self.dist_name, release, codename))
 
         headerbox.pack_start(label, False, False, 0)
         label = Gtk.Label()
