@@ -28,7 +28,7 @@ additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintwelcome.deskt
 
 prefix = """[Desktop Entry]
 Exec=mintwelcome
-Icon=mintwelcome-kde
+Icon=mintwelcome
 Terminal=false
 Type=Application
 Encoding=UTF-8
