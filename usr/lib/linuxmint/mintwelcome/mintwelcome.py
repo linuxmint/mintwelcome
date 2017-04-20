@@ -50,8 +50,20 @@ class MintWelcome():
             if "KDE" in desktop:
                 self.codec_pkg_name = "mint-meta-codecs-kde"
 
+        current_theme = Gtk.Settings.get_default().get_property("gtk-theme-name")
+        
+        if(current_theme.startswith("Mint-X")):
+            mint_x_theme = True
+            mint_x_theme_html = " fgcolor='#3e3e3e'"
+        else:
+            mint_x_theme = False
+            mint_x_theme_html = ""
+
         bgcolor = Gdk.RGBA()
         bgcolor.parse("rgba(0,0,0,0)")
+
+        fgcolor = Gdk.RGBA()
+        fgcolor.parse("#3e3e3e")
 
         main_box = Gtk.VBox()
 
@@ -73,17 +85,17 @@ class MintWelcome():
         headerbox.pack_start(logo, False, False, 0)
         label = Gtk.Label()
 
-        label.set_markup("<span font='12.5'>%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (self.dist_name, release, codename))
+        label.set_markup("<span font='12.5'" + mint_x_theme_html + ">%s %s '<span fgcolor='#709937'>%s</span>'</span>" % (self.dist_name, release, codename))
 
         headerbox.pack_start(label, False, False, 0)
         label = Gtk.Label()
-        label.set_markup("<span font='8'><i>%s</i></span>" % edition)
+        label.set_markup("<span font='8'" + mint_x_theme_html + "><i>%s</i></span>" % edition)
         headerbox.pack_start(label, False, False, 2)
         vbox.pack_start(headerbox, False, False, 10)
 
         welcome_label = Gtk.Label()
         welcome_message = _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. The links below will help you get started with your new operating system. Have a great time and don't hesitate to send us your feedback.")
-        welcome_label.set_markup("<span font='9'>%s</span>" % welcome_message)
+        welcome_label.set_markup("<span font='9'" + mint_x_theme_html + ">%s</span>" % welcome_message)
         
         welcome_label.set_line_wrap(True)
         vbox.pack_start(welcome_label, False, False, 10)
@@ -109,6 +121,8 @@ class MintWelcome():
         self.iconview.set_row_spacing(20)
         self.iconview.set_column_spacing(20)
         self.iconview.override_background_color(Gtk.StateType.NORMAL, bgcolor)
+        if(mint_x_theme):
+            self.iconview.override_color(Gtk.StateType.NORMAL, fgcolor)
         #self.iconview.connect("selection-changed", self.item_activated)
         hbox = Gtk.HBox()
         hbox.pack_start(self.iconview, True, True, 30)
@@ -181,11 +195,22 @@ class MintWelcome():
         window.set_default_size(540, 420)
 
         css_provider = Gtk.CssProvider()
-        css = """
-		#event_box {
-			background-color: @bg_color;
-		}
-		"""
+        
+        if(mint_x_theme):
+            css = """
+            #event_box {
+                background-image: -gtk-gradient (linear, left top, left bottom,
+                from (#d6d6d6),
+                color-stop (0.5, #efefef),
+                to (#d6d6d6));
+            }
+            """
+        else:
+            css = """
+            #event_box {
+                background-color: @bg_color;
+            }
+            """
 
         css_provider.load_from_data(css.encode('UTF-8'))
         screen = Gdk.Screen.get_default()
