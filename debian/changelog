@@ -1,3 +1,18 @@
+mintwelcome (2.2.3) sonya; urgency=medium
+
+  [ Dan Dascalescu ]
+  * Create README.md
+
+  [ theel0ja ]
+  * Use GTK themes instead of hardcoded
+  * Themes starting Mint-X are using old theme
+  * Fix chmod
+
+  [ Clement Lefebvre ]
+  * Provide a hicolor icon
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 01 May 2017 19:33:39 +0100
+
 mintwelcome (2.2.2) sarah; urgency=medium
 
   * KDE: Revert to green logo in menu
