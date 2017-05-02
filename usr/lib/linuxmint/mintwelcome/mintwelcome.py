@@ -3,6 +3,7 @@
 import os
 import gettext
 import signal
+import subprocess
 
 import gi
 gi.require_version("Gtk", "3.0")
@@ -182,6 +183,11 @@ class MintWelcome():
         hbox = Gtk.HBox()
         hbox.set_border_width(6)
         main_box.pack_end(hbox, False, False, 0)
+
+        linkbutton = Gtk.LinkButton("http://www.termbin.com", "Push system information to web for sharing")
+        linkbutton.connect("activate-link", self.on_activate_link)
+        hbox.pack_start(linkbutton, False, False, 2)
+
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
 
@@ -246,6 +252,34 @@ class MintWelcome():
         else:
             os.system("mkdir -p ~/.linuxmint/mintwelcome")
             os.system("touch %s" % NORUN_FLAG)
+
+    def on_activate_link(self, button):
+        dlg = Gtk.MessageDialog(button.get_toplevel(), 0, Gtk.MessageType.QUESTION, Gtk.ButtonsType.YES_NO, "Push system information to web for sharing")
+        dlg.format_secondary_markup("This will run the command <b>inxi -Fc0 | nc termbin.com 9999</b> to push your system information to termbin.com. You can then "
+                                    "share the provided link with others.")
+        dlg.set_modal(True)
+        response = dlg.run()
+        dlg.destroy()
+
+        if response == Gtk.ResponseType.YES:            
+            p1 = subprocess.Popen(["inxi", "-Fc0"], stdout=subprocess.PIPE)
+            p2 = subprocess.Popen(["nc", "termbin.com", "9999"], stdin=p1.stdout, stdout=subprocess.PIPE)
+            p1.stdout.close()
+            output = p2.communicate()
+
+            if output[0].startswith(b"http://"):
+                dlg2 = Gtk.MessageDialog(button.get_toplevel(), 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Push system information to web for sharing")
+                dlg2.format_secondary_markup("The URL is <b>" + output[0].decode("utf-8").strip() + "</b>\n"
+                                             "You can share this URL to show others your system specifications.")
+                dlg2.run()
+                dlg2.destroy()
+            else:
+                dlg2 = Gtk.MessageDialog(button.get_toplevel(), 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE, "Push system information to web for sharing")
+                dlg2.format_secondary_markup("Unfortunately, the command did not work. Please run the command manually in a terminal.")
+                dlg2.run()
+                dlg2.destroy()
+        
+        return True
 
     def on_mouse_click(self, widget, event):
         if event.type == Gdk.EventType.BUTTON_PRESS:
