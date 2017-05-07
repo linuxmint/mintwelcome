@@ -1,3 +1,9 @@
+mintwelcome (2.2.4) sonya; urgency=medium
+
+  * l10n: Generate desktop files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 07 May 2017 12:18:31 +0100
+
 mintwelcome (2.2.3) sonya; urgency=medium
 
   [ Dan Dascalescu ]
