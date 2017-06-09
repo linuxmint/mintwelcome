@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 
 import os
-import subprocess
+import xapp.os
 
-HOME = os.path.expanduser("~")
+flag_path = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
-cmdline = subprocess.getoutput("cat /proc/cmdline")
-
-if ((not os.path.exists(HOME + "/.linuxmint/mintwelcome/norun.flag")) and ("boot=casper" not in cmdline) and ("boot=live" not in cmdline)):
+if (not os.path.exists(flag_path)) and (not xapp.os.is_live_session()) and (not xapp.os.is_guest_session()):
     os.system("mintwelcome")
