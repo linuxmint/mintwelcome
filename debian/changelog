@@ -1,3 +1,9 @@
+mintwelcome (2.2.5) sonya; urgency=medium
+
+  * Don't launch mintwelcome in guest sessions
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 09 Jun 2017 15:59:57 +0100
+
 mintwelcome (2.2.4) sonya; urgency=medium
 
   * l10n: Generate desktop files
