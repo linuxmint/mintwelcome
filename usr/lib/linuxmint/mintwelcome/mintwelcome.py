@@ -10,6 +10,7 @@ from gi.repository import Gtk, Gdk
 from gi.repository.GdkPixbuf import Pixbuf
 
 NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
+ICON_SIZE = 32
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
@@ -51,7 +52,7 @@ class MintWelcome():
                 self.codec_pkg_name = "mint-meta-codecs-kde"
 
         current_theme = Gtk.Settings.get_default().get_property("gtk-theme-name")
-        
+
         if(current_theme.startswith("Mint-X")):
             mint_x_theme = True
             mint_x_theme_html = " fgcolor='#3e3e3e'"
@@ -96,7 +97,7 @@ class MintWelcome():
         welcome_label = Gtk.Label()
         welcome_message = _("Welcome and thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. The links below will help you get started with your new operating system. Have a great time and don't hesitate to send us your feedback.")
         welcome_label.set_markup("<span font='9'" + mint_x_theme_html + ">%s</span>" % welcome_message)
-        
+
         welcome_label.set_line_wrap(True)
         vbox.pack_start(welcome_label, False, False, 10)
 
@@ -174,8 +175,8 @@ class MintWelcome():
             actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
 
         for action in actions:
-            desat_pixbuf = Pixbuf.new_from_file('/usr/share/linuxmint/mintwelcome/icons/desat/%s.png' % action[0])
-            color_pixbuf = Pixbuf.new_from_file('/usr/share/linuxmint/mintwelcome/icons/color/%s.png' % action[0])
+            desat_pixbuf = Pixbuf.new_from_file_at_size('/usr/share/linuxmint/mintwelcome/icons/desat/%s.svg' % action[0], ICON_SIZE, ICON_SIZE)
+            color_pixbuf = Pixbuf.new_from_file_at_size('/usr/share/linuxmint/mintwelcome/icons/color/%s.svg' % action[0], ICON_SIZE, ICON_SIZE)
             pixbuf = desat_pixbuf
             liststore.append([pixbuf, action[0], action[1], action[2], desat_pixbuf, color_pixbuf])
 
@@ -195,7 +196,7 @@ class MintWelcome():
         window.set_default_size(540, 420)
 
         css_provider = Gtk.CssProvider()
-        
+
         if(mint_x_theme):
             css = """
             #event_box {
