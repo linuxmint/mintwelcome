@@ -80,8 +80,7 @@ class MintWelcome():
 
         headerbox = Gtk.VBox()
         logo = Gtk.Image()
-
-        logo.set_from_file("/usr/share/linuxmint/mintwelcome/icons/logo_header.png")
+        logo.set_from_icon_name("mintwelcome", Gtk.IconSize.DIALOG)
 
         headerbox.pack_start(logo, False, False, 0)
         label = Gtk.Label()
