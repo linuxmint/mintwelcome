@@ -1,3 +1,12 @@
+mintwelcome (2.2.6) sylvia; urgency=medium
+
+  * Fix app icon aspect ratio
+  * HiDPI: Switch to SVG icons
+  * HiDPI: Fix main logo being blurry
+  * l10n: Generate desktop files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 04 Nov 2017 11:34:14 +0000
+
 mintwelcome (2.2.5) sonya; urgency=medium
 
   * Don't launch mintwelcome in guest sessions
