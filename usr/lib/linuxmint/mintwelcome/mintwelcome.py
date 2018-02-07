@@ -46,10 +46,6 @@ class MintWelcome():
         if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
             self.is_lmde = True
             self.dist_name = "LMDE"
-            self.codec_pkg_name = "mint-meta-debian-codecs"
-        else:
-            if "KDE" in desktop:
-                self.codec_pkg_name = "mint-meta-codecs-kde"
 
         current_theme = Gtk.Settings.get_default().get_property("gtk-theme-name")
 
