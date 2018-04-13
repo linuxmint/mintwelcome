@@ -1,97 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface>
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkWindow" id="main_window">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Welcome</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child type="center">
-              <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_bottom">6</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkLabel" id="label_dist">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Linux Mint 18.3</property>
-                        <attributes>
-                          <attribute name="scale" value="2"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label_codename">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Sonya</property>
-                        <attributes>
-                          <attribute name="scale" value="2"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label_edition">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">label</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <style>
-              <class name="primary-toolbar"/>
-            </style>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
+          <placeholder/>
         </child>
         <child>
           <object class="GtkBox" id="center_box">
@@ -145,6 +64,19 @@
         </child>
       </object>
     </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="title">Welcome</property>
+        <property name="has_subtitle">False</property>
+        <property name="show_close_button">True</property>
+        <property name="decoration_layout">:close</property>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
   </object>
   <object class="GtkBox" id="page_contribute">
     <property name="visible">True</property>
@@ -192,7 +124,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="pixbuf">/usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
+                            <property name="pixbuf">usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -302,7 +234,7 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="pixbuf">/usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
+                            <property name="pixbuf">usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -412,7 +344,7 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="pixbuf">/usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
+                            <property name="pixbuf">usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -553,7 +485,7 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="pixbuf">/usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
+                            <property name="pixbuf">usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -657,7 +589,7 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="pixbuf">/usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
+                            <property name="pixbuf">usr/share/linuxmint/mintwelcome/screenshots/user_guide.png</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -772,24 +704,67 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkBox" id="box">
+              <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="border_width">24</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">18</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="box">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="spacing">24</property>
+                    <property name="border_width">24</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">18</property>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixel_size">64</property>
-                        <property name="icon_name">mintwelcome</property>
-                        <property name="icon_size">0</property>
+                        <property name="spacing">24</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">3</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Welcome to Linux Mint</property>
+                                <property name="xalign">0</property>
+                                <attributes>
+                                  <attribute name="weight" value="bold"/>
+                                  <attribute name="scale" value="1.6000000000000001"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. Mint Weclome will help guide through getting starting. Choose from the links at the side to learn more.Have a great time and don't hesitate to send us your feedback.</property>
+                                <property name="wrap">True</property>
+                                <property name="width_chars">60</property>
+                                <property name="xalign">0</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -807,11 +782,11 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Welcome to Linux Mint</property>
+                            <property name="label" translatable="yes">Documentation</property>
                             <property name="xalign">0</property>
                             <attributes>
                               <attribute name="weight" value="bold"/>
-                              <attribute name="scale" value="1.6000000000000001"/>
+                              <attribute name="scale" value="1.2"/>
                             </attributes>
                           </object>
                           <packing>
@@ -824,9 +799,8 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we did designing it. Mint Weclome will help guide through getting starting. Choose from the links at the side to learn more.Have a great time and don't hesitate to send us your feedback.</property>
+                            <property name="label" translatable="yes">Here you can find valuable information about getting started, user guides, and  release notes. </property>
                             <property name="wrap">True</property>
-                            <property name="width_chars">60</property>
                             <property name="xalign">0</property>
                           </object>
                           <packing>
@@ -842,9 +816,103 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                         <property name="position">1</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">3</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Get help</property>
+                            <property name="xalign">0</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                              <attribute name="scale" value="1.2"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Here you can find valuable information about getting started, user guides, and  release notes. </property>
+                            <property name="wrap">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">3</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Contribute</property>
+                            <property name="xalign">0</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                              <attribute name="scale" value="1.2"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Here you can find valuable information about getting started, user guides, and  release notes. </property>
+                            <property name="wrap">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">0</property>
                   </packing>
@@ -853,18 +921,16 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="border_width">20</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">3</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Documentation</property>
-                        <property name="xalign">0</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="1.2"/>
-                        </attributes>
+                        <property name="pixel_size">32</property>
+                        <property name="icon_name">linuxmint-logo-5</property>
+                        <property name="icon_size">0</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -873,17 +939,30 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="label_version">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Here you can find valuable information about getting started, user guides, and  release notes. </property>
-                        <property name="wrap">True</property>
-                        <property name="xalign">0</property>
+                        <property name="justify">center</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
                       </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label_edition">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="justify">center</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
@@ -892,100 +971,6 @@ Duis elementum, tellus sed tristique semper, metus metus accumsan augue, et port
                     <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">3</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Get help</property>
-                        <property name="xalign">0</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="1.2"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Here you can find valuable information about getting started, user guides, and  release notes. </property>
-                        <property name="wrap">True</property>
-                        <property name="xalign">0</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">3</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Contribute</property>
-                        <property name="xalign">0</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="1.2"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Here you can find valuable information about getting started, user guides, and  release notes. </property>
-                        <property name="wrap">True</property>
-                        <property name="xalign">0</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
             </child>
