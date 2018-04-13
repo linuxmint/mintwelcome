@@ -2,6 +2,7 @@
 
 import os
 import gettext
+import platform
 import signal
 
 import gi
@@ -51,12 +52,15 @@ class MintWelcome():
             config = dict([line.strip().split("=") for line in f])
 
         codename = config['CODENAME'].capitalize()
-        edition = config['EDITION']
+        edition = config['EDITION'].replace('"', '')
         release = config['RELEASE']
         desktop = config['DESKTOP']
         self.release_notes = config['RELEASE_NOTES_URL']
         self.user_guide = "http://www.linuxmint.com/documentation.php"  # Switch to config['USER_GUIDE_URL'] when mintdoc is ready and localized
         self.new_features = config['NEW_FEATURES_URL']
+        architecture = "64-bit"
+        if platform.machine() != "x86_64":
+            architecture = "32-bit"
 
         # distro-specific
         self.is_lmde = False
@@ -72,14 +76,8 @@ class MintWelcome():
                 self.codec_pkg_name = "mint-meta-codecs-kde"
 
         # Setup the labels in the header
-        label = self.builder.get_object("label_dist")
-        label.set_markup("%s %s " % (self.dist_name, release))
-
-        label = self.builder.get_object("label_codename")
-        label.set_markup("'%s'" % codename)
-
-        label = self.builder.get_object("label_edition")
-        label.set_markup("%s" % edition)
+        self.builder.get_object("label_version").set_text("%s %s" % (self.dist_name, release))
+        self.builder.get_object("label_edition").set_text("%s %s" % (edition, architecture))
 
         # Setup the main stack
         self.stack = Gtk.Stack()
