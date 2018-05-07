@@ -1,3 +1,17 @@
+mintwelcome (2.2.7) tara; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Simplify the codecs installation
+
+  [ JosephMcc ]
+  * Start of very rough UI restyling
+  * Forgot to git add some new files
+
+  [ Clement Lefebvre ]
+  * Fine-tuned the layout
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 07 May 2018 13:20:04 +0100
+
 mintwelcome (2.2.6) sylvia; urgency=medium
 
   * Fix app icon aspect ratio
