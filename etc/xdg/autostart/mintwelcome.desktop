@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=mintwelcome
 Comment=Linux Mint Welcome Screen
-Icon=gnome-info
+Icon=mintwelcome
 Exec=mintwelcome-launcher
 Terminal=false
 Type=Application
