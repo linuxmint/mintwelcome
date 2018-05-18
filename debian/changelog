@@ -1,3 +1,10 @@
+mintwelcome (2.2.8) tara; urgency=medium
+
+  * Fix icon in autostart file
+  * Finish implementation of the UI revamp
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 18 May 2018 16:12:05 +0100
+
 mintwelcome (2.2.7) tara; urgency=medium
 
   [ Clement Lefebvre ]
