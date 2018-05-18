@@ -1,32 +1,23 @@
 #!/usr/bin/python3
-
-import os
+import apt
 import gettext
-import platform
-import signal
-
 import gi
+import os
+import platform
+import subprocess
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk
-from gi.repository.GdkPixbuf import Pixbuf
+from gi.repository import Gtk
 
 NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
-ICON_SIZE = 48
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
-
-UI_FILE = '/usr/share/linuxmint/mintwelcome/mintwelcome.ui'
-
-signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 class SidebarRow(Gtk.ListBoxRow):
 
     def __init__(self, page_widget, page_name, icon_name):
         Gtk.ListBoxRow.__init__(self)
-
         self.page_widget = page_widget
-
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         box.set_border_width(6)
         image = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
@@ -39,167 +30,112 @@ class SidebarRow(Gtk.ListBoxRow):
 class MintWelcome():
 
     def __init__(self):
-        self.builder = Gtk.Builder()
-        self.builder.add_from_file(UI_FILE)
+        builder = Gtk.Builder()
+        builder.set_translation_domain("mintupdate")
+        builder.add_from_file('/usr/share/linuxmint/mintwelcome/mintwelcome.ui')
 
-        window = self.builder.get_object("main_window")
-        # window.set_title(_("Welcome Screen"))
-        window.set_icon_from_file("/usr/share/linuxmint/logo.png")
-        # window.set_position(Gtk.WindowPosition.CENTER)
+        window = builder.get_object("main_window")
+        window.set_icon_name("mintwelcome")
+        window.set_position(Gtk.WindowPosition.CENTER)
         window.connect("destroy", Gtk.main_quit)
 
         with open("/etc/linuxmint/info") as f:
             config = dict([line.strip().split("=") for line in f])
-
         codename = config['CODENAME'].capitalize()
         edition = config['EDITION'].replace('"', '')
         release = config['RELEASE']
         desktop = config['DESKTOP']
-        self.release_notes = config['RELEASE_NOTES_URL']
-        self.user_guide = "http://www.linuxmint.com/documentation.php"  # Switch to config['USER_GUIDE_URL'] when mintdoc is ready and localized
-        self.new_features = config['NEW_FEATURES_URL']
+        release_notes = config['RELEASE_NOTES_URL']
+        new_features = config['NEW_FEATURES_URL']
         architecture = "64-bit"
         if platform.machine() != "x86_64":
             architecture = "32-bit"
 
         # distro-specific
-        self.is_lmde = False
-        self.dist_name = "Linux Mint"
-        self.codec_pkg_name = "mint-meta-codecs"
-
+        dist_name = "Linux Mint"
         if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
-            self.is_lmde = True
-            self.dist_name = "LMDE"
+            dist_name = "LMDE"
 
-        # Setup the labels in the header
-        self.builder.get_object("label_version").set_text("%s %s" % (self.dist_name, release))
-        self.builder.get_object("label_edition").set_text("%s %s" % (edition, architecture))
+        # Setup the labels in the Mint badge
+        builder.get_object("label_version").set_text("%s %s" % (dist_name, release))
+        builder.get_object("label_edition").set_text("%s %s" % (edition, architecture))
 
         # Setup the main stack
         self.stack = Gtk.Stack()
-        self.builder.get_object("center_box").pack_start(self.stack, True, True, 0)
+        builder.get_object("center_box").pack_start(self.stack, True, True, 0)
         self.stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
         self.stack.set_transition_duration(150)
 
-        # Create the side navigation bar
-        list_box = self.builder.get_object("list_navigation")
+        # Action buttons
+        builder.get_object("button_forums").connect("clicked", self.visit, "https://forums.linuxmint.com")
+        builder.get_object("button_documentation").connect("clicked", self.visit, "https://linuxmint.com/documentation.php")
+        builder.get_object("button_contribute").connect("clicked", self.visit, "https://linuxmint.com/getinvolved.php")
+        builder.get_object("button_irc").connect("clicked", self.visit, "irc://irc.spotchat.org/linuxmint-help")
+        builder.get_object("button_codecs").connect("clicked", self.visit, "apt://mint-meta-codecs?refresh=yes")
+        builder.get_object("button_new_features").connect("clicked", self.visit, new_features)
+        builder.get_object("button_release_notes").connect("clicked", self.visit, release_notes)
+        builder.get_object("button_mintupdate").connect("clicked", self.launch, "mintupdate")
+        builder.get_object("button_mintinstall").connect("clicked", self.launch, "mintinstall")
+        builder.get_object("button_timeshift").connect("clicked", self.pkexec, "timeshift-gtk")
+        builder.get_object("button_mintdrivers").connect("clicked", self.pkexec, "driver-manager")
 
-        # Check to see if we need to show codecs
+        # Settings button depends on DE
+        if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
+            builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
+        elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
+            builder.get_object("button_settings").connect("clicked", self.launch, "mate-control-center")
+        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+            builder.get_object("button_settings").connect("clicked", self.launch, "xfce4-settings-manager")
+        else:
+            # Hide settings
+            builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
+
+        # Hide codecs box if they're already installed
         add_codecs = False
-
-        import apt
         cache = apt.Cache()
-        if self.codec_pkg_name in cache:
-            pkg = cache[self.codec_pkg_name]
+        if "mint-meta-codecs" in cache:
+            pkg = cache["mint-meta-codecs"]
             if not pkg.is_installed:
                 add_codecs = True
+        if not add_codecs:
+            builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
 
-        # Construct the home page
-        page_home = self.builder.get_object("page_home")
-        self.stack.add_named(page_home, "page_home")
-        row_home = SidebarRow(page_home, _("Home"), "go-home-symbolic")
-        list_box.add(row_home)
+        # Construct the stack switcher
+        list_box = builder.get_object("list_navigation")
 
-        # Construct the documentation page
-        page_documentation = self.builder.get_object("page_documentation")
-        self.stack.add_named(page_documentation, "page_documentation")
-        row_documentation = SidebarRow(page_documentation, _("Documentation"), "accessories-text-editor-symbolic")
-        list_box.add(row_documentation)
+        page = builder.get_object("page_home")
+        self.stack.add_named(page, "page_home")
+        list_box.add(SidebarRow(page, _("Welcome"), "go-home-symbolic"))
+        self.stack.set_visible_child(page)
 
-        pixbuf = Pixbuf.new_from_file_at_size("/usr/share/linuxmint/mintwelcome/screenshots/user_guide.png", 96, -1)
-        self.builder.get_object("image_user_guide").set_from_pixbuf(pixbuf)
-        self.builder.get_object("button_user_guide").connect("clicked", self.user_guide_cb)
+        page = builder.get_object("page_first_steps")
+        self.stack.add_named(page, "page_first_steps")
+        list_box.add(SidebarRow(page, _("First Steps"), "dialog-information-symbolic"))
 
-        pixbuf = Pixbuf.new_from_file_at_size("/usr/share/linuxmint/mintwelcome/screenshots/release_notes.png", 96, -1)
-        self.builder.get_object("image_release_notes").set_from_pixbuf(pixbuf)
-        self.builder.get_object("button_release_notes").connect("clicked", self.release_notes_cb)
+        page = builder.get_object("page_documentation")
+        self.stack.add_named(page, "page_documentation")
+        list_box.add(SidebarRow(page, _("Documentation"), "accessories-dictionary-symbolic"))
 
-        pixbuf = Pixbuf.new_from_file_at_size("/usr/share/linuxmint/mintwelcome/screenshots/new_features.png", 96, -1)
-        self.builder.get_object("image_new_features").set_from_pixbuf(pixbuf)
-        self.builder.get_object("button_new_features").connect("clicked", self.new_features_cb)
+        page = builder.get_object("page_help")
+        self.stack.add_named(page, "page_help")
+        list_box.add(SidebarRow(page, _("Help"), "help-browser-symbolic"))
 
-        # Construct the help page
-        page_help = self.builder.get_object("page_help")
-        self.stack.add_named(page_help, "page_help")
-        row_help = SidebarRow(page_help, _("Get Help"), "help-faq-symbolic")
-        list_box.add(row_help)
-
-        pixbuf = Pixbuf.new_from_file_at_size("/usr/share/linuxmint/mintwelcome/screenshots/forums.png", 96, -1)
-        self.builder.get_object("image_forums").set_from_pixbuf(pixbuf)
-        self.builder.get_object("button_forums").connect("clicked", self.forums_cb)
-
-        pixbuf = Pixbuf.new_from_file_at_size("/usr/share/linuxmint/mintwelcome/screenshots/chat.png", 96, -1)
-        self.builder.get_object("image_chat").set_from_pixbuf(pixbuf)
-        self.builder.get_object("button_chat").connect("clicked", self.chat_cb)
-
-        # Construct the contribute page
-        page_contribute = self.builder.get_object("page_contribute")
-        self.stack.add_named(page_contribute, "page_contribute")
-        row_contribute = SidebarRow(page_contribute, _("Contribute"), "system-users-symbolic")
-        list_box.add(row_contribute)
+        page = builder.get_object("page_contribute")
+        self.stack.add_named(page, "page_contribute")
+        list_box.add(SidebarRow(page, _("Contribute"), "starred-symbolic"))
 
         list_box.connect("row-activated", self.sidebar_row_selected_cb)
 
-        self.stack.set_visible_child(page_home)
-
-        actions = []
-
-        add_codecs = False
-
-        # import apt
-        # cache = apt.Cache()
-        # if self.codec_pkg_name in cache:
-        #     pkg = cache[self.codec_pkg_name]
-        #     if not pkg.is_installed:
-        #         add_codecs = True
-
-        self.last_selected_path = None
-
-        if add_codecs:
-            if self.is_lmde:
-                actions.append(['new_features', _("New features"), _("See what is new in this release")])
-
-            actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
-            actions.append(['software', _("Apps"), _("Install additional software")])
-
-            if not self.is_lmde:
-                actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
-
-            actions.append(['codecs', _("Multimedia codecs"), _("Add all the missing multimedia codecs")])
-            actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
-            actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
-            actions.append(['get_involved', _("Getting involved"), _("Find out how to get involved in the Linux Mint project")])
-            actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
-        else:
-            actions.append(['new_features', _("New features"), _("See what is new in this release")])
-
-            if self.is_lmde:
-                actions.append(['release_notes', _("Release notes"), _("Read the release notes")])
-
-            actions.append(['user_guide', _("Documentation"), _("Learn all the basics to get started with Linux Mint")])
-            actions.append(['software', _("Apps"), _("Install additional software")])
-
-            if not self.is_lmde:
-                actions.append(['driver', _("Drivers"), _("Install hardware drivers")])
-
-            actions.append(['forums', _("Forums"), _("Seek help from other users in the Linux Mint forums")])
-            actions.append(['chatroom', _("Chat room"), _("Chat live with other users in the chat room")])
-            actions.append(['get_involved', _("Getting involved"), _("Find out how to get involved in the Linux Mint project")])
-            actions.append(['donors', _("Donations"), _("Make a donation to the Linux Mint project")])
-
         # Construct the bottom toolbar
-        box = self.builder.get_object("toolbar_bottom")
+        box = builder.get_object("toolbar_bottom")
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
-
         if not os.path.exists(NORUN_FLAG):
             checkbox.set_active(True)
-
         checkbox.connect("toggled", self.on_button_toggled)
         box.pack_end(checkbox)
 
         window.set_default_size(800, 500)
-
         window.show_all()
 
     def sidebar_row_selected_cb(self, list_box, row):
@@ -213,58 +149,14 @@ class MintWelcome():
             os.system("mkdir -p ~/.linuxmint/mintwelcome")
             os.system("touch %s" % NORUN_FLAG)
 
-    def item_activated(self, view, path):
-        treeiter = view.get_model().get_iter(path)
-        value = view.get_model().get_value(treeiter, 1)
+    def visit(self, button, url):
+        subprocess.Popen(["xdg-open", url])
 
-        if value == "chatroom":
-            os.system("xdg-open irc://irc.spotchat.org/linuxmint-help")
-        elif value == "restore_data":
-            if os.path.exists("/usr/bin/mintbackup"):
-                os.system("/usr/bin/mintbackup &")
-        elif value == "new_features":
-            os.system("xdg-open %s &" % self.new_features)
-        elif value == "release_notes":
-            os.system("xdg-open %s &" % self.release_notes)
-        elif value == "user_guide":
-            os.system("xdg-open %s &" % self.user_guide)
-        elif value == "forums":
-            os.system("xdg-open http://forums.linuxmint.com &")
-        elif value == "tutorials":
-            os.system("xdg-open http://community.linuxmint.com/tutorial &")
-        elif value == "ideas":
-            os.system("xdg-open http://community.linuxmint.com/idea &")
-        elif value == "software":
-            os.system("mintinstall &")
-        elif value == "driver":
-            os.system("mintdrivers &")
-        elif value == "hardware":
-            os.system("xdg-open http://community.linuxmint.com/hardware &")
-        elif value == "get_involved":
-            os.system("xdg-open http://www.linuxmint.com/getinvolved.php &")
-        elif value == "sponsors":
-            os.system("xdg-open http://www.linuxmint.com/sponsors.php &")
-        elif value == "donors":
-            os.system("xdg-open http://www.linuxmint.com/donors.php &")
-        elif value == "codecs":
-            os.system("xdg-open apt://%s?refresh=yes &" % self.codec_pkg_name)
+    def launch(self, button, command):
+        subprocess.Popen([command])
 
-    # Documentation callbacks
-    def user_guide_cb(self, button):
-        os.system("xdg-open %s &" % self.user_guide)
-
-    def release_notes_cb(self, button):
-        os.system("xdg-open %s &" % self.release_notes)
-
-    def new_features_cb(self, button):
-        os.system("xdg-open %s &" % self.new_features)
-
-    # Help callbacks
-    def forums_cb(self, button):
-        os.system("xdg-open http://forums.linuxmint.com &")
-
-    def chat_cb(self, button):
-        os.system("xdg-open irc://irc.spotchat.org/linuxmint-help")
+    def pkexec(self, button, command):
+        subprocess.Popen(["pkexec", command])
 
 if __name__ == "__main__":
     MintWelcome()
