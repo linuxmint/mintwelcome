@@ -1,3 +1,13 @@
+mintwelcome (2.2.9) tara; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Generate files and remove obsolete files
+
+  [ Butterfly ]
+  * Fix getting translations (#32)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 21 May 2018 12:46:05 +0100
+
 mintwelcome (2.2.8) tara; urgency=medium
 
   * Fix icon in autostart file
