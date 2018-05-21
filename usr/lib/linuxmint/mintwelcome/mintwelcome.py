@@ -31,7 +31,7 @@ class MintWelcome():
 
     def __init__(self):
         builder = Gtk.Builder()
-        builder.set_translation_domain("mintupdate")
+        builder.set_translation_domain("mintwelcome")
         builder.add_from_file('/usr/share/linuxmint/mintwelcome/mintwelcome.ui')
 
         window = builder.get_object("main_window")
