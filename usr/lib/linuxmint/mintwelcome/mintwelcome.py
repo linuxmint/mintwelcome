@@ -5,6 +5,7 @@ import gi
 import os
 import platform
 import subprocess
+import locale
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
@@ -12,6 +13,9 @@ NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
+from locale import gettext as _
+locale.bindtextdomain("mintwelcome", "/usr/share/linuxmint/locale")
+locale.textdomain("mintwelcome")
 
 class SidebarRow(Gtk.ListBoxRow):
 
