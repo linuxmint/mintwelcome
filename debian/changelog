@@ -1,3 +1,13 @@
+mintwelcome (2.3.0) tara; urgency=medium
+
+  [ Butterfly ]
+  *  Fix getting translations 2 (#33)
+
+  [ Clement Lefebvre ]
+  * l10n: Update files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 22 May 2018 13:21:53 +0100
+
 mintwelcome (2.2.9) tara; urgency=medium
 
   [ Clement Lefebvre ]
