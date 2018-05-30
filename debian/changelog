@@ -1,3 +1,10 @@
+mintwelcome (2.3.1) tara; urgency=medium
+
+  [ NikoKrause ]
+  * Translate Title "Welcome" (#34)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 30 May 2018 18:04:46 +0100
+
 mintwelcome (2.3.0) tara; urgency=medium
 
   [ Butterfly ]
