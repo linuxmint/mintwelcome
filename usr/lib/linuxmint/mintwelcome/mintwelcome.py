@@ -103,6 +103,8 @@ class MintWelcome():
                 add_codecs = True
         if not add_codecs:
             builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
+        if not os.path.exists("/usr/bin/mintdrivers"):
+            builder.get_object("box_first_steps").remove(builder.get_object("box_drivers"))
 
         # Construct the stack switcher
         list_box = builder.get_object("list_navigation")
