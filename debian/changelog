@@ -1,3 +1,9 @@
+mintwelcome (2.3.3) tara; urgency=medium
+
+  * Remove "new features" section in LMDE
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 05 Aug 2018 10:35:49 +0200
+
 mintwelcome (2.3.2) tara; urgency=medium
 
   * First steps: Don't show mintdrivers button if mintdrivers isn't installed
