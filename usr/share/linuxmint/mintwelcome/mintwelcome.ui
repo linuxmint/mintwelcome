@@ -225,7 +225,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkBox" id="box_documentation">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="border_width">24</property>
@@ -337,7 +337,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkBox" id="box_new_features">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="spacing">24</property>

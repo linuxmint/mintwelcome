@@ -103,8 +103,14 @@ class MintWelcome():
                 add_codecs = True
         if not add_codecs:
             builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
+
+        # Hide drivers if mintdrivers is absent (LMDE)
         if not os.path.exists("/usr/bin/mintdrivers"):
             builder.get_object("box_first_steps").remove(builder.get_object("box_drivers"))
+
+        # Hide new features page for LMDE
+        if dist_name == "LMDE":
+            builder.get_object("box_documentation").remove(builder.get_object("box_new_features"))
 
         # Construct the stack switcher
         list_box = builder.get_object("list_navigation")
