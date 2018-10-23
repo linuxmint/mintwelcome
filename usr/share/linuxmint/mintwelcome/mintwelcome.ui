@@ -1256,7 +1256,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Firewall Configuration</property>
+                            <property name="label" translatable="yes">Firewall</property>
                             <property name="xalign">0</property>
                             <attributes>
                               <attribute name="weight" value="bold"/>
@@ -1273,7 +1273,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Control and monitor network traffic by enabling the ufw to your own security rules .</property>
+                            <property name="label" translatable="yes">Control and monitor network traffic by enabling the firewall.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
                           </object>
