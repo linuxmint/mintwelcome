@@ -7,7 +7,7 @@ import platform
 import subprocess
 import locale
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import Gtk, Gio
 
 NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
@@ -16,6 +16,8 @@ gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 from locale import gettext as _
 locale.bindtextdomain("mintwelcome", "/usr/share/linuxmint/locale")
 locale.textdomain("mintwelcome")
+
+LAYOUT_STYLE_LEGACY, LAYOUT_STYLE_NEW = range(2)
 
 class SidebarRow(Gtk.ListBoxRow):
 
@@ -83,10 +85,14 @@ class MintWelcome():
         builder.get_object("button_timeshift").connect("clicked", self.pkexec, "timeshift-gtk")
         builder.get_object("button_mintdrivers").connect("clicked", self.pkexec, "driver-manager")
         builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
+        builder.get_object("button_layout_legacy").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_LEGACY)
+        builder.get_object("button_layout_new").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_NEW)
 
         # Settings button depends on DE
+        de_is_cinnamon = False
         if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
+            de_is_cinnamon = True
         elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
             builder.get_object("button_settings").connect("clicked", self.launch, "mate-control-center")
         elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
@@ -94,6 +100,10 @@ class MintWelcome():
         else:
             # Hide settings
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
+
+        # Hide Cinnamon layout settings in other DEs
+        if not de_is_cinnamon:
+            builder.get_object("box_first_steps").remove(builder.get_object("box_cinnamon"))
 
         # Hide codecs box if they're already installed
         add_codecs = False
@@ -148,6 +158,14 @@ class MintWelcome():
         checkbox.connect("toggled", self.on_button_toggled)
         box.pack_end(checkbox)
 
+        # Use HIDPI pictures if appropriate
+        if window.get_scale_factor() == 1:
+            builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy.png")
+            builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern.png")
+        else:
+            builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy-hidpi.png")
+            builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern-hidpi.png")
+
         window.set_default_size(800, 500)
         window.show_all()
 
@@ -161,6 +179,39 @@ class MintWelcome():
         else:
             os.system("mkdir -p ~/.linuxmint/mintwelcome")
             os.system("touch %s" % NORUN_FLAG)
+
+    def on_button_layout_clicked (self, button, style):
+        right_applets = ['panel1:right:0:systray@cinnamon.org', 'panel1:right:1:keyboard@cinnamon.org', 'panel1:right:2:notifications@cinnamon.org', 'panel1:right:3:removable-drives@cinnamon.org', 'panel1:right:4:user@cinnamon.org', 'panel1:right:5:bluetooth@cinnamon.org', 'panel1:right:6:network@cinnamon.org', 'panel1:right:7:sound@cinnamon.org', 'panel1:right:8:power@cinnamon.org', 'panel1:right:9:calendar@cinnamon.org']
+        left_applets_legacy = ['panel1:left:0:menu@cinnamon.org', 'panel1:left:1:show-desktop@cinnamon.org', 'panel1:left:2:panel-launchers@cinnamon.org', 'panel1:left:3:window-list@cinnamon.org']
+        left_applets_new = ['panel1:left:0:menu@cinnamon.org', 'panel1:left:1:show-desktop@cinnamon.org', 'panel1:left:2:grouped-window-list@cinnamon.org']
+
+        settings = Gio.Settings("org.cinnamon")
+        settings.set_strv("panels-enabled", ['1:0:bottom'])
+
+        applets = left_applets_new + right_applets
+        left_icon_size = 0
+        center_icon_size = 0
+        right_icon_size = 0
+        theme = "Mint-Y"
+        cinnamon_theme = "Mint-Y-Dark"
+        if style == LAYOUT_STYLE_LEGACY:
+            applets = left_applets_legacy + right_applets
+            panel_size = 27
+            theme = "Mint-X"
+            cinnamon_theme = "Linux Mint"
+        elif style == LAYOUT_STYLE_NEW:
+            panel_size = 40
+            right_icon_size = 24
+
+        settings.set_strv("panels-height", ['1:%s' % panel_size])
+        settings.set_strv("enabled-applets", applets)
+        settings.set_string("panel-zone-icon-sizes", "[{\"panelId\": 1, \"left\": %s, \"center\": %s, \"right\": %s}]" % (left_icon_size, center_icon_size, right_icon_size))
+
+        Gio.Settings('org.cinnamon.desktop.wm.preferences').set_string('theme', theme)
+        Gio.Settings('org.cinnamon.theme').set_string('name', cinnamon_theme)
+        Gio.Settings('org.cinnamon.desktop.interface').set_string('icon-theme', theme)
+        Gio.Settings('org.cinnamon.desktop.interface').set_string('gtk-theme', theme)
+        os.system("cinnamon --replace &")
 
     def visit(self, button, url):
         subprocess.Popen(["xdg-open", url])
