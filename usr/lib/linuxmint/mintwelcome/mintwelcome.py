@@ -82,6 +82,7 @@ class MintWelcome():
         builder.get_object("button_mintinstall").connect("clicked", self.launch, "mintinstall")
         builder.get_object("button_timeshift").connect("clicked", self.pkexec, "timeshift-gtk")
         builder.get_object("button_mintdrivers").connect("clicked", self.pkexec, "driver-manager")
+        builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
 
         # Settings button depends on DE
         if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
