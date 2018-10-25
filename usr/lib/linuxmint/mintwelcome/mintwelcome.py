@@ -199,12 +199,15 @@ class MintWelcome():
             panel_size = 27
             theme = "Mint-X"
             cinnamon_theme = "Linux Mint"
+            menu_label = "Menu"
         elif style == LAYOUT_STYLE_NEW:
             panel_size = 40
             right_icon_size = 24
+            menu_label = ""
 
         settings.set_strv("panels-height", ['1:%s' % panel_size])
         settings.set_strv("enabled-applets", applets)
+        settings.set_string("app-menu-label", menu_label)
         settings.set_string("panel-zone-icon-sizes", "[{\"panelId\": 1, \"left\": %s, \"center\": %s, \"right\": %s}]" % (left_icon_size, center_icon_size, right_icon_size))
 
         Gio.Settings('org.cinnamon.desktop.wm.preferences').set_string('theme', theme)
