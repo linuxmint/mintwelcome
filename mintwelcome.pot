@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 15:04+0100\n"
+"POT-Creation-Date: 2018-11-01 12:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,7 +170,9 @@ msgid ""
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:25
-msgid "Note: Cinnamon will restart after you choose a new layout."
+msgid ""
+"Note: Cinnamon will restart after you choose a new layout. Any customization "
+"you made to the panel will be lost."
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:26
