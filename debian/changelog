@@ -1,3 +1,17 @@
+mintwelcome (2.3.4) tessa; urgency=medium
+
+  [ Isaac Carter ]
+  * mintwelcome: Added Firewall Configuration to the Welcome app. (#36)
+
+  [ Clement Lefebvre ]
+  * Update some msgids
+  * Add the ability to choose a Cinnamon desktop layout
+  * l10n: Update POT
+  * Cinnamon layout: Set the menu label
+  * Panel layout: Add a little warning that customizations will be lost
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 28 Nov 2018 11:31:49 +0000
+
 mintwelcome (2.3.3) tara; urgency=medium
 
   * Remove "new features" section in LMDE
