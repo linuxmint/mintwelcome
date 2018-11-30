@@ -159,12 +159,17 @@ class MintWelcome():
         box.pack_end(checkbox)
 
         # Use HIDPI pictures if appropriate
-        if window.get_scale_factor() == 1:
-            builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy.png")
-            builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern.png")
-        else:
-            builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy-hidpi.png")
-            builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern-hidpi.png")
+        # if window.get_scale_factor() == 1:
+        #     builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy.png")
+        #     builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern.png")
+        # else:
+        #     builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy-hidpi.png")
+        #     builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern-hidpi.png")
+        # FIXME: Load the non-Hidpi pics no matter what.. they'll be blurry in HiDPI,
+        # but right now we don't have proper 250x40 HiDPI pics anyway, 500px is just too wide
+        # and a HiDPI screenshot only showing 250px doesn't show anything.
+        builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy.png")
+        builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern.png")
 
         window.set_default_size(800, 500)
         window.show_all()
