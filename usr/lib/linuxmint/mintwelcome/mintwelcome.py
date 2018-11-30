@@ -6,8 +6,9 @@ import os
 import platform
 import subprocess
 import locale
+import cairo
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
 NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
@@ -158,21 +159,27 @@ class MintWelcome():
         checkbox.connect("toggled", self.on_button_toggled)
         box.pack_end(checkbox)
 
+        scale = window.get_scale_factor()
+
         # Use HIDPI pictures if appropriate
-        # if window.get_scale_factor() == 1:
-        #     builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy.png")
-        #     builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern.png")
-        # else:
-        #     builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy-hidpi.png")
-        #     builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern-hidpi.png")
-        # FIXME: Load the non-Hidpi pics no matter what.. they'll be blurry in HiDPI,
-        # but right now we don't have proper 250x40 HiDPI pics anyway, 500px is just too wide
-        # and a HiDPI screenshot only showing 250px doesn't show anything.
-        builder.get_object("img_legacy").set_from_file("/usr/share/linuxmint/mintwelcome/legacy.png")
-        builder.get_object("img_modern").set_from_file("/usr/share/linuxmint/mintwelcome/modern.png")
+        if scale == 1:
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/legacy.png", scale)
+            builder.get_object("img_legacy").set_from_surface(surface)
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/modern.png", scale)
+            builder.get_object("img_modern").set_from_surface(surface)
+        else:
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/legacy-hidpi.png", scale)
+            builder.get_object("img_legacy").set_from_surface(surface)
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/modern-hidpi.png", scale)
+            builder.get_object("img_modern").set_from_surface(surface)
 
         window.set_default_size(800, 500)
         window.show_all()
+
+    def surface_for_path(self, path, scale):
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
+
+        return Gdk.cairo_surface_create_from_pixbuf(pixbuf, scale)
 
     def sidebar_row_selected_cb(self, list_box, row):
         self.stack.set_visible_child(row.page_widget)
