@@ -193,21 +193,44 @@ class MintWelcome():
             os.system("touch %s" % NORUN_FLAG)
 
     def on_button_layout_clicked (self, button, style):
-        right_applets = ['panel1:right:0:systray@cinnamon.org', 'panel1:right:1:keyboard@cinnamon.org', 'panel1:right:2:notifications@cinnamon.org', 'panel1:right:3:removable-drives@cinnamon.org', 'panel1:right:4:user@cinnamon.org', 'panel1:right:5:bluetooth@cinnamon.org', 'panel1:right:6:network@cinnamon.org', 'panel1:right:7:sound@cinnamon.org', 'panel1:right:8:power@cinnamon.org', 'panel1:right:9:calendar@cinnamon.org']
-        left_applets_legacy = ['panel1:left:0:menu@cinnamon.org', 'panel1:left:1:show-desktop@cinnamon.org', 'panel1:left:2:panel-launchers@cinnamon.org', 'panel1:left:3:window-list@cinnamon.org']
-        left_applets_new = ['panel1:left:0:menu@cinnamon.org', 'panel1:left:1:show-desktop@cinnamon.org', 'panel1:left:2:grouped-window-list@cinnamon.org']
+
+        applets_legacy = ['panel1:left:0:menu@cinnamon.org',
+                          'panel1:left:1:show-desktop@cinnamon.org',
+                          'panel1:left:2:panel-launchers@cinnamon.org',
+                          'panel1:left:3:window-list@cinnamon.org',
+                          'panel1:right:0:systray@cinnamon.org',
+                          'panel1:right:1:keyboard@cinnamon.org',
+                          'panel1:right:2:notifications@cinnamon.org',
+                          'panel1:right:3:removable-drives@cinnamon.org',
+                          'panel1:right:4:user@cinnamon.org',
+                          'panel1:right:5:network@cinnamon.org',
+                          'panel1:right:6:sound@cinnamon.org',
+                          'panel1:right:7:power@cinnamon.org',
+                          'panel1:right:8:calendar@cinnamon.org']
+
+        applets_new = ['panel1:left:0:menu@cinnamon.org',
+                       'panel1:left:1:show-desktop@cinnamon.org',
+                       'panel1:left:2:grouped-window-list@cinnamon.org',
+                       'panel1:right:0:systray@cinnamon.org',
+                       'panel1:right:1:keyboard@cinnamon.org',
+                       'panel1:right:2:notifications@cinnamon.org',
+                       'panel1:right:3:removable-drives@cinnamon.org',
+                       'panel1:right:4:network@cinnamon.org',
+                       'panel1:right:5:sound@cinnamon.org',
+                       'panel1:right:6:power@cinnamon.org',
+                       'panel1:right:7:calendar@cinnamon.org']
 
         settings = Gio.Settings("org.cinnamon")
         settings.set_strv("panels-enabled", ['1:0:bottom'])
 
-        applets = left_applets_new + right_applets
+        applets = applets_new
         left_icon_size = 0
         center_icon_size = 0
         right_icon_size = 0
         theme = "Mint-Y"
         cinnamon_theme = "Mint-Y-Dark"
         if style == LAYOUT_STYLE_LEGACY:
-            applets = left_applets_legacy + right_applets
+            applets = applets_legacy
             panel_size = 27
             theme = "Mint-X"
             cinnamon_theme = "Linux Mint"
