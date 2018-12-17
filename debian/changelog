@@ -1,3 +1,9 @@
+mintwelcome (2.3.7) tessa; urgency=medium
+
+  * Desktop layouts: Remove user applet in modern layout
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 17 Dec 2018 09:54:38 +0000
+
 mintwelcome (2.3.6) tessa; urgency=medium
 
   [ Michael Webster ]
