@@ -195,9 +195,8 @@ class MintWelcome():
     def on_button_layout_clicked (self, button, style):
 
         applets_legacy = ['panel1:left:0:menu@cinnamon.org',
-                          'panel1:left:1:show-desktop@cinnamon.org',
-                          'panel1:left:2:panel-launchers@cinnamon.org',
-                          'panel1:left:3:window-list@cinnamon.org',
+                          'panel1:left:1:panel-launchers@cinnamon.org',
+                          'panel1:left:2:window-list@cinnamon.org',
                           'panel1:right:0:systray@cinnamon.org',
                           'panel1:right:1:keyboard@cinnamon.org',
                           'panel1:right:2:notifications@cinnamon.org',
@@ -206,11 +205,11 @@ class MintWelcome():
                           'panel1:right:5:network@cinnamon.org',
                           'panel1:right:6:sound@cinnamon.org',
                           'panel1:right:7:power@cinnamon.org',
-                          'panel1:right:8:calendar@cinnamon.org']
+                          'panel1:right:8:calendar@cinnamon.org',
+                          'panel1:right:9:show-desktop@cinnamon.org']
 
         applets_new = ['panel1:left:0:menu@cinnamon.org',
-                       'panel1:left:1:show-desktop@cinnamon.org',
-                       'panel1:left:2:grouped-window-list@cinnamon.org',
+                       'panel1:left:1:grouped-window-list@cinnamon.org',
                        'panel1:right:0:systray@cinnamon.org',
                        'panel1:right:1:keyboard@cinnamon.org',
                        'panel1:right:2:notifications@cinnamon.org',
@@ -218,7 +217,8 @@ class MintWelcome():
                        'panel1:right:4:network@cinnamon.org',
                        'panel1:right:5:sound@cinnamon.org',
                        'panel1:right:6:power@cinnamon.org',
-                       'panel1:right:7:calendar@cinnamon.org']
+                       'panel1:right:7:calendar@cinnamon.org',
+                       'panel1:right:9:show-desktop@cinnamon.org']
 
         settings = Gio.Settings("org.cinnamon")
         settings.set_strv("panels-enabled", ['1:0:bottom'])
