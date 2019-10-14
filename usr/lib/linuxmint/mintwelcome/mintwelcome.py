@@ -199,26 +199,30 @@ class MintWelcome():
                           'panel1:left:2:panel-launchers@cinnamon.org',
                           'panel1:left:3:window-list@cinnamon.org',
                           'panel1:right:0:systray@cinnamon.org',
-                          'panel1:right:1:keyboard@cinnamon.org',
-                          'panel1:right:2:notifications@cinnamon.org',
-                          'panel1:right:3:removable-drives@cinnamon.org',
-                          'panel1:right:4:user@cinnamon.org',
-                          'panel1:right:5:network@cinnamon.org',
-                          'panel1:right:6:sound@cinnamon.org',
-                          'panel1:right:7:power@cinnamon.org',
-                          'panel1:right:8:calendar@cinnamon.org']
+                          'panel1:right:1:xapp-status@cinnamon.org',
+                          'panel1:right:2:keyboard@cinnamon.org',
+                          'panel1:right:3:notifications@cinnamon.org',
+                          'panel1:right:4:printers@cinnamon.org',
+                          'panel1:right:5:removable-drives@cinnamon.org',
+                          'panel1:right:6:user@cinnamon.org',
+                          'panel1:right:7:network@cinnamon.org',
+                          'panel1:right:8:sound@cinnamon.org',
+                          'panel1:right:9:power@cinnamon.org',
+                          'panel1:right:10:calendar@cinnamon.org']
 
         applets_new = ['panel1:left:0:menu@cinnamon.org',
                        'panel1:left:1:show-desktop@cinnamon.org',
                        'panel1:left:2:grouped-window-list@cinnamon.org',
                        'panel1:right:0:systray@cinnamon.org',
-                       'panel1:right:1:keyboard@cinnamon.org',
+                       'panel1:right:1:xapp-status@cinnamon.org',
                        'panel1:right:2:notifications@cinnamon.org',
-                       'panel1:right:3:removable-drives@cinnamon.org',
-                       'panel1:right:4:network@cinnamon.org',
-                       'panel1:right:5:sound@cinnamon.org',
-                       'panel1:right:6:power@cinnamon.org',
-                       'panel1:right:7:calendar@cinnamon.org']
+                       'panel1:right:3:printers@cinnamon.org',
+                       'panel1:right:4:removable-drives@cinnamon.org',
+                       'panel1:right:5:keyboard@cinnamon.org',
+                       'panel1:right:6:network@cinnamon.org',
+                       'panel1:right:7:sound@cinnamon.org',
+                       'panel1:right:8:power@cinnamon.org',
+                       'panel1:right:9:calendar@cinnamon.org']
 
         settings = Gio.Settings("org.cinnamon")
         settings.set_strv("panels-enabled", ['1:0:bottom'])
