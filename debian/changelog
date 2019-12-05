@@ -1,3 +1,9 @@
+mintwelcome (2.4.1) tricia; urgency=medium
+
+  * l10n: Fix msgid
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 05 Dec 2019 16:12:16 +0000
+
 mintwelcome (2.4.0) tricia; urgency=medium
 
   * Update app icon
