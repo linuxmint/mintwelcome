@@ -1945,7 +1945,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">In the name of the development team and everyone involved in the project, we'd like to thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we enjoy working on it.</property>
+                        <property name="label" translatable="yes">On behalf of the development team and everyone involved in the project, we'd like to thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we enjoy working on it.</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
                       </object>

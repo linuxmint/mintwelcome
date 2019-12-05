@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-01 12:25+0000\n"
+"POT-Creation-Date: 2019-12-05 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:131
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:132
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:1
 msgid "Welcome"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:136
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:137
 msgid "First Steps"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:140
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:141
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:5
 msgid "Documentation"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:144
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:145
 msgid "Help"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:148
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:149
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:2
 msgid "Contribute"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:155
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:156
 msgid "Show this dialog at startup"
 msgstr ""
 
-#: generate_desktop_files:27 generate_desktop_files:40
+#: generate_desktop_files:24 generate_desktop_files:37
 msgid "Welcome Screen"
 msgstr ""
 
-#: generate_desktop_files:27 generate_desktop_files:40
+#: generate_desktop_files:24 generate_desktop_files:37
 msgid "Introduction to Linux Mint"
 msgstr ""
 
-#: generate_desktop_files:52
+#: generate_desktop_files:49
 msgid "Install Multimedia Codecs"
 msgstr ""
 
-#: generate_desktop_files:52
+#: generate_desktop_files:49
 msgid "Add all the missing multimedia codecs"
 msgstr ""
 
@@ -256,9 +256,9 @@ msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:41
 msgid ""
-"In the name of the development team and everyone involved in the project, "
-"we'd like to thank you for choosing Linux Mint. We hope you'll enjoy using "
-"it as much as we enjoy working on it."
+"On behalf of the development team and everyone involved in the project, we'd "
+"like to thank you for choosing Linux Mint. We hope you'll enjoy using it as "
+"much as we enjoy working on it."
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:42
