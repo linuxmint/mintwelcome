@@ -11,7 +11,6 @@
         <property name="title" translatable="yes">Welcome</property>
         <property name="has_subtitle">False</property>
         <property name="show_close_button">True</property>
-        <property name="decoration_layout">:close</property>
         <child>
           <placeholder/>
         </child>
