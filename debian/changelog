@@ -1,3 +1,10 @@
+mintwelcome (2.4.2) tricia; urgency=medium
+
+  [ Vincent Vermeulen ]
+  * allow for window controls on the left
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 15 Jan 2020 14:35:05 +0000
+
 mintwelcome (2.4.1) tricia; urgency=medium
 
   * l10n: Fix msgid
