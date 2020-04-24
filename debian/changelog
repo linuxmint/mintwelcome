@@ -1,3 +1,16 @@
+mintwelcome (2.4.3) ulyana; urgency=medium
+
+  [ Nikolay Nechaev ]
+  * New mint logo in Welcome tab
+
+  [ Clement Lefebvre ]
+  * Switch icon to filled ring
+  * First steps: Replace layout switcher with color chooser
+  * l10n: Update POT
+  * l10n: Generate desktop files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 24 Apr 2020 14:45:17 +0100
+
 mintwelcome (2.4.2) tricia; urgency=medium
 
   [ Vincent Vermeulen ]
