@@ -159,8 +159,11 @@ class MintWelcome():
         self.dark_mode = False
 
         # Use HIDPI pictures if appropriate
+        path = "/usr/share/linuxmint/mintwelcome/colors/"
+        if scale == 2:
+            path = "/usr/share/linuxmint/mintwelcome/colors/hidpi/"
         for color in ["green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal"]:
-            builder.get_object("img_" + color).set_from_surface(self.surface_for_path("/usr/share/linuxmint/mintwelcome/%s.png" % color, scale))
+            builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
         builder.get_object("switch_dark").connect("state-set", self.on_dark_mode_changed)
