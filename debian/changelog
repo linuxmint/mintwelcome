@@ -1,3 +1,9 @@
+mintwelcome (2.4.4) ulyana; urgency=medium
+
+  * Colors: Add HiDPI support
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 24 Apr 2020 15:17:15 +0100
+
 mintwelcome (2.4.3) ulyana; urgency=medium
 
   [ Nikolay Nechaev ]
