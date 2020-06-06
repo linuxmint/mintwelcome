@@ -1,3 +1,9 @@
+mintwelcome (2.4.6) ulyana; urgency=medium
+
+  * Fix brown and green pictures
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 06 Jun 2020 12:16:07 +0100
+
 mintwelcome (2.4.5) ulyana; urgency=medium
 
   * Go back to original colors
