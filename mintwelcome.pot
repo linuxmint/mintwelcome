@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-24 14:35+0100\n"
+"POT-Creation-Date: 2020-06-18 12:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,30 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:126
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:134
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:1
 msgid "Welcome"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:131
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:139
 msgid "First Steps"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:135
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:143
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:5
 msgid "Documentation"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:139
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:147
 msgid "Help"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:143
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:151
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:2
 msgid "Contribute"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:150
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:158
 msgid "Show this dialog at startup"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgid ""
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:11
-msgid "Desktop colors"
+msgid "Desktop Colors"
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:12
@@ -109,21 +109,51 @@ msgid ""
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:13
-msgid "System Snapshots"
+msgid "Panel Layout"
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:14
+msgid "Choose your favorite layout."
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:15
+msgid "Traditional"
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:16
+msgid "A small panel and a traditional window list."
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:17
+msgid "Modern"
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:18
+msgid "A large panel with grouped windows and a small system tray."
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:19
+msgid ""
+"Note: Cinnamon will restart after you choose a new layout. Any customization "
+"you made to the panel will be lost."
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:20
+msgid "System Snapshots"
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:21
 msgid ""
 "Next, let's set automatic system snapshots. A minimum of two daily and two "
 "boot snapshots are recommended. If anything breaks, you can then restore "
 "your computer to its previous working state."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:15
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:22
 msgid "Driver Manager"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:16
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:23
 msgid ""
 "Check the Driver Manager to see if it recommends any additional drivers for "
 "your computer. Most hardware components are recognized by the Linux kernel "
@@ -131,78 +161,78 @@ msgid ""
 "require proprietary drivers to be recognized or to work better."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:17
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:24
 msgid "Multimedia Codecs"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:18
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:25
 msgid ""
 "Additional multimedia codecs are required to support some formats and to "
 "play popular audio, video and web content. Click the button below to install "
 "them."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:19
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:26
 msgid "Update Manager"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:20
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:27
 msgid ""
 "The little shield icon in your system tray is your Update Manager. It "
 "provides software updates, security updates and kernel updates to fix bugs, "
 "keep your computer safe and support newer hardware components."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:21
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:28
 msgid "System Settings"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:22
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:29
 msgid ""
 "Have a look at the system settings and configure your operating system the "
 "way you like. Don't hesitate to customize it and make it feel like home."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:23
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:30
 msgid "Software Manager"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:24
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:31
 msgid ""
 "There are about 60,000 applications available. Linux Mint comes with the "
 "bare minimum to get you started. The Software Manager is there if you're "
 "looking for more."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:25
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:32
 msgid "Firewall"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:26
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:33
 msgid "Control and monitor network traffic by enabling the firewall."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:27
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:34
 msgid "Web Forums"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:28
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:35
 msgid ""
 "The Linux Mint forums are the best place to find help. Join thousands of "
 "users, search topics and threads and find solutions to your problems."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:29
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:36
 msgid "IRC Chat Room"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:30
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:37
 msgid ""
 "You can also connect to the IRC chat room and chat with users who are "
 "currently online. Ask a question, maybe someone there knows the solution?"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:31
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:38
 msgid ""
 "Linux Mint has a great community. Many users will welcome you with open arms "
 "and be delighted to help you. Make sure to be patient and respectful with "
@@ -210,7 +240,7 @@ msgid ""
 "when someone helps you."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:32
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:39
 msgid ""
 "If you have a bad experience with another user, try to solve it responsibly "
 "or contact the moderation team. Although we can't guarantee everyone will "
@@ -218,27 +248,27 @@ msgid ""
 "constructive discussions."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:33
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:40
 msgid "Welcome to Linux Mint"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:34
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:41
 msgid "Welcome to your new operating system!"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:35
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:42
 msgid ""
 "This welcome screen will guide you through your first steps, show you how to "
 "find help and where to get more information about Linux Mint."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:36
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:43
 msgid ""
 "On behalf of the development team and everyone involved in the project, we'd "
 "like to thank you for choosing Linux Mint. We hope you'll enjoy using it as "
 "much as we enjoy working on it."
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:37
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:44
 msgid "Have a great time and don't hesitate to send us your feedback."
 msgstr ""
