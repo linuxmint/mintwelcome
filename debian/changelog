@@ -1,3 +1,11 @@
+mintwelcome (2.4.7) ulyana; urgency=medium
+
+  * Fix icons in Mint 20
+  * Cinnamon: Bring back panel layout selection
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 18 Jun 2020 12:29:36 +0100
+
 mintwelcome (2.4.6) ulyana; urgency=medium
 
   * Fix brown and green pictures
