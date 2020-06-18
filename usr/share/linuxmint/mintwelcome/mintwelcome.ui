@@ -106,7 +106,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="icon_name">starred</property>
+                    <property name="icon_name">applications-development</property>
                     <property name="icon_size">6</property>
                   </object>
                   <packing>
@@ -248,7 +248,7 @@
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="halign">center</property>
-                                    <property name="icon_name">emblem-documents</property>
+                                    <property name="icon_name">text-x-generic</property>
                                     <property name="icon_size">6</property>
                                   </object>
                                   <packing>
