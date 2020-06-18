@@ -18,6 +18,8 @@ from locale import gettext as _
 locale.bindtextdomain("mintwelcome", "/usr/share/linuxmint/locale")
 locale.textdomain("mintwelcome")
 
+LAYOUT_STYLE_LEGACY, LAYOUT_STYLE_NEW = range(2)
+
 class SidebarRow(Gtk.ListBoxRow):
 
     def __init__(self, page_widget, page_name, icon_name):
@@ -84,6 +86,8 @@ class MintWelcome():
         builder.get_object("button_timeshift").connect("clicked", self.pkexec, "timeshift-gtk")
         builder.get_object("button_mintdrivers").connect("clicked", self.pkexec, "driver-manager")
         builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
+        builder.get_object("button_layout_legacy").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_LEGACY)
+        builder.get_object("button_layout_new").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_NEW)
 
         # Settings button depends on DE
         de_is_cinnamon = False
@@ -99,6 +103,10 @@ class MintWelcome():
         else:
             # Hide settings
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
+
+        # Hide Cinnamon layout settings in other DEs
+        if not de_is_cinnamon:
+            builder.get_object("box_first_steps").remove(builder.get_object("box_cinnamon"))
 
         # Hide codecs box if they're already installed
         add_codecs = False
@@ -159,6 +167,17 @@ class MintWelcome():
         self.dark_mode = False
 
         # Use HIDPI pictures if appropriate
+        if scale == 1:
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/legacy.png", scale)
+            builder.get_object("img_legacy").set_from_surface(surface)
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/modern.png", scale)
+            builder.get_object("img_modern").set_from_surface(surface)
+        else:
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/legacy-hidpi.png", scale)
+            builder.get_object("img_legacy").set_from_surface(surface)
+            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/modern-hidpi.png", scale)
+            builder.get_object("img_modern").set_from_surface(surface)
+
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
             path = "/usr/share/linuxmint/mintwelcome/colors/hidpi/"
@@ -186,6 +205,60 @@ class MintWelcome():
         else:
             os.system("mkdir -p ~/.linuxmint/mintwelcome")
             os.system("touch %s" % NORUN_FLAG)
+
+    def on_button_layout_clicked (self, button, style):
+
+        applets_legacy = ['panel1:left:0:menu@cinnamon.org',
+                          'panel1:left:1:show-desktop@cinnamon.org',
+                          'panel1:left:2:panel-launchers@cinnamon.org',
+                          'panel1:left:3:window-list@cinnamon.org',
+                          'panel1:right:0:systray@cinnamon.org',
+                          'panel1:right:1:xapp-status@cinnamon.org',
+                          'panel1:right:2:keyboard@cinnamon.org',
+                          'panel1:right:3:notifications@cinnamon.org',
+                          'panel1:right:4:printers@cinnamon.org',
+                          'panel1:right:5:removable-drives@cinnamon.org',
+                          'panel1:right:6:user@cinnamon.org',
+                          'panel1:right:7:network@cinnamon.org',
+                          'panel1:right:8:sound@cinnamon.org',
+                          'panel1:right:9:power@cinnamon.org',
+                          'panel1:right:10:calendar@cinnamon.org']
+
+        applets_new = ['panel1:left:0:menu@cinnamon.org',
+                       'panel1:left:1:show-desktop@cinnamon.org',
+                       'panel1:left:2:grouped-window-list@cinnamon.org',
+                       'panel1:right:0:systray@cinnamon.org',
+                       'panel1:right:1:xapp-status@cinnamon.org',
+                       'panel1:right:2:notifications@cinnamon.org',
+                       'panel1:right:3:printers@cinnamon.org',
+                       'panel1:right:4:removable-drives@cinnamon.org',
+                       'panel1:right:5:keyboard@cinnamon.org',
+                       'panel1:right:6:network@cinnamon.org',
+                       'panel1:right:7:sound@cinnamon.org',
+                       'panel1:right:8:power@cinnamon.org',
+                       'panel1:right:9:calendar@cinnamon.org']
+
+        settings = Gio.Settings("org.cinnamon")
+        settings.set_strv("panels-enabled", ['1:0:bottom'])
+
+        applets = applets_new
+        left_icon_size = 0
+        center_icon_size = 0
+        right_icon_size = 0
+        if style == LAYOUT_STYLE_LEGACY:
+            applets = applets_legacy
+            panel_size = 27
+            menu_label = "Menu"
+        elif style == LAYOUT_STYLE_NEW:
+            panel_size = 40
+            right_icon_size = 24
+            menu_label = ""
+
+        settings.set_strv("panels-height", ['1:%s' % panel_size])
+        settings.set_strv("enabled-applets", applets)
+        settings.set_string("app-menu-label", menu_label)
+        settings.set_string("panel-zone-icon-sizes", "[{\"panelId\": 1, \"left\": %s, \"center\": %s, \"right\": %s}]" % (left_icon_size, center_icon_size, right_icon_size))
+        os.system("cinnamon --replace &")
 
     def on_dark_mode_changed(self, button, state):
         self.dark_mode = state
