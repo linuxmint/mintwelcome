@@ -84,7 +84,7 @@ class MintWelcome():
         builder.get_object("button_mintupdate").connect("clicked", self.launch, "mintupdate")
         builder.get_object("button_mintinstall").connect("clicked", self.launch, "mintinstall")
         builder.get_object("button_timeshift").connect("clicked", self.pkexec, "timeshift-gtk")
-        builder.get_object("button_mintdrivers").connect("clicked", self.pkexec, "driver-manager")
+        builder.get_object("button_mintdrivers").connect("clicked", self.launch, "driver-manager")
         builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
         builder.get_object("button_layout_legacy").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_LEGACY)
         builder.get_object("button_layout_new").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_NEW)
