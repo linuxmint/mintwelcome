@@ -1,3 +1,10 @@
+mintwelcome (2.4.8) ulyssa; urgency=medium
+
+  * Run mintdrivers without admin rights
+  * l10n: Generate files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 30 Nov 2020 15:27:28 +0000
+
 mintwelcome (2.4.7) ulyana; urgency=medium
 
   * Fix icons in Mint 20
