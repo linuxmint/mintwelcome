@@ -233,10 +233,11 @@ class MintWelcome():
                        'panel1:right:3:printers@cinnamon.org',
                        'panel1:right:4:removable-drives@cinnamon.org',
                        'panel1:right:5:keyboard@cinnamon.org',
-                       'panel1:right:6:network@cinnamon.org',
-                       'panel1:right:7:sound@cinnamon.org',
-                       'panel1:right:8:power@cinnamon.org',
-                       'panel1:right:9:calendar@cinnamon.org']
+                       'panel1:right:6:favorites@cinnamon.org',
+                       'panel1:right:7:network@cinnamon.org',
+                       'panel1:right:8:sound@cinnamon.org',
+                       'panel1:right:9:power@cinnamon.org',
+                       'panel1:right:10:calendar@cinnamon.org']
 
         settings = Gio.Settings("org.cinnamon")
         settings.set_strv("panels-enabled", ['1:0:bottom'])
