@@ -1,3 +1,9 @@
+mintwelcome (2.4.9) ulyssa; urgency=medium
+
+  * Add favorites applet to Cinnamon modern layout
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 08 Dec 2020 13:05:48 +0000
+
 mintwelcome (2.4.8) ulyssa; urgency=medium
 
   * Run mintdrivers without admin rights
