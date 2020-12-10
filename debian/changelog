@@ -1,3 +1,9 @@
+mintwelcome (2.5.0) ulyssa; urgency=medium
+
+  * Revert "Run mintdrivers without admin rights"
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 10 Dec 2020 11:30:02 +0000
+
 mintwelcome (2.4.9) ulyssa; urgency=medium
 
   * Add favorites applet to Cinnamon modern layout
