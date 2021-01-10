@@ -218,11 +218,12 @@ class MintWelcome():
                           'panel1:right:3:notifications@cinnamon.org',
                           'panel1:right:4:printers@cinnamon.org',
                           'panel1:right:5:removable-drives@cinnamon.org',
-                          'panel1:right:6:user@cinnamon.org',
-                          'panel1:right:7:network@cinnamon.org',
-                          'panel1:right:8:sound@cinnamon.org',
-                          'panel1:right:9:power@cinnamon.org',
-                          'panel1:right:10:calendar@cinnamon.org']
+                          'panel1:right:6:favorites@cinnamon.org',
+                          'panel1:right:7:user@cinnamon.org',
+                          'panel1:right:8:network@cinnamon.org',
+                          'panel1:right:9:sound@cinnamon.org',
+                          'panel1:right:10:power@cinnamon.org',
+                          'panel1:right:11:calendar@cinnamon.org']
 
         applets_new = ['panel1:left:0:menu@cinnamon.org',
                        'panel1:left:1:show-desktop@cinnamon.org',
