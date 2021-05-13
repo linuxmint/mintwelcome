@@ -109,13 +109,8 @@ class MintWelcome():
             builder.get_object("box_first_steps").remove(builder.get_object("box_cinnamon"))
 
         # Hide codecs box if they're already installed
-        add_codecs = False
         cache = apt.Cache()
-        if "mint-meta-codecs" in cache:
-            pkg = cache["mint-meta-codecs"]
-            if not pkg.is_installed:
-                add_codecs = True
-        if not add_codecs:
+        if "mint-meta-codecs" in cache and cache["mint-meta-codecs"].is_installed:
             builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
 
         # Hide drivers if mintdrivers is absent (LMDE)
