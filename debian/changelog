@@ -1,3 +1,16 @@
+mintwelcome (2.5.1) uma; urgency=medium
+
+  [ NikoKrause ]
+  * Add favorites applet to Cinnamon legacy layout (#45)
+
+  [ Lurux ]
+  * Update panel screenshots in layout selector - The screenshots for the "traditional" layout was still showcasing the old Mint-X theme despite the fact that both layouts now default to the Mint-Y theme, so I updated them accordingly. - The icons in the HiDPI screenshot of the "modern" layout were misaligned, so I also decided to redo these with the same panel arrangement.
+
+  [ Shadofer ]
+  * Remove add_codecs and pkg variables and provide a shorter way to determine whether or not media codecs should be installed. (#48)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 26 May 2021 12:44:38 +0100
+
 mintwelcome (2.5.0) ulyssa; urgency=medium
 
   * Revert "Run mintdrivers without admin rights"
