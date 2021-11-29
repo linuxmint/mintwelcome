@@ -296,14 +296,12 @@ class MintWelcome():
     def init_color_info(self):
         theme = "Mint-Y"
         dark_theme = "Mint-Y-Dark"
-
         if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
             setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
         elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
             setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
-        else:
-            self.init_default_color_info()  # Bail if we can't read the theme of our environment
-            return
+        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+            setting = subprocess.check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
         
         if setting.startswith(theme):
             self.dark_mode = setting.startswith(dark_theme)
@@ -318,7 +316,7 @@ class MintWelcome():
                 if not self.color in self.all_colors:  # Assume green if our color is invalid
                     self.color = "green"
         else:
-            self.init_default_color_info()  # Bail out if we aren't working with a Mint-Y theme
+            self.init_default_color_info()  # Bail out if we aren't working with a Mint-Y theme or the theme is unknown
     
     def init_default_color_info(self):
         self.color = "green"
