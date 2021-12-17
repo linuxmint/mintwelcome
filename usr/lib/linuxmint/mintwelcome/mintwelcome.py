@@ -158,8 +158,8 @@ class MintWelcome():
 
         scale = window.get_scale_factor()
 
-        self.color = "green"
-        self.dark_mode = False
+        self.all_colors = ["green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal"]
+        self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
 
         # Use HIDPI pictures if appropriate
         if scale == 1:
@@ -176,11 +176,12 @@ class MintWelcome():
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
             path = "/usr/share/linuxmint/mintwelcome/colors/hidpi/"
-        for color in ["green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal"]:
+        for color in self.all_colors:
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
         builder.get_object("switch_dark").connect("state-set", self.on_dark_mode_changed)
+        builder.get_object("switch_dark").set_active(self.dark_mode)
 
         window.set_default_size(800, 500)
         window.show_all()
@@ -290,6 +291,35 @@ class MintWelcome():
             subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
             subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", theme])
             subprocess.call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
+
+    def init_color_info(self):
+        theme = "Mint-Y"
+        dark_theme = "Mint-Y-Dark"
+        if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
+            setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
+        elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
+            setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
+        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+            setting = subprocess.check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
+        
+        if setting.startswith(theme):
+            self.dark_mode = setting.startswith(dark_theme)
+            if self.dark_mode:
+                setting = setting.replace(dark_theme, "")
+            else:
+                setting = setting.replace(theme, "")
+            if len(setting) <= 1:
+                self.color = "green"
+            else:
+                self.color = setting[1:].lower()
+                if not self.color in self.all_colors:  # Assume green if our color is invalid
+                    self.color = "green"
+        else:
+            self.init_default_color_info()  # Bail out if we aren't working with a Mint-Y theme or the theme is unknown
+    
+    def init_default_color_info(self):
+        self.color = "green"
+        self.dark_mode = False
 
     def visit(self, button, url):
         subprocess.Popen(["xdg-open", url])
