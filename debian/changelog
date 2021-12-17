@@ -1,3 +1,16 @@
+mintwelcome (2.5.2) una; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Remove obsolete reference to metacity mint-y-dark theme
+
+  [ hammy3502 ]
+  * Detect theme color and dark variant (#50)
+
+  [ Clement Lefebvre ]
+  * l10n: Generate files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 17 Dec 2021 12:31:21 +0000
+
 mintwelcome (2.5.1) uma; urgency=medium
 
   [ NikoKrause ]
