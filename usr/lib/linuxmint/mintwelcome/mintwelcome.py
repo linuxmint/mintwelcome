@@ -271,7 +271,6 @@ class MintWelcome():
         cinnamon_theme = "Mint-Y-Dark"
         if self.dark_mode:
             theme = "%s-Dark" % theme
-            wm_theme = "Mint-Y-Dark"
         if self.color != "green":
             theme = "%s-%s" % (theme, self.color.title())
             cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
