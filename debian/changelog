@@ -1,3 +1,9 @@
+mintwelcome (2.5.3) una; urgency=medium
+
+  * Don't change themes without user interaction
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 10 Jan 2022 16:56:49 +0000
+
 mintwelcome (2.5.2) una; urgency=medium
 
   [ Clement Lefebvre ]
