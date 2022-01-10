@@ -180,8 +180,8 @@ class MintWelcome():
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
-        builder.get_object("switch_dark").connect("state-set", self.on_dark_mode_changed)
         builder.get_object("switch_dark").set_active(self.dark_mode)
+        builder.get_object("switch_dark").connect("state-set", self.on_dark_mode_changed)
 
         window.set_default_size(800, 500)
         window.show_all()
