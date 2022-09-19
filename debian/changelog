@@ -1,3 +1,9 @@
+mintwelcome (2.5.4) vanessa; urgency=medium
+
+  * Run mintdrivers without admin rights
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 19 Sep 2022 09:36:05 +0100
+
 mintwelcome (2.5.3) una; urgency=medium
 
   * Don't change themes without user interaction
