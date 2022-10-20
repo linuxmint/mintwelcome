@@ -222,7 +222,7 @@ class MintWelcome():
                           'panel1:right:11:calendar@cinnamon.org']
 
         applets_new = ['panel1:left:0:menu@cinnamon.org',
-                       'panel1:left:1:show-desktop@cinnamon.org',
+                       'panel1:left:1:separator@cinnamon.org',
                        'panel1:left:2:grouped-window-list@cinnamon.org',
                        'panel1:right:0:systray@cinnamon.org',
                        'panel1:right:1:xapp-status@cinnamon.org',
@@ -234,7 +234,8 @@ class MintWelcome():
                        'panel1:right:7:network@cinnamon.org',
                        'panel1:right:8:sound@cinnamon.org',
                        'panel1:right:9:power@cinnamon.org',
-                       'panel1:right:10:calendar@cinnamon.org']
+                       'panel1:right:10:calendar@cinnamon.org',
+                       'panel1:right:11:cornerbar@cinnamon.org']
 
         settings = Gio.Settings("org.cinnamon")
         settings.set_strv("panels-enabled", ['1:0:bottom'])
