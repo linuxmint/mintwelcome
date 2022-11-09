@@ -6,7 +6,6 @@ import os
 import platform
 import subprocess
 import locale
-import cairo
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
