@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 15:27+0000\n"
+"POT-Creation-Date: 2022-11-28 10:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,30 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:134
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:129
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:1
 msgid "Welcome"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:139
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:134
 msgid "First Steps"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:143
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:139
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:5
 msgid "Documentation"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:147
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:143
 msgid "Help"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:151
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:147
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:2
 msgid "Contribute"
 msgstr ""
 
-#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:158
+#: usr/lib/linuxmint/mintwelcome/mintwelcome.py:154
 msgid "Show this dialog at startup"
 msgstr ""
 
@@ -117,19 +117,19 @@ msgid "Choose your favorite layout."
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:15
-msgid "Traditional"
-msgstr ""
-
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:16
-msgid "A small panel and a traditional window list."
-msgstr ""
-
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:17
 msgid "Modern"
 msgstr ""
 
-#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:18
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:16
 msgid "A large panel with grouped windows and a small system tray."
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:17
+msgid "Traditional"
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:18
+msgid "A small panel and a traditional window list."
 msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:19
@@ -271,4 +271,8 @@ msgstr ""
 
 #: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:44
 msgid "Have a great time and don't hesitate to send us your feedback."
+msgstr ""
+
+#: usr/share/linuxmint/mintwelcome/mintwelcome.ui.h:45
+msgid "Let's go!"
 msgstr ""
