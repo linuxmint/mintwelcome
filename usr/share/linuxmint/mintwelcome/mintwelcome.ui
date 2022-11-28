@@ -2300,6 +2300,32 @@
                         <property name="position">4</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkButton" id="go_button">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="halign">center</property>
+                        <property name="border-width">12</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-start">12</property>
+                            <property name="margin-end">12</property>
+                            <property name="label" translatable="yes">Let's go!</property>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="suggested-action"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -2319,7 +2345,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="pixel-size">32</property>
-                        <property name="icon-name">linuxmint-logo-filled-ring</property>
+                        <property name="icon-name">linuxmint-logo-ring-symbolic</property>
                         <property name="icon_size">0</property>
                       </object>
                       <packing>

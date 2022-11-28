@@ -87,6 +87,7 @@ class MintWelcome():
         builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
         builder.get_object("button_layout_legacy").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_LEGACY)
         builder.get_object("button_layout_new").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_NEW)
+        builder.get_object("go_button").connect("clicked", self.go)
 
         # Settings button depends on DE
         de_is_cinnamon = False
@@ -121,30 +122,31 @@ class MintWelcome():
             builder.get_object("box_documentation").remove(builder.get_object("box_new_features"))
 
         # Construct the stack switcher
-        list_box = builder.get_object("list_navigation")
+        self.list_box = builder.get_object("list_navigation")
 
         page = builder.get_object("page_home")
         self.stack.add_named(page, "page_home")
-        list_box.add(SidebarRow(page, _("Welcome"), "go-home-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Welcome"), "go-home-symbolic"))
         self.stack.set_visible_child(page)
 
         page = builder.get_object("page_first_steps")
         self.stack.add_named(page, "page_first_steps")
-        list_box.add(SidebarRow(page, _("First Steps"), "dialog-information-symbolic"))
+        self.first_steps_row = SidebarRow(page, _("First Steps"), "dialog-information-symbolic")
+        self.list_box.add(self.first_steps_row)
 
         page = builder.get_object("page_documentation")
         self.stack.add_named(page, "page_documentation")
-        list_box.add(SidebarRow(page, _("Documentation"), "accessories-dictionary-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Documentation"), "accessories-dictionary-symbolic"))
 
         page = builder.get_object("page_help")
         self.stack.add_named(page, "page_help")
-        list_box.add(SidebarRow(page, _("Help"), "help-browser-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Help"), "help-browser-symbolic"))
 
         page = builder.get_object("page_contribute")
         self.stack.add_named(page, "page_contribute")
-        list_box.add(SidebarRow(page, _("Contribute"), "starred-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Contribute"), "starred-symbolic"))
 
-        list_box.connect("row-activated", self.sidebar_row_selected_cb)
+        self.list_box.connect("row-activated", self.sidebar_row_selected_cb)
 
         # Construct the bottom toolbar
         box = builder.get_object("toolbar_bottom")
@@ -172,6 +174,10 @@ class MintWelcome():
 
         window.set_default_size(800, 500)
         window.show_all()
+
+    def go(self, button):
+        self.list_box.select_row(self.first_steps_row)
+        self.stack.set_visible_child_name("page_first_steps")
 
     def surface_for_path(self, path, scale):
         pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
