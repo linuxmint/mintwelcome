@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkWindow" id="main_window">
-    <property name="can_focus">False</property>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="headerbar">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="title" translatable="yes">Welcome</property>
-        <property name="has_subtitle">False</property>
-        <property name="show_close_button">True</property>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-    </child>
+    <property name="can-focus">False</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <placeholder/>
@@ -27,21 +15,21 @@
         <child>
           <object class="GtkBox" id="center_box">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <child>
               <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">never</property>
-                <property name="shadow_type">in</property>
+                <property name="can-focus">True</property>
+                <property name="hscrollbar-policy">never</property>
+                <property name="shadow-type">in</property>
                 <child>
                   <object class="GtkViewport">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <child>
                       <object class="GtkListBox" id="list_navigation">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                       </object>
                     </child>
                   </object>
@@ -66,7 +54,7 @@
         <child>
           <object class="GtkActionBar" id="toolbar_bottom">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -76,37 +64,49 @@
         </child>
       </object>
     </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="title" translatable="yes">Welcome</property>
+        <property name="has-subtitle">False</property>
+        <property name="show-close-button">True</property>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
   </object>
   <object class="GtkBox" id="page_contribute">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="border_width">24</property>
+        <property name="can-focus">False</property>
+        <property name="border-width">24</property>
         <property name="orientation">vertical</property>
         <property name="spacing">18</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="spacing">24</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="valign">start</property>
-                <property name="margin_top">6</property>
+                <property name="margin-top">6</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">12</property>
                 <child>
                   <object class="GtkImage" id="image_user_guide4">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">center</property>
-                    <property name="icon_name">applications-development</property>
+                    <property name="icon-name">applications-development</property>
                     <property name="icon_size">6</property>
                   </object>
                   <packing>
@@ -125,13 +125,13 @@
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">3</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Contribute</property>
                     <property name="xalign">0</property>
                     <attributes>
@@ -148,7 +148,7 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Linux Mint is a great project. It is open to anyone who wants to participate. There are many ways to help. Click the button below to see how you can get involved.</property>
                     <property name="wrap">True</property>
                     <property name="xalign">0</property>
@@ -163,10 +163,10 @@
                   <object class="GtkButton" id="button_contribute">
                     <property name="label" translatable="yes">Launch</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="halign">center</property>
-                    <property name="margin_top">3</property>
+                    <property name="margin-top">3</property>
                     <style>
                       <class name="suggested-action"/>
                       <class name="text-button"/>
@@ -175,7 +175,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="pack_type">end</property>
+                    <property name="pack-type">end</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
@@ -203,52 +203,52 @@
   </object>
   <object class="GtkBox" id="page_documentation">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="hscrollbar_policy">never</property>
+        <property name="can-focus">True</property>
+        <property name="hscrollbar-policy">never</property>
         <child>
           <object class="GtkViewport">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <child>
               <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">never</property>
+                <property name="can-focus">True</property>
+                <property name="hscrollbar-policy">never</property>
                 <child>
                   <object class="GtkViewport">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <child>
                       <object class="GtkBox" id="box_documentation">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="border_width">24</property>
+                        <property name="can-focus">False</property>
+                        <property name="border-width">24</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">18</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="spacing">24</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="valign">start</property>
-                                <property name="margin_top">6</property>
+                                <property name="margin-top">6</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">12</property>
                                 <child>
                                   <object class="GtkImage" id="image_user_guide3">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="halign">center</property>
-                                    <property name="icon_name">text-x-generic</property>
+                                    <property name="icon-name">text-x-generic</property>
                                     <property name="icon_size">6</property>
                                   </object>
                                   <packing>
@@ -267,13 +267,13 @@
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">3</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">Documentation</property>
                                     <property name="xalign">0</property>
                                     <attributes>
@@ -290,7 +290,7 @@
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">The Linux Mint documentation consists of a collection of guides, available in PDF, ePUB and HTML and available in many languages. Click the button below to see which guides are available.</property>
                                     <property name="wrap">True</property>
                                     <property name="xalign">0</property>
@@ -305,10 +305,10 @@
                                   <object class="GtkButton" id="button_documentation">
                                     <property name="label" translatable="yes">Launch</property>
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
                                     <property name="halign">center</property>
-                                    <property name="margin_top">3</property>
+                                    <property name="margin-top">3</property>
                                     <style>
                                       <class name="suggested-action"/>
                                       <class name="text-button"/>
@@ -317,7 +317,7 @@
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
-                                    <property name="pack_type">end</property>
+                                    <property name="pack-type">end</property>
                                     <property name="position">2</property>
                                   </packing>
                                 </child>
@@ -338,22 +338,22 @@
                         <child>
                           <object class="GtkBox" id="box_new_features">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="spacing">24</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="valign">start</property>
-                                <property name="margin_top">6</property>
+                                <property name="margin-top">6</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">12</property>
                                 <child>
                                   <object class="GtkImage" id="image_new_features5">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="halign">center</property>
-                                    <property name="icon_name">dialog-information</property>
+                                    <property name="icon-name">dialog-information</property>
                                     <property name="icon_size">6</property>
                                   </object>
                                   <packing>
@@ -372,13 +372,13 @@
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">3</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">New Features</property>
                                     <property name="xalign">0</property>
                                     <attributes>
@@ -395,7 +395,7 @@
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">Click the button below to discover the new features introduced in this version of Linux Mint.</property>
                                     <property name="wrap">True</property>
                                     <property name="xalign">0</property>
@@ -410,10 +410,10 @@
                                   <object class="GtkButton" id="button_new_features">
                                     <property name="label" translatable="yes">Launch</property>
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
                                     <property name="halign">center</property>
-                                    <property name="margin_top">3</property>
+                                    <property name="margin-top">3</property>
                                     <style>
                                       <class name="suggested-action"/>
                                       <class name="text-button"/>
@@ -422,7 +422,7 @@
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
-                                    <property name="pack_type">end</property>
+                                    <property name="pack-type">end</property>
                                     <property name="position">2</property>
                                   </packing>
                                 </child>
@@ -443,22 +443,22 @@
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="spacing">24</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="valign">start</property>
-                                <property name="margin_top">6</property>
+                                <property name="margin-top">6</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">12</property>
                                 <child>
                                   <object class="GtkImage" id="image_new_features6">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="halign">center</property>
-                                    <property name="icon_name">dialog-warning</property>
+                                    <property name="icon-name">dialog-warning</property>
                                     <property name="icon_size">6</property>
                                   </object>
                                   <packing>
@@ -477,13 +477,13 @@
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">3</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">Release Notes</property>
                                     <property name="xalign">0</property>
                                     <attributes>
@@ -500,7 +500,7 @@
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">Click the button below to read about known bugs, limitations and workarounds for this version of Linux Mint.</property>
                                     <property name="wrap">True</property>
                                     <property name="xalign">0</property>
@@ -515,10 +515,10 @@
                                   <object class="GtkButton" id="button_release_notes">
                                     <property name="label" translatable="yes">Launch</property>
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
                                     <property name="halign">center</property>
-                                    <property name="margin_top">3</property>
+                                    <property name="margin-top">3</property>
                                     <style>
                                       <class name="suggested-action"/>
                                       <class name="text-button"/>
@@ -527,7 +527,7 @@
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
-                                    <property name="pack_type">end</property>
+                                    <property name="pack-type">end</property>
                                     <property name="position">2</property>
                                   </packing>
                                 </child>
@@ -563,43 +563,43 @@
   </object>
   <object class="GtkBox" id="page_first_steps">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="hscrollbar_policy">never</property>
+        <property name="can-focus">True</property>
+        <property name="hscrollbar-policy">never</property>
         <child>
           <object class="GtkViewport">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <child>
               <object class="GtkBox" id="box_first_steps">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="border_width">24</property>
+                <property name="can-focus">False</property>
+                <property name="border-width">24</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">18</property>
                 <child>
                   <object class="GtkBox" id="box_colors">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_new_features7">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">cs-color</property>
+                            <property name="icon-name">cs-color</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -618,13 +618,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Desktop Colors</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -641,7 +641,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">First, make yourself at home. Choose your favorite color and whether you prefer a light or a dark desktop theme.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -655,20 +655,20 @@
                         <child>
                           <object class="GtkButtonBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="hexpand">False</property>
-                            <property name="border_width">6</property>
+                            <property name="border-width">6</property>
                             <property name="homogeneous">True</property>
-                            <property name="layout_style">expand</property>
+                            <property name="layout-style">expand</property>
                             <child>
-                              <object class="GtkButton" id="button_green">
+                              <object class="GtkButton" id="button_aqua">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
-                                  <object class="GtkImage" id="img_green">
+                                  <object class="GtkImage" id="img_aqua">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -680,14 +680,14 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button_aqua">
+                              <object class="GtkButton" id="button_green">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
-                                  <object class="GtkImage" id="img_aqua">
+                                  <object class="GtkImage" id="img_green">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -701,12 +701,12 @@
                             <child>
                               <object class="GtkButton" id="button_blue">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_blue">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -720,12 +720,12 @@
                             <child>
                               <object class="GtkButton" id="button_brown">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_brown">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -739,12 +739,12 @@
                             <child>
                               <object class="GtkButton" id="button_grey">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_grey">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -758,12 +758,12 @@
                             <child>
                               <object class="GtkButton" id="button_orange">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_orange">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -777,12 +777,12 @@
                             <child>
                               <object class="GtkButton" id="button_pink">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_pink">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -796,12 +796,12 @@
                             <child>
                               <object class="GtkButton" id="button_purple">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_purple">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -815,12 +815,12 @@
                             <child>
                               <object class="GtkButton" id="button_red">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_red">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -834,12 +834,12 @@
                             <child>
                               <object class="GtkButton" id="button_sand">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_sand">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -853,12 +853,12 @@
                             <child>
                               <object class="GtkButton" id="button_teal">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="img_teal">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="stock">gtk-missing-image</property>
                                   </object>
                                 </child>
@@ -879,14 +879,14 @@
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="icon_name">display-brightness-symbolic</property>
+                                <property name="can-focus">False</property>
+                                <property name="icon-name">display-brightness-symbolic</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -897,7 +897,7 @@
                             <child>
                               <object class="GtkSwitch" id="switch_dark">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
+                                <property name="can-focus">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -908,8 +908,8 @@
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="icon_name">weather-clear-night-symbolic</property>
+                                <property name="can-focus">False</property>
+                                <property name="icon-name">weather-clear-night-symbolic</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -941,22 +941,22 @@
                 <child>
                   <object class="GtkBox" id="box_cinnamon">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_new_features8">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">cs-panel</property>
+                            <property name="icon-name">cs-panel</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -975,13 +975,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Panel Layout</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -998,7 +998,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Choose your favorite layout.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1012,26 +1012,26 @@
                         <child>
                           <object class="GtkButtonBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="hexpand">False</property>
-                            <property name="border_width">6</property>
+                            <property name="border-width">6</property>
                             <property name="homogeneous">True</property>
-                            <property name="layout_style">expand</property>
+                            <property name="layout-style">expand</property>
                             <child>
                               <object class="GtkButton" id="button_layout_legacy">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkBox">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="orientation">vertical</property>
                                     <property name="spacing">6</property>
                                     <child>
                                       <object class="GtkLabel">
                                         <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
+                                        <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">Traditional</property>
                                         <attributes>
                                           <attribute name="weight" value="bold"/>
@@ -1044,22 +1044,9 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkImage" id="img_legacy">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="pixbuf">legacy.png</property>
-                                        <property name="icon_size">0</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
                                       <object class="GtkLabel">
                                         <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
+                                        <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">A small panel and a traditional window list.</property>
                                         <property name="wrap">True</property>
                                       </object>
@@ -1081,18 +1068,18 @@
                             <child>
                               <object class="GtkButton" id="button_layout_new">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkBox">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can-focus">False</property>
                                     <property name="orientation">vertical</property>
                                     <property name="spacing">6</property>
                                     <child>
                                       <object class="GtkLabel">
                                         <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
+                                        <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">Modern</property>
                                         <attributes>
                                           <attribute name="weight" value="bold"/>
@@ -1105,21 +1092,9 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkImage" id="img_modern">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="pixbuf">modern.png</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
                                       <object class="GtkLabel">
                                         <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
+                                        <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">A large panel with grouped windows and a small system tray.</property>
                                         <property name="wrap">True</property>
                                       </object>
@@ -1148,7 +1123,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Note: Cinnamon will restart after you choose a new layout. Any customization you made to the panel will be lost.</property>
                             <property name="wrap">True</property>
                           </object>
@@ -1175,22 +1150,22 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_user_guide1">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">timeshift</property>
+                            <property name="icon-name">timeshift</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1209,13 +1184,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">System Snapshots</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1232,7 +1207,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Next, let's set automatic system snapshots. A minimum of two daily and two boot snapshots are recommended. If anything breaks, you can then restore your computer to its previous working state.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1247,10 +1222,10 @@
                           <object class="GtkButton" id="button_timeshift">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -1259,7 +1234,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1280,22 +1255,22 @@
                 <child>
                   <object class="GtkBox" id="box_drivers">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_new_features3">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">mintdrivers</property>
+                            <property name="icon-name">mintdrivers</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1314,13 +1289,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Driver Manager</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1337,7 +1312,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Check the Driver Manager to see if it recommends any additional drivers for your computer. Most hardware components are recognized by the Linux kernel and work automatically without the need to install drivers. Some however require proprietary drivers to be recognized or to work better.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1352,10 +1327,10 @@
                           <object class="GtkButton" id="button_mintdrivers">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -1364,7 +1339,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1385,22 +1360,22 @@
                 <child>
                   <object class="GtkBox" id="box_codecs">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_user_guide5">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">xplayer</property>
+                            <property name="icon-name">xplayer</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1419,13 +1394,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Multimedia Codecs</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1442,7 +1417,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Additional multimedia codecs are required to support some formats and to play popular audio, video and web content. Click the button below to install them.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1457,10 +1432,10 @@
                           <object class="GtkButton" id="button_codecs">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -1469,7 +1444,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1490,22 +1465,22 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_release_notes1">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">mintupdate</property>
+                            <property name="icon-name">mintupdate</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1524,13 +1499,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Update Manager</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1547,7 +1522,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">The little shield icon in your system tray is your Update Manager. It provides software updates, security updates and kernel updates to fix bugs, keep your computer safe and support newer hardware components.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1562,10 +1537,10 @@
                           <object class="GtkButton" id="button_mintupdate">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -1574,7 +1549,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1595,22 +1570,22 @@
                 <child>
                   <object class="GtkBox" id="box_settings">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_new_features2">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">preferences-system</property>
+                            <property name="icon-name">preferences-system</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1629,13 +1604,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">System Settings</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1652,7 +1627,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Have a look at the system settings and configure your operating system the way you like. Don't hesitate to customize it and make it feel like home.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1667,10 +1642,10 @@
                           <object class="GtkButton" id="button_settings">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -1679,7 +1654,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1700,22 +1675,22 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_new_features1">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">mintinstall</property>
+                            <property name="icon-name">mintinstall</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1734,13 +1709,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Software Manager</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1757,7 +1732,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">There are about 60,000 applications available. Linux Mint comes with the bare minimum to get you started. The Software Manager is there if you're looking for more.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1772,10 +1747,10 @@
                           <object class="GtkButton" id="button_mintinstall">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -1784,7 +1759,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1805,22 +1780,22 @@
                 <child>
                   <object class="GtkBox" id="box_gufw">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_gufw">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">gufw</property>
+                            <property name="icon-name">gufw</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1839,13 +1814,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Firewall</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1862,7 +1837,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Control and monitor network traffic by enabling the firewall.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -1877,10 +1852,10 @@
                           <object class="GtkButton" id="button_gufw">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -1889,7 +1864,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1921,43 +1896,43 @@
   </object>
   <object class="GtkBox" id="page_help">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="hscrollbar_policy">never</property>
+        <property name="can-focus">True</property>
+        <property name="hscrollbar-policy">never</property>
         <child>
           <object class="GtkViewport">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="border_width">24</property>
+                <property name="can-focus">False</property>
+                <property name="border-width">24</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">18</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_user_guide2">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">applications-internet</property>
+                            <property name="icon-name">applications-internet</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1976,13 +1951,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Web Forums</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -1999,7 +1974,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">The Linux Mint forums are the best place to find help. Join thousands of users, search topics and threads and find solutions to your problems.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -2014,10 +1989,10 @@
                           <object class="GtkButton" id="button_forums">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -2026,7 +2001,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -2047,22 +2022,22 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="spacing">24</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin_top">6</property>
+                        <property name="margin-top">6</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkImage" id="image_new_features4">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon_name">xchat</property>
+                            <property name="icon-name">xchat</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -2081,13 +2056,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">IRC Chat Room</property>
                             <property name="xalign">0</property>
                             <attributes>
@@ -2104,7 +2079,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">You can also connect to the IRC chat room and chat with users who are currently online. Ask a question, maybe someone there knows the solution?</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -2119,10 +2094,10 @@
                           <object class="GtkButton" id="button_irc">
                             <property name="label" translatable="yes">Launch</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
                             <property name="halign">center</property>
-                            <property name="margin_top">3</property>
+                            <property name="margin-top">3</property>
                             <style>
                               <class name="suggested-action"/>
                               <class name="text-button"/>
@@ -2131,7 +2106,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="pack_type">end</property>
+                            <property name="pack-type">end</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -2152,7 +2127,7 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Linux Mint has a great community. Many users will welcome you with open arms and be delighted to help you. Make sure to be patient and respectful with them. Keep a happy and positive attitude and provide accurate information when someone helps you.</property>
                     <property name="wrap">True</property>
                     <property name="xalign">0</property>
@@ -2166,7 +2141,7 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="label" translatable="yes">If you have a bad experience with another user, try to solve it responsibly or contact the moderation team. Although we can't guarantee everyone will behave nicely, our project promotes help, respect, tolerance, ideas and constructive discussions.</property>
                     <property name="wrap">True</property>
                     <property name="xalign">0</property>
@@ -2191,44 +2166,44 @@
   </object>
   <object class="GtkBox" id="page_home">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="hscrollbar_policy">never</property>
+        <property name="can-focus">True</property>
+        <property name="hscrollbar-policy">never</property>
         <child>
           <object class="GtkViewport">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox" id="box">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="border_width">24</property>
+                    <property name="can-focus">False</property>
+                    <property name="border-width">24</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">18</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="spacing">24</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
                             <property name="spacing">3</property>
                             <child>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Welcome to Linux Mint</property>
                                 <property name="xalign">0</property>
                                 <attributes>
@@ -2259,13 +2234,13 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Welcome to your new operating system!</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
@@ -2286,7 +2261,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="label" translatable="yes">This welcome screen will guide you through your first steps, show you how to find help and where to get more information about Linux Mint.</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
@@ -2300,7 +2275,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="label" translatable="yes">On behalf of the development team and everyone involved in the project, we'd like to thank you for choosing Linux Mint. We hope you'll enjoy using it as much as we enjoy working on it.</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
@@ -2314,7 +2289,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Have a great time and don't hesitate to send us your feedback.</property>
                         <property name="wrap">True</property>
                         <property name="xalign">0</property>
@@ -2335,16 +2310,16 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="border_width">20</property>
+                    <property name="border-width">20</property>
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixel_size">32</property>
-                        <property name="icon_name">linuxmint-logo-filled-ring</property>
+                        <property name="can-focus">False</property>
+                        <property name="pixel-size">32</property>
+                        <property name="icon-name">linuxmint-logo-filled-ring</property>
                         <property name="icon_size">0</property>
                       </object>
                       <packing>
@@ -2356,7 +2331,7 @@
                     <child>
                       <object class="GtkLabel" id="label_version">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="justify">center</property>
                         <attributes>
                           <attribute name="weight" value="bold"/>
@@ -2371,7 +2346,7 @@
                     <child>
                       <object class="GtkLabel" id="label_edition">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="justify">center</property>
                       </object>
                       <packing>

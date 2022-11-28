@@ -160,18 +160,6 @@ class MintWelcome():
         self.all_colors = ["green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal"]
         self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
 
-        # Use HIDPI pictures if appropriate
-        if scale == 1:
-            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/legacy.png", scale)
-            builder.get_object("img_legacy").set_from_surface(surface)
-            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/modern.png", scale)
-            builder.get_object("img_modern").set_from_surface(surface)
-        else:
-            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/legacy-hidpi.png", scale)
-            builder.get_object("img_legacy").set_from_surface(surface)
-            surface = self.surface_for_path("/usr/share/linuxmint/mintwelcome/modern-hidpi.png", scale)
-            builder.get_object("img_modern").set_from_surface(surface)
-
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
             path = "/usr/share/linuxmint/mintwelcome/colors/hidpi/"
