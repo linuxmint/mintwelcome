@@ -1,3 +1,12 @@
+mintwelcome (2.5.7) vera; urgency=medium
+
+  * panel layout: Remove pictures
+  * panel_layout: Switch modern/traditional
+  * Add a button on the main page to show the first steps
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 28 Nov 2022 10:57:50 +0000
+
 mintwelcome (2.5.6) vera; urgency=medium
 
   * Update colors
