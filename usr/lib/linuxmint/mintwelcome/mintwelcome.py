@@ -9,6 +9,9 @@ import locale
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
+def get_desktop_env():
+    return os.getenv("XDG_CURRENT_DESKTOP")
+
 NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
 # i18n
@@ -47,15 +50,12 @@ class MintWelcome():
 
         with open("/etc/linuxmint/info") as f:
             config = dict([line.strip().split("=") for line in f])
-        codename = config['CODENAME'].capitalize()
         edition = config['EDITION'].replace('"', '')
         release = config['RELEASE']
-        desktop = config['DESKTOP']
         release_notes = config['RELEASE_NOTES_URL']
         new_features = config['NEW_FEATURES_URL']
-        architecture = "64-bit"
-        if platform.machine() != "x86_64":
-            architecture = "32-bit"
+        architecture = "64" if platform.machine() == "x86_64" else "32"
+        architecture = "%s-bit" % architecture
 
         # distro-specific
         dist_name = "Linux Mint"
@@ -92,13 +92,14 @@ class MintWelcome():
         # Settings button depends on DE
         de_is_cinnamon = False
         self.theme = None
-        if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
+        de = get_desktop_env()
+        if de in ["Cinnamon", "X-Cinnamon"]:
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
             de_is_cinnamon = True
             self.theme = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
+        elif de == "MATE":
             builder.get_object("button_settings").connect("clicked", self.launch, "mate-control-center")
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+        elif de == "XFCE":
             builder.get_object("button_settings").connect("clicked", self.launch, "xfce4-settings-manager")
         else:
             # Hide settings
@@ -261,27 +262,27 @@ class MintWelcome():
         self.change_color()
 
     def change_color(self):
-        theme = "Mint-Y"
-        wm_theme = "Mint-Y"
-        cinnamon_theme = "Mint-Y-Dark"
+        theme = wm_theme = cinnamon_theme = "Mint-Y"
         if self.dark_mode:
             theme = "%s-Dark" % theme
+            cinnamon_theme = "%s-Dark" % cinnamon_theme
         if self.color != "green":
             theme = "%s-%s" % (theme, self.color.title())
             cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
 
-        if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
+        de = get_desktop_env()
+        if de in ["Cinnamon", "X-Cinnamon"]:
             settings = Gio.Settings(schema="org.cinnamon.desktop.interface")
             settings.set_string("gtk-theme", theme)
             settings.set_string("icon-theme", theme)
             Gio.Settings(schema="org.cinnamon.desktop.wm.preferences").set_string("theme", wm_theme)
             Gio.Settings(schema="org.cinnamon.theme").set_string("name", cinnamon_theme)
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
+        elif de == "MATE":
             settings = Gio.Settings(schema="org.mate.interface")
             settings.set_string("gtk-theme", theme)
             settings.set_string("icon-theme", theme)
             Gio.Settings(schema="org.mate.Marco.general").set_string("theme", wm_theme)
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+        elif de == "XFCE":
             subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
             subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", theme])
             subprocess.call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
@@ -289,13 +290,14 @@ class MintWelcome():
     def init_color_info(self):
         theme = "Mint-Y"
         dark_theme = "Mint-Y-Dark"
-        if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
+        de = get_desktop_env()
+        if de in ["Cinnamon", "X-Cinnamon"]:
             setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
+        elif de == "MATE":
             setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+        elif de == "XFCE":
             setting = subprocess.check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
-        
+
         if setting.startswith(theme):
             self.dark_mode = setting.startswith(dark_theme)
             if self.dark_mode:
@@ -310,7 +312,7 @@ class MintWelcome():
                     self.color = "green"
         else:
             self.init_default_color_info()  # Bail out if we aren't working with a Mint-Y theme or the theme is unknown
-    
+
     def init_default_color_info(self):
         self.color = "green"
         self.dark_mode = False
