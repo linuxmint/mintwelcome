@@ -49,6 +49,7 @@ class MintWelcome():
         window.connect("destroy", Gtk.main_quit)
 
         with open("/etc/linuxmint/info") as f:
+            # in this case, tuples seem slower than lists
             config = dict([line.strip().split("=") for line in f])
         edition = config['EDITION'].replace('"', '')
         release = config['RELEASE']
@@ -93,7 +94,7 @@ class MintWelcome():
         de_is_cinnamon = False
         self.theme = None
         de = get_desktop_env()
-        if de in ["Cinnamon", "X-Cinnamon"]:
+        if de in ("Cinnamon", "X-Cinnamon"):
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
             de_is_cinnamon = True
             self.theme = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
@@ -160,12 +161,12 @@ class MintWelcome():
 
         scale = window.get_scale_factor()
 
-        self.all_colors = ["green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal"]
+        self.all_colors = ("green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal")
         self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
 
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
-            path = "/usr/share/linuxmint/mintwelcome/colors/hidpi/"
+            path += "hidpi/"
         for color in self.all_colors:
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
@@ -271,7 +272,7 @@ class MintWelcome():
             cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
 
         de = get_desktop_env()
-        if de in ["Cinnamon", "X-Cinnamon"]:
+        if de in ("Cinnamon", "X-Cinnamon"):
             settings = Gio.Settings(schema="org.cinnamon.desktop.interface")
             settings.set_string("gtk-theme", theme)
             settings.set_string("icon-theme", theme)
@@ -291,19 +292,20 @@ class MintWelcome():
         theme = "Mint-Y"
         dark_theme = "Mint-Y-Dark"
         de = get_desktop_env()
-        if de in ["Cinnamon", "X-Cinnamon"]:
+        if de in ("Cinnamon", "X-Cinnamon"):
             setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
         elif de == "MATE":
             setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
         elif de == "XFCE":
             setting = subprocess.check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
+        else:
+            # Instead of letting Py raise a cryptic error message,
+            # we use a more specific message
+            raise Exception('Unrecognized Desktop Environment: %s' % de)
 
         if setting.startswith(theme):
             self.dark_mode = setting.startswith(dark_theme)
-            if self.dark_mode:
-                setting = setting.replace(dark_theme, "")
-            else:
-                setting = setting.replace(theme, "")
+            setting = setting.replace(dark_theme if self.dark_mode else theme, "")
             if len(setting) <= 1:
                 self.color = "green"
             else:
