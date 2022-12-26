@@ -269,7 +269,7 @@ class MintWelcome():
             cinnamon_theme = "%s-Dark" % cinnamon_theme
         if self.color != "green":
             theme = "%s-%s" % (theme, self.color.title())
-            cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
+            cinnamon_theme += "-%s" % self.color.title()
 
         de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
