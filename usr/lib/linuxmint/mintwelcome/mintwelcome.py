@@ -159,7 +159,7 @@ class MintWelcome():
 
         scale = window.get_scale_factor()
 
-        self.all_colors = ["green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal"]
+        self.all_colors = ["blue", "aqua", "teal", "green", "sand", "brown", "grey", "orange", "red", "pink", "purple"]
         self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
 
         path = "/usr/share/linuxmint/mintwelcome/colors/"
