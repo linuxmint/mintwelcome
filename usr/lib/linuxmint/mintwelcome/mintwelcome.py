@@ -262,28 +262,30 @@ class MintWelcome():
 
     def change_color(self):
         theme = "Mint-Y"
+        icon_theme = "Mint-Y"
         wm_theme = "Mint-Y"
         cinnamon_theme = "Mint-Y-Dark"
         if self.dark_mode:
             theme = "%s-Dark" % theme
         if self.color != "green":
             theme = "%s-%s" % (theme, self.color.title())
+            icon_theme = "%s-%s" % (icon_theme, self.color.title())
             cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
 
         if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
             settings = Gio.Settings(schema="org.cinnamon.desktop.interface")
             settings.set_string("gtk-theme", theme)
-            settings.set_string("icon-theme", theme)
+            settings.set_string("icon-theme", icon_theme)
             Gio.Settings(schema="org.cinnamon.desktop.wm.preferences").set_string("theme", wm_theme)
             Gio.Settings(schema="org.cinnamon.theme").set_string("name", cinnamon_theme)
         elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
             settings = Gio.Settings(schema="org.mate.interface")
             settings.set_string("gtk-theme", theme)
-            settings.set_string("icon-theme", theme)
+            settings.set_string("icon-theme", icon_theme)
             Gio.Settings(schema="org.mate.Marco.general").set_string("theme", wm_theme)
         elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
             subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
-            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", theme])
+            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", icon_theme])
             subprocess.call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
 
     def init_color_info(self):
