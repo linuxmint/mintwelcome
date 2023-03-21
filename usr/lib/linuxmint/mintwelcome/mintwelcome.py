@@ -19,9 +19,6 @@ from locale import gettext as _, bindtextdomain as locale_bindtxtdom, textdomain
 locale_bindtxtdom("mintwelcome", "/usr/share/linuxmint/locale")
 locale_txtdom("mintwelcome")
 
-LAYOUT_STYLE_LEGACY: Final = 0
-LAYOUT_STYLE_NEW: Final = 1
-
 class SidebarRow(Gtk.ListBoxRow):
 
     def __init__(self, page_widget, page_name, icon_name):
