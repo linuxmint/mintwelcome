@@ -86,8 +86,6 @@ class MintWelcome():
         builder.get_object("button_timeshift").connect("clicked", self.pkexec, "timeshift-gtk")
         builder.get_object("button_mintdrivers").connect("clicked", self.launch, "driver-manager")
         builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
-        builder.get_object("button_layout_legacy").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_LEGACY)
-        builder.get_object("button_layout_new").connect("clicked", self.on_button_layout_clicked, LAYOUT_STYLE_NEW)
         builder.get_object("go_button").connect("clicked", self.go)
 
         # Settings button depends on DE
@@ -105,10 +103,6 @@ class MintWelcome():
         else:
             # Hide settings
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
-
-        # Hide Cinnamon layout settings in other DEs
-        if not de_is_cinnamon:
-            builder.get_object("box_first_steps").remove(builder.get_object("box_cinnamon"))
 
         # Hide codecs box if they're already installed
         cache = apt.Cache()
@@ -161,7 +155,7 @@ class MintWelcome():
 
         scale = window.get_scale_factor()
 
-        self.all_colors = ("green", "aqua", "blue", "brown", "grey", "orange", "pink", "purple", "red", "sand", "teal")
+        self.all_colors = ("blue", "aqua", "teal", "green", "sand", "brown", "grey", "orange", "red", "pink", "purple")
         self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
 
         path = "/usr/share/linuxmint/mintwelcome/colors/"
@@ -197,63 +191,6 @@ class MintWelcome():
             os.system("mkdir -p ~/.linuxmint/mintwelcome")
             os.system("touch %s" % NORUN_FLAG)
 
-    def on_button_layout_clicked (self, button, style):
-
-        applets_legacy = ['panel1:left:0:menu@cinnamon.org',
-                          'panel1:left:1:show-desktop@cinnamon.org',
-                          'panel1:left:2:panel-launchers@cinnamon.org',
-                          'panel1:left:3:window-list@cinnamon.org',
-                          'panel1:right:0:systray@cinnamon.org',
-                          'panel1:right:1:xapp-status@cinnamon.org',
-                          'panel1:right:2:keyboard@cinnamon.org',
-                          'panel1:right:3:notifications@cinnamon.org',
-                          'panel1:right:4:printers@cinnamon.org',
-                          'panel1:right:5:removable-drives@cinnamon.org',
-                          'panel1:right:6:favorites@cinnamon.org',
-                          'panel1:right:7:user@cinnamon.org',
-                          'panel1:right:8:network@cinnamon.org',
-                          'panel1:right:9:sound@cinnamon.org',
-                          'panel1:right:10:power@cinnamon.org',
-                          'panel1:right:11:calendar@cinnamon.org']
-
-        applets_new = ['panel1:left:0:menu@cinnamon.org',
-                       'panel1:left:1:separator@cinnamon.org',
-                       'panel1:left:2:grouped-window-list@cinnamon.org',
-                       'panel1:right:0:systray@cinnamon.org',
-                       'panel1:right:1:xapp-status@cinnamon.org',
-                       'panel1:right:2:notifications@cinnamon.org',
-                       'panel1:right:3:printers@cinnamon.org',
-                       'panel1:right:4:removable-drives@cinnamon.org',
-                       'panel1:right:5:keyboard@cinnamon.org',
-                       'panel1:right:6:favorites@cinnamon.org',
-                       'panel1:right:7:network@cinnamon.org',
-                       'panel1:right:8:sound@cinnamon.org',
-                       'panel1:right:9:power@cinnamon.org',
-                       'panel1:right:10:calendar@cinnamon.org',
-                       'panel1:right:11:cornerbar@cinnamon.org']
-
-        settings = Gio.Settings("org.cinnamon")
-        settings.set_strv("panels-enabled", ['1:0:bottom'])
-
-        applets = applets_new
-        left_icon_size = 0
-        center_icon_size = 0
-        right_icon_size = 0
-        if style == LAYOUT_STYLE_LEGACY:
-            applets = applets_legacy
-            panel_size = 27
-            menu_label = "Menu"
-        elif style == LAYOUT_STYLE_NEW:
-            panel_size = 40
-            right_icon_size = 24
-            menu_label = ""
-
-        settings.set_strv("panels-height", ['1:%s' % panel_size])
-        settings.set_strv("enabled-applets", applets)
-        settings.set_string("app-menu-label", menu_label)
-        settings.set_string("panel-zone-icon-sizes", "[{\"panelId\": 1, \"left\": %s, \"center\": %s, \"right\": %s}]" % (left_icon_size, center_icon_size, right_icon_size))
-        os.system("cinnamon --replace &")
-
     def on_dark_mode_changed(self, button, state):
         self.dark_mode = state
         self.change_color()
@@ -263,29 +200,33 @@ class MintWelcome():
         self.change_color()
 
     def change_color(self):
-        theme = wm_theme = cinnamon_theme = "Mint-Y"
+        theme = \
+        icon_theme = \
+        wm_theme = "Mint-Y"
+        cinnamon_theme = "Mint-Y-Dark"
         if self.dark_mode:
             theme = "%s-Dark" % theme
             cinnamon_theme = "%s-Dark" % cinnamon_theme
         if self.color != "green":
             theme = "%s-%s" % (theme, self.color.title())
-            cinnamon_theme += "-%s" % self.color.title()
+            icon_theme = "%s-%s" % (icon_theme, self.color.title())
+            cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
 
         de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             settings = Gio.Settings(schema="org.cinnamon.desktop.interface")
             settings.set_string("gtk-theme", theme)
-            settings.set_string("icon-theme", theme)
+            settings.set_string("icon-theme", icon_theme)
             Gio.Settings(schema="org.cinnamon.desktop.wm.preferences").set_string("theme", wm_theme)
             Gio.Settings(schema="org.cinnamon.theme").set_string("name", cinnamon_theme)
         elif de == "MATE":
             settings = Gio.Settings(schema="org.mate.interface")
             settings.set_string("gtk-theme", theme)
-            settings.set_string("icon-theme", theme)
+            settings.set_string("icon-theme", icon_theme)
             Gio.Settings(schema="org.mate.Marco.general").set_string("theme", wm_theme)
         elif de == "XFCE":
             subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
-            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", theme])
+            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", icon_theme])
             subprocess.call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
 
     def init_color_info(self):
