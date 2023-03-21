@@ -47,7 +47,7 @@ class MintWelcome():
 
         builder = Gtk.Builder()
         builder.set_translation_domain("mintwelcome")
-        builder.add_from_file('/usr/share/linuxmint/mintwelcome/mintwelcome.ui')
+        builder.add_from_file("/usr/share/linuxmint/mintwelcome/mintwelcome.ui")
 
         window = builder.get_object("main_window")
         window.set_icon_name("mintwelcome")
@@ -56,17 +56,17 @@ class MintWelcome():
 
         with open("/etc/linuxmint/info") as f:
             # in this case, tuples seem slower than lists
-            config = dict([line.strip().split("=") for line in f])
-        edition = config['EDITION'].replace('"', '')
-        release = config['RELEASE']
-        release_notes = config['RELEASE_NOTES_URL']
-        new_features = config['NEW_FEATURES_URL']
-        architecture = ("64" if get_arch() == "x86_64" else "32") + "-bit"
+            config: Final = dict([line.strip().split("=") for line in f])
+        edition: Final = config['EDITION'].replace('"', '')
+        release: Final = config['RELEASE']
+        release_notes: Final = config['RELEASE_NOTES_URL']
+        new_features: Final = config['NEW_FEATURES_URL']
+        architecture: Final = ("64" if get_arch() == "x86_64" else "32") + "-bit"
 
         # distro-specific
-        dist_name = "Linux Mint"
-        if os_path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
-            dist_name = "LMDE"
+        dist_name: Final = \
+            "LMDE" if os_path.exists("/usr/share/doc/debian-system-adjustments/copyright") \
+            else "Linux Mint"
 
         # Setup the labels in the Mint badge
         builder.get_object("label_version").set_text("%s %s" % (dist_name, release))
@@ -245,7 +245,7 @@ class MintWelcome():
         else:
             # Instead of letting Py raise a cryptic error message,
             # we use a more specific message
-            raise Exception('Unrecognized Desktop Environment: %s' % de)
+            raise Exception("Unrecognized Desktop Environment: %s" % de)
 
         if setting.startswith(theme):
             self.dark_mode = setting.startswith(dark_theme)
