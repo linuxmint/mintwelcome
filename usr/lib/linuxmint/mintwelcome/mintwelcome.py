@@ -211,7 +211,6 @@ class MintWelcome():
         cinnamon_theme = DEFAULT_THEME + DARK_SUFFIX
         if self.dark_mode:
             theme = "%s-Dark" % theme
-            cinnamon_theme = "%s-Dark" % cinnamon_theme
         if self.color != DEFAULT_COLOR:
             theme = "%s-%s" % (theme, self.color.title())
             icon_theme = "%s-%s" % (icon_theme, self.color.title())
