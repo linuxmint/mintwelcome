@@ -18,6 +18,8 @@ def get_desktop_env():
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
 DEFAULT_COLOR: Final = "green"
+DEFAULT_THEME: Final = "Mint-Y"
+DARK_SUFFIX: Final = "-Dark"
 
 # i18n
 getxt_install("mintwelcome", "/usr/share/linuxmint/locale")
@@ -205,8 +207,8 @@ class MintWelcome():
     def change_color(self):
         theme = \
         icon_theme = \
-        wm_theme = "Mint-Y"
-        cinnamon_theme = "Mint-Y-Dark"
+        wm_theme = DEFAULT_THEME
+        cinnamon_theme = DEFAULT_THEME + DARK_SUFFIX
         if self.dark_mode:
             theme = "%s-Dark" % theme
             cinnamon_theme = "%s-Dark" % cinnamon_theme
