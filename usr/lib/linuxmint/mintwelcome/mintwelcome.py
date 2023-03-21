@@ -1,26 +1,26 @@
 #!/usr/bin/python3
-import apt
-import gettext
-import gi
-import os
-import platform
-import subprocess
-import locale
-gi.require_version("Gtk", "3.0")
+from typing import Final
+
+from gi import require_version as gi_req_ver
+from gettext import install as getxt_install
+from os import path as os_path, getenv, system
+from subprocess import call as subp_call, check_output as subp_check_output, Popen as subp_Popen
+gi_req_ver("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
 def get_desktop_env():
-    return os.getenv("XDG_CURRENT_DESKTOP")
+    return getenv("XDG_CURRENT_DESKTOP")
 
-NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
+NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
 # i18n
-gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
-from locale import gettext as _
-locale.bindtextdomain("mintwelcome", "/usr/share/linuxmint/locale")
-locale.textdomain("mintwelcome")
+getxt_install("mintwelcome", "/usr/share/linuxmint/locale")
+from locale import gettext as _, bindtextdomain as locale_bindtxtdom, textdomain as locale_txtdom
+locale_bindtxtdom("mintwelcome", "/usr/share/linuxmint/locale")
+locale_txtdom("mintwelcome")
 
-LAYOUT_STYLE_LEGACY, LAYOUT_STYLE_NEW = range(2)
+LAYOUT_STYLE_LEGACY: Final = 0
+LAYOUT_STYLE_NEW: Final = 1
 
 class SidebarRow(Gtk.ListBoxRow):
 
@@ -39,6 +39,9 @@ class SidebarRow(Gtk.ListBoxRow):
 class MintWelcome():
 
     def __init__(self):
+        from platform import machine as get_arch
+        from apt import Cache as apt_Cache
+
         builder = Gtk.Builder()
         builder.set_translation_domain("mintwelcome")
         builder.add_from_file('/usr/share/linuxmint/mintwelcome/mintwelcome.ui')
@@ -55,12 +58,11 @@ class MintWelcome():
         release = config['RELEASE']
         release_notes = config['RELEASE_NOTES_URL']
         new_features = config['NEW_FEATURES_URL']
-        architecture = "64" if platform.machine() == "x86_64" else "32"
-        architecture = "%s-bit" % architecture
+        architecture = ("64" if get_arch() == "x86_64" else "32") + "-bit"
 
         # distro-specific
         dist_name = "Linux Mint"
-        if os.path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
+        if os_path.exists("/usr/share/doc/debian-system-adjustments/copyright"):
             dist_name = "LMDE"
 
         # Setup the labels in the Mint badge
@@ -89,12 +91,10 @@ class MintWelcome():
         builder.get_object("go_button").connect("clicked", self.go)
 
         # Settings button depends on DE
-        de_is_cinnamon = False
         self.theme = None
         de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
-            de_is_cinnamon = True
             self.theme = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
         elif de == "MATE":
             builder.get_object("button_settings").connect("clicked", self.launch, "mate-control-center")
@@ -105,12 +105,12 @@ class MintWelcome():
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
 
         # Hide codecs box if they're already installed
-        cache = apt.Cache()
+        cache = apt_Cache()
         if "mint-meta-codecs" in cache and cache["mint-meta-codecs"].is_installed:
             builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
 
         # Hide drivers if mintdrivers is absent (LMDE)
-        if not os.path.exists("/usr/bin/mintdrivers"):
+        if not os_path.exists("/usr/bin/mintdrivers"):
             builder.get_object("box_first_steps").remove(builder.get_object("box_drivers"))
 
         # Hide new features page for LMDE
@@ -148,7 +148,7 @@ class MintWelcome():
         box = builder.get_object("toolbar_bottom")
         checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
-        if not os.path.exists(NORUN_FLAG):
+        if not os_path.exists(NORUN_FLAG):
             checkbox.set_active(True)
         checkbox.connect("toggled", self.on_button_toggled)
         box.pack_end(checkbox)
@@ -185,11 +185,11 @@ class MintWelcome():
 
     def on_button_toggled(self, button):
         if button.get_active():
-            if os.path.exists(NORUN_FLAG):
-                os.system("rm -rf %s" % NORUN_FLAG)
+            if os_path.exists(NORUN_FLAG):
+                system("rm -rf %s" % NORUN_FLAG)
         else:
-            os.system("mkdir -p ~/.linuxmint/mintwelcome")
-            os.system("touch %s" % NORUN_FLAG)
+            system("mkdir -p ~/.linuxmint/mintwelcome")
+            system("touch %s" % NORUN_FLAG)
 
     def on_dark_mode_changed(self, button, state):
         self.dark_mode = state
@@ -225,9 +225,9 @@ class MintWelcome():
             settings.set_string("icon-theme", icon_theme)
             Gio.Settings(schema="org.mate.Marco.general").set_string("theme", wm_theme)
         elif de == "XFCE":
-            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
-            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", icon_theme])
-            subprocess.call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
+            subp_call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
+            subp_call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", icon_theme])
+            subp_call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
 
     def init_color_info(self):
         theme = "Mint-Y"
@@ -238,7 +238,7 @@ class MintWelcome():
         elif de == "MATE":
             setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
         elif de == "XFCE":
-            setting = subprocess.check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
+            setting = subp_check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
         else:
             # Instead of letting Py raise a cryptic error message,
             # we use a more specific message
@@ -261,13 +261,13 @@ class MintWelcome():
         self.dark_mode = False
 
     def visit(self, button, url):
-        subprocess.Popen(["xdg-open", url])
+        subp_Popen(["xdg-open", url])
 
     def launch(self, button, command):
-        subprocess.Popen([command])
+        subp_Popen([command])
 
     def pkexec(self, button, command):
-        subprocess.Popen(["pkexec", command])
+        subp_Popen(["pkexec", command])
 
 if __name__ == "__main__":
     MintWelcome()
