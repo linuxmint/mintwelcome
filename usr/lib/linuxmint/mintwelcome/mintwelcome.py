@@ -20,6 +20,7 @@ NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 DEFAULT_COLOR: Final = "green"
 DEFAULT_THEME: Final = "Mint-Y"
 DARK_SUFFIX: Final = "-Dark"
+DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
 
 # i18n
 getxt_install("mintwelcome", "/usr/share/linuxmint/locale")
@@ -206,15 +207,16 @@ class MintWelcome():
 
     def change_color(self):
         theme = \
-        icon_theme = \
-        wm_theme = DEFAULT_THEME
-        cinnamon_theme = DEFAULT_THEME + DARK_SUFFIX
+        icon_theme = DEFAULT_THEME
+        wm_theme: Final = DEFAULT_THEME
+        cinnamon_theme = DEFAULT_DARK_THEME
         if self.dark_mode:
-            theme = "%s-Dark" % theme
+            theme += DARK_SUFFIX
+        color_suffix: Final = "-" + self.color.title()
         if self.color != DEFAULT_COLOR:
-            theme = "%s-%s" % (theme, self.color.title())
-            icon_theme = "%s-%s" % (icon_theme, self.color.title())
-            cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
+            theme += color_suffix
+            icon_theme += color_suffix
+            cinnamon_theme = DEFAULT_DARK_THEME + color_suffix
 
         de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
@@ -234,8 +236,8 @@ class MintWelcome():
             subp_call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
 
     def init_color_info(self):
-        theme = "Mint-Y"
-        dark_theme = "Mint-Y-Dark"
+        theme = DEFAULT_THEME
+        dark_theme = DEFAULT_DARK_THEME
         de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
