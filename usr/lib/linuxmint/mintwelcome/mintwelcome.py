@@ -9,6 +9,10 @@ gi_req_ver("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
 def get_desktop_env():
+    """
+    Get `XDG_CURRENT_DESKTOP` environment variable,
+    return `None` if it doesn't exist.
+    """
     return getenv("XDG_CURRENT_DESKTOP")
 
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
