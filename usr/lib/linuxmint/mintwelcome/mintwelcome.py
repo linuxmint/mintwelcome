@@ -17,6 +17,8 @@ def get_desktop_env():
 
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
+DEFAULT_COLOR: Final = "green"
+
 # i18n
 getxt_install("mintwelcome", "/usr/share/linuxmint/locale")
 from locale import gettext as _, bindtextdomain as locale_bindtxtdom, textdomain as locale_txtdom
@@ -208,7 +210,7 @@ class MintWelcome():
         if self.dark_mode:
             theme = "%s-Dark" % theme
             cinnamon_theme = "%s-Dark" % cinnamon_theme
-        if self.color != "green":
+        if self.color != DEFAULT_COLOR:
             theme = "%s-%s" % (theme, self.color.title())
             icon_theme = "%s-%s" % (icon_theme, self.color.title())
             cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
@@ -249,16 +251,18 @@ class MintWelcome():
             self.dark_mode = setting.startswith(dark_theme)
             setting = setting.replace(dark_theme if self.dark_mode else theme, "")
             if len(setting) <= 1:
-                self.color = "green"
+                self.color = DEFAULT_COLOR
             else:
                 self.color = setting[1:].lower()
-                if not self.color in self.all_colors:  # Assume green if our color is invalid
-                    self.color = "green"
+                # If invalid...
+                if not self.color in self.all_colors:
+                    # ...fallback to green
+                    self.color = DEFAULT_COLOR
         else:
             self.init_default_color_info()  # Bail out if we aren't working with a Mint-Y theme or the theme is unknown
 
     def init_default_color_info(self):
-        self.color = "green"
+        self.color = DEFAULT_COLOR
         self.dark_mode = False
 
     def visit(self, button, url):
