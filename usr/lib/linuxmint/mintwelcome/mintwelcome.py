@@ -197,7 +197,7 @@ class MintWelcome():
             path += "hidpi/"
         for c in Color:
             color: str = c.value
-            builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
+            builder.get_object("img_" + color).set_from_surface(self.surface_for_path(f"{path}/{color}.png", scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
         builder.get_object("switch_dark").set_active(self.dark_mode)
@@ -221,10 +221,10 @@ class MintWelcome():
     def on_button_toggled(self, button):
         if button.get_active():
             if os_path.exists(NORUN_FLAG):
-                system("rm -rf %s" % NORUN_FLAG)
+                system("rm -rf " + NORUN_FLAG)
         else:
             system("mkdir -p ~/.linuxmint/mintwelcome")
-            system("touch %s" % NORUN_FLAG)
+            system("touch " + NORUN_FLAG)
 
     def on_dark_mode_changed(self, button, state: bool):
         self.dark_mode = state
