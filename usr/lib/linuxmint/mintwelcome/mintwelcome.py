@@ -193,7 +193,7 @@ class MintWelcome():
         self.init_color_info()
 
         path = "/usr/share/linuxmint/mintwelcome/colors/"
-        if scale == 2:
+        if scale >= 2:
             path += "hidpi/"
         for c in Color:
             color: str = c.value
