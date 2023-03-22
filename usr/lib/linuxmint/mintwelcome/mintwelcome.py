@@ -32,6 +32,7 @@ class Color(Enum):
     PINK = "pink"
     PURPLE = "purple"
 
+# to-do: add fn similar to `dict.get`, but for enums, using try-except
 COLORSET: Final[set[str]] = set(e.value for e in Color)
 
 DEFAULT_COLOR: Final = Color.GREEN.value
