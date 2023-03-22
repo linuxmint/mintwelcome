@@ -41,11 +41,14 @@ DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
 
 MMC: Final = "mint-meta-codecs"
 
+# to-do
+'''
 class DesktopEnvs(Enum):
     CINNAMON = "Cinnamon"
     X_CINNAMON = "X-Cinnamon"
     MATE = "MATE"
     XFCE = "XFCE"
+'''
 
 def get_desktop_env():
     """
@@ -235,7 +238,7 @@ class MintWelcome():
         self.change_color()
 
     def change_color(self):
-        theme = \
+        theme = DEFAULT_THEME
         icon_theme = DEFAULT_THEME
         wm_theme: Final = DEFAULT_THEME
         cinnamon_theme = DEFAULT_DARK_THEME
