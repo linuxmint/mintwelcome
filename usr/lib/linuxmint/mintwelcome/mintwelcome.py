@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 from typing import Final
+# Can't use `StrEnum` because it requires Py 3.11+
+from enum import Enum #StrEnum
 
 from os import path as os_path, getenv, system
 from subprocess import call as subp_call, check_output as subp_check_output, Popen as subp_Popen
 
-from gi import require_version as gi_req_ver
 from gettext import install as getxt_install
+from gi import require_version as gi_req_ver
 gi_req_ver("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
@@ -17,14 +19,33 @@ locale_txtdom("mintwelcome")
 
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
-VALID_COLORS: Final = ("blue", "aqua", "teal", "green", "sand", "brown", "grey", "orange", "red", "pink", "purple")
-DEFAULT_COLOR: Final = VALID_COLORS[3]
+class ValidColors(Enum):
+    BLUE = "blue"
+    AQUA = "aqua"
+    TEAL = "teal"
+    GREEN = "green"
+    SAND = "sand"
+    BROWN = "brown"
+    GREY = "grey"
+    ORANGE = "orange"
+    RED = "red"
+    PINK = "pink"
+    PURPLE = "purple"
+
+VALID_COLORSET: Final[set[str]] = set(e.value for e in ValidColors)
+
+DEFAULT_COLOR: Final = ValidColors.GREEN.value
 DEFAULT_THEME: Final = "Mint-Y"
 DARK_SUFFIX: Final = "-Dark"
 DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
 
 MMC: Final = "mint-meta-codecs"
 
+class ValidDesktopEnvs(Enum):
+    CINNAMON = "Cinnamon"
+    X_CINNAMON = "X-Cinnamon"
+    MATE = "MATE"
+    XFCE = "XFCE"
 
 def get_desktop_env():
     """
@@ -94,7 +115,7 @@ class MintWelcome():
         builder.get_object("button_documentation").connect("clicked", self.visit, "https://linuxmint.com/documentation.php")
         builder.get_object("button_contribute").connect("clicked", self.visit, "https://linuxmint.com/getinvolved.php")
         builder.get_object("button_irc").connect("clicked", self.visit, "irc://irc.spotchat.org/linuxmint-help")
-        builder.get_object("button_codecs").connect("clicked", self.visit, "apt://%s?refresh=yes" % MMC)
+        builder.get_object("button_codecs").connect("clicked", self.visit, f"apt://{MMC}?refresh=yes")
         builder.get_object("button_new_features").connect("clicked", self.visit, new_features)
         builder.get_object("button_release_notes").connect("clicked", self.visit, release_notes)
         builder.get_object("button_mintupdate").connect("clicked", self.launch, "mintupdate")
@@ -174,7 +195,8 @@ class MintWelcome():
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
             path += "hidpi/"
-        for color in VALID_COLORS:
+        for c in ValidColors:
+            color: str = c.value
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
@@ -266,7 +288,7 @@ class MintWelcome():
                 self.color = DEFAULT_COLOR
             else:
                 self.color = setting[1:].lower()
-                if self.color not in VALID_COLORS:
+                if self.color not in VALID_COLORSET:
                     self.color = DEFAULT_COLOR
         else: # Not working with a Mint-Y theme, or theme is unknown
             self.init_default_color_info() # Fall-back
