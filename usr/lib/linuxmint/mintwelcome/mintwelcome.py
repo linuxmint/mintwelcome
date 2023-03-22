@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 from typing import Final
 
+from os import path as os_path, getenv, system
+
 from gi import require_version as gi_req_ver
 from gettext import install as getxt_install
-from os import path as os_path, getenv, system
 from subprocess import call as subp_call, check_output as subp_check_output, Popen as subp_Popen
 gi_req_ver("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
@@ -17,7 +18,8 @@ def get_desktop_env():
 
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
-DEFAULT_COLOR: Final = "green"
+VALID_COLORS: Final = ("blue", "aqua", "teal", "green", "sand", "brown", "grey", "orange", "red", "pink", "purple")
+DEFAULT_COLOR: Final = VALID_COLORS[3]
 DEFAULT_THEME: Final = "Mint-Y"
 DARK_SUFFIX: Final = "-Dark"
 DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
@@ -30,7 +32,7 @@ locale_txtdom("mintwelcome")
 
 class SidebarRow(Gtk.ListBoxRow):
 
-    def __init__(self, page_widget, page_name, icon_name):
+    def __init__(self, page_widget, page_name: str, icon_name: str):
         Gtk.ListBoxRow.__init__(self)
         self.page_widget = page_widget
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
@@ -48,11 +50,11 @@ class MintWelcome():
         from platform import machine as get_arch
         from apt import Cache as apt_Cache
 
-        builder = Gtk.Builder()
+        builder: Final = Gtk.Builder()
         builder.set_translation_domain("mintwelcome")
         builder.add_from_file("/usr/share/linuxmint/mintwelcome/mintwelcome.ui")
 
-        window = builder.get_object("main_window")
+        window: Final = builder.get_object("main_window")
         window.set_icon_name("mintwelcome")
         window.set_position(Gtk.WindowPosition.CENTER)
         window.connect("destroy", Gtk.main_quit)
@@ -64,7 +66,9 @@ class MintWelcome():
         release: Final = config['RELEASE']
         release_notes: Final = config['RELEASE_NOTES_URL']
         new_features: Final = config['NEW_FEATURES_URL']
-        architecture: Final = ("64" if get_arch() == "x86_64" else "32") + "-bit"
+        # since LM is distributed as 64b or 32b,
+        # this is a safe assumption
+        architecture: Final = ("64" if "64" in get_arch() else "32") + "-bit"
 
         # distro-specific
         dist_name: Final = \
@@ -159,15 +163,14 @@ class MintWelcome():
         checkbox.connect("toggled", self.on_button_toggled)
         box.pack_end(checkbox)
 
-        scale = window.get_scale_factor()
+        scale: int = window.get_scale_factor()
 
-        self.all_colors = ("blue", "aqua", "teal", "green", "sand", "brown", "grey", "orange", "red", "pink", "purple")
         self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
 
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
             path += "hidpi/"
-        for color in self.all_colors:
+        for color in VALID_COLORS:
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
@@ -181,7 +184,7 @@ class MintWelcome():
         self.list_box.select_row(self.first_steps_row)
         self.stack.set_visible_child_name("page_first_steps")
 
-    def surface_for_path(self, path, scale):
+    def surface_for_path(self, path: str, scale: int):
         pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
 
         return Gdk.cairo_surface_create_from_pixbuf(pixbuf, scale)
@@ -197,11 +200,11 @@ class MintWelcome():
             system("mkdir -p ~/.linuxmint/mintwelcome")
             system("touch %s" % NORUN_FLAG)
 
-    def on_dark_mode_changed(self, button, state):
+    def on_dark_mode_changed(self, button, state: bool):
         self.dark_mode = state
         self.change_color()
 
-    def on_color_button_clicked(self, button, color):
+    def on_color_button_clicked(self, button, color: str):
         self.color = color
         self.change_color()
 
@@ -258,7 +261,7 @@ class MintWelcome():
             else:
                 self.color = setting[1:].lower()
                 # If invalid...
-                if not self.color in self.all_colors:
+                if not self.color in VALID_COLORS:
                     # ...fallback to green
                     self.color = DEFAULT_COLOR
         else:
@@ -268,13 +271,13 @@ class MintWelcome():
         self.color = DEFAULT_COLOR
         self.dark_mode = False
 
-    def visit(self, button, url):
+    def visit(self, button, url: str):
         subp_Popen(["xdg-open", url])
 
-    def launch(self, button, command):
+    def launch(self, button, command: str):
         subp_Popen([command])
 
-    def pkexec(self, button, command):
+    def pkexec(self, button, command: str):
         subp_Popen(["pkexec", command])
 
 if __name__ == "__main__":
