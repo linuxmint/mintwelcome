@@ -19,7 +19,7 @@ locale_txtdom("mintwelcome")
 
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
-class ValidColors(Enum):
+class Color(Enum):
     BLUE = "blue"
     AQUA = "aqua"
     TEAL = "teal"
@@ -32,16 +32,16 @@ class ValidColors(Enum):
     PINK = "pink"
     PURPLE = "purple"
 
-VALID_COLORSET: Final[set[str]] = set(e.value for e in ValidColors)
+COLORSET: Final[set[str]] = set(e.value for e in Color)
 
-DEFAULT_COLOR: Final = ValidColors.GREEN.value
+DEFAULT_COLOR: Final = Color.GREEN.value
 DEFAULT_THEME: Final = "Mint-Y"
 DARK_SUFFIX: Final = "-Dark"
 DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
 
 MMC: Final = "mint-meta-codecs"
 
-class ValidDesktopEnvs(Enum):
+class DesktopEnvs(Enum):
     CINNAMON = "Cinnamon"
     X_CINNAMON = "X-Cinnamon"
     MATE = "MATE"
@@ -101,8 +101,8 @@ class MintWelcome():
             else "Linux Mint"
 
         # Setup the labels in the Mint badge
-        builder.get_object("label_version").set_text("%s %s" % (dist_name, release))
-        builder.get_object("label_edition").set_text("%s %s" % (edition, architecture))
+        builder.get_object("label_version").set_text(dist_name + " " + release)
+        builder.get_object("label_edition").set_text(edition + " " + architecture)
 
         # Setup the main stack
         self.stack = Gtk.Stack()
@@ -195,7 +195,7 @@ class MintWelcome():
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
             path += "hidpi/"
-        for c in ValidColors:
+        for c in Color:
             color: str = c.value
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
@@ -277,9 +277,10 @@ class MintWelcome():
             setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
         elif de == "XFCE":
             setting = subp_check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
+        elif de == None:
+            raise TypeError("No Desktop Environment")
         else:
-            # Avoids a cryptic error message
-            raise Exception("Unrecognized Desktop Environment: %s" % de)
+            raise ValueError("Unrecognized Desktop Environment: " + de)
 
         if setting.startswith(theme):
             self.dark_mode = setting.startswith(dark_theme)
@@ -288,7 +289,7 @@ class MintWelcome():
                 self.color = DEFAULT_COLOR
             else:
                 self.color = setting[1:].lower()
-                if self.color not in VALID_COLORSET:
+                if self.color not in COLORSET:
                     self.color = DEFAULT_COLOR
         else: # Not working with a Mint-Y theme, or theme is unknown
             self.init_default_color_info() # Fall-back
