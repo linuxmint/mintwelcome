@@ -2,19 +2,18 @@
 from typing import Final
 
 from os import path as os_path, getenv, system
+from subprocess import call as subp_call, check_output as subp_check_output, Popen as subp_Popen
 
 from gi import require_version as gi_req_ver
 from gettext import install as getxt_install
-from subprocess import call as subp_call, check_output as subp_check_output, Popen as subp_Popen
 gi_req_ver("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
-def get_desktop_env():
-    """
-    Get `XDG_CURRENT_DESKTOP` environment variable,
-    return `None` if it doesn't exist.
-    """
-    return getenv("XDG_CURRENT_DESKTOP")
+# i18n
+getxt_install("mintwelcome", "/usr/share/linuxmint/locale")
+from locale import gettext as _, bindtextdomain as locale_bindtxtdom, textdomain as locale_txtdom
+locale_bindtxtdom("mintwelcome", "/usr/share/linuxmint/locale")
+locale_txtdom("mintwelcome")
 
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
@@ -24,11 +23,16 @@ DEFAULT_THEME: Final = "Mint-Y"
 DARK_SUFFIX: Final = "-Dark"
 DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
 
-# i18n
-getxt_install("mintwelcome", "/usr/share/linuxmint/locale")
-from locale import gettext as _, bindtextdomain as locale_bindtxtdom, textdomain as locale_txtdom
-locale_bindtxtdom("mintwelcome", "/usr/share/linuxmint/locale")
-locale_txtdom("mintwelcome")
+MMC: Final = "mint-meta-codecs"
+
+
+def get_desktop_env():
+    """
+    Get `XDG_CURRENT_DESKTOP` environment variable,
+    return `None` if it doesn't exist.
+    """
+    return getenv("XDG_CURRENT_DESKTOP")
+
 
 class SidebarRow(Gtk.ListBoxRow):
 
@@ -60,13 +64,13 @@ class MintWelcome():
         window.connect("destroy", Gtk.main_quit)
 
         with open("/etc/linuxmint/info") as f:
-            # in this case, tuples seem slower than lists
+            # In this case, tuples seem slower than lists
             config: Final = dict([line.strip().split("=") for line in f])
         edition: Final = config['EDITION'].replace('"', '')
         release: Final = config['RELEASE']
         release_notes: Final = config['RELEASE_NOTES_URL']
         new_features: Final = config['NEW_FEATURES_URL']
-        # since LM is distributed as 64b or 32b,
+        # Since LM is distributed as 64b or 32b,
         # this is a safe assumption
         architecture: Final = ("64" if "64" in get_arch() else "32") + "-bit"
 
@@ -90,7 +94,7 @@ class MintWelcome():
         builder.get_object("button_documentation").connect("clicked", self.visit, "https://linuxmint.com/documentation.php")
         builder.get_object("button_contribute").connect("clicked", self.visit, "https://linuxmint.com/getinvolved.php")
         builder.get_object("button_irc").connect("clicked", self.visit, "irc://irc.spotchat.org/linuxmint-help")
-        builder.get_object("button_codecs").connect("clicked", self.visit, "apt://mint-meta-codecs?refresh=yes")
+        builder.get_object("button_codecs").connect("clicked", self.visit, "apt://%s?refresh=yes" % MMC)
         builder.get_object("button_new_features").connect("clicked", self.visit, new_features)
         builder.get_object("button_release_notes").connect("clicked", self.visit, release_notes)
         builder.get_object("button_mintupdate").connect("clicked", self.launch, "mintupdate")
@@ -101,8 +105,8 @@ class MintWelcome():
         builder.get_object("go_button").connect("clicked", self.go)
 
         # Settings button depends on DE
-        self.theme = None
-        de = get_desktop_env()
+        self.theme = ""
+        de: Final = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
             self.theme = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
@@ -115,8 +119,8 @@ class MintWelcome():
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
 
         # Hide codecs box if they're already installed
-        cache = apt_Cache()
-        if "mint-meta-codecs" in cache and cache["mint-meta-codecs"].is_installed:
+        cache: Final = apt_Cache()
+        if MMC in cache and cache[MMC].is_installed:
             builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
 
         # Hide drivers if mintdrivers is absent (LMDE)
@@ -155,8 +159,8 @@ class MintWelcome():
         self.list_box.connect("row-activated", self.sidebar_row_selected_cb)
 
         # Construct the bottom toolbar
-        box = builder.get_object("toolbar_bottom")
-        checkbox = Gtk.CheckButton()
+        box: Final = builder.get_object("toolbar_bottom")
+        checkbox: Final = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
         if not os_path.exists(NORUN_FLAG):
             checkbox.set_active(True)
@@ -165,7 +169,7 @@ class MintWelcome():
 
         scale: int = window.get_scale_factor()
 
-        self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
+        self.init_color_info()
 
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale == 2:
@@ -221,7 +225,7 @@ class MintWelcome():
             icon_theme += color_suffix
             cinnamon_theme = DEFAULT_DARK_THEME + color_suffix
 
-        de = get_desktop_env()
+        de: Final = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             settings = Gio.Settings(schema="org.cinnamon.desktop.interface")
             settings.set_string("gtk-theme", theme)
@@ -239,9 +243,12 @@ class MintWelcome():
             subp_call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
 
     def init_color_info(self):
-        theme = DEFAULT_THEME
-        dark_theme = DEFAULT_DARK_THEME
-        de = get_desktop_env()
+        """
+        Sets `self.dark_mode` and `self.color` based on current system configuration
+        """
+        theme: Final = DEFAULT_THEME
+        dark_theme: Final = DEFAULT_DARK_THEME
+        de: Final = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
         elif de == "MATE":
@@ -249,8 +256,7 @@ class MintWelcome():
         elif de == "XFCE":
             setting = subp_check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
         else:
-            # Instead of letting Py raise a cryptic error message,
-            # we use a more specific message
+            # Avoids a cryptic error message
             raise Exception("Unrecognized Desktop Environment: %s" % de)
 
         if setting.startswith(theme):
@@ -260,12 +266,10 @@ class MintWelcome():
                 self.color = DEFAULT_COLOR
             else:
                 self.color = setting[1:].lower()
-                # If invalid...
-                if not self.color in VALID_COLORS:
-                    # ...fallback to green
+                if self.color not in VALID_COLORS:
                     self.color = DEFAULT_COLOR
-        else:
-            self.init_default_color_info()  # Bail out if we aren't working with a Mint-Y theme or the theme is unknown
+        else: # Not working with a Mint-Y theme, or theme is unknown
+            self.init_default_color_info() # Fall-back (Bail-out)
 
     def init_default_color_info(self):
         self.color = DEFAULT_COLOR
