@@ -277,7 +277,7 @@ class MintWelcome():
             setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
         elif de == "XFCE":
             setting = subp_check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
-        elif de == None:
+        elif de is None:
             raise TypeError("No Desktop Environment")
         else:
             raise ValueError("Unrecognized Desktop Environment: " + de)
