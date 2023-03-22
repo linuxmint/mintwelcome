@@ -269,7 +269,7 @@ class MintWelcome():
                 if self.color not in VALID_COLORS:
                     self.color = DEFAULT_COLOR
         else: # Not working with a Mint-Y theme, or theme is unknown
-            self.init_default_color_info() # Fall-back (Bail-out)
+            self.init_default_color_info() # Fall-back
 
     def init_default_color_info(self):
         self.color = DEFAULT_COLOR
