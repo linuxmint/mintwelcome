@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 from typing import Final
-# Can't use `StrEnum` because it requires Py 3.11+
-from enum import Enum #StrEnum
+from enum import Enum
 
 from os import path as os_path, getenv, system
 from subprocess import call as subp_call, check_output as subp_check_output, Popen as subp_Popen
@@ -32,7 +31,6 @@ class Color(Enum):
     PINK = "pink"
     PURPLE = "purple"
 
-# to-do: add fn similar to `dict.get`, but for enums, using try-except
 COLORSET: Final[set[str]] = set(e.value for e in Color)
 
 DEFAULT_COLOR: Final = Color.GREEN.value
@@ -41,15 +39,6 @@ DARK_SUFFIX: Final = "-Dark"
 DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
 
 MMC: Final = "mint-meta-codecs"
-
-# to-do
-'''
-class DesktopEnvs(Enum):
-    CINNAMON = "Cinnamon"
-    X_CINNAMON = "X-Cinnamon"
-    MATE = "MATE"
-    XFCE = "XFCE"
-'''
 
 def get_desktop_env():
     """
