@@ -2,19 +2,19 @@
 from typing import Final
 from enum import Enum
 
-from os import path as os_path, getenv, system
-from subprocess import call as subp_call, check_output as subp_check_output, Popen as subp_Popen
+from os import path as os_path, getenv as os_get_env, system as os_system
+from subprocess import call as subprocess_call, check_output as subprocess_check_output, Popen as subprocess_Popen
 
-from gettext import install as getxt_install
-from gi import require_version as gi_req_ver
-gi_req_ver("Gtk", "3.0")
+from gettext import install as get_text_install
+from gi import require_version as gi_require_version
+gi_require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
 
 # i18n
-getxt_install("mintwelcome", "/usr/share/linuxmint/locale")
-from locale import gettext as _, bindtextdomain as locale_bindtxtdom, textdomain as locale_txtdom
-locale_bindtxtdom("mintwelcome", "/usr/share/linuxmint/locale")
-locale_txtdom("mintwelcome")
+get_text_install("mintwelcome", "/usr/share/linuxmint/locale")
+from locale import gettext as _, bindtextdomain as locale_bind_text_domain, textdomain as locale_text_domain
+locale_bind_text_domain("mintwelcome", "/usr/share/linuxmint/locale")
+locale_text_domain("mintwelcome")
 
 NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
@@ -45,7 +45,7 @@ def get_desktop_env():
     Get `XDG_CURRENT_DESKTOP` environment variable,
     return `None` if it doesn't exist.
     """
-    return getenv("XDG_CURRENT_DESKTOP")
+    return os_get_env("XDG_CURRENT_DESKTOP")
 
 
 class SidebarRow(Gtk.ListBoxRow):
@@ -65,7 +65,7 @@ class SidebarRow(Gtk.ListBoxRow):
 class MintWelcome():
 
     def __init__(self):
-        from platform import machine as get_arch
+        from platform import machine as platform_machine
         from apt import Cache as apt_Cache
 
         builder: Final = Gtk.Builder()
@@ -86,11 +86,11 @@ class MintWelcome():
         new_features: Final = config['NEW_FEATURES_URL']
         # Since LM is distributed as 64b or 32b,
         # this is a safe assumption
-        architecture: Final = ("64" if "64" in get_arch() else "32") + "-bit"
+        architecture: Final = ("64" if "64" in platform_machine() else "32") + "-bit"
 
         # distro-specific
         dist_name: Final = \
-            "LMDE" if os_path.exists("/usr/share/doc/debian-system-adjustments/copyright") \
+            "LMDE" if os_path.exists("/usr/share/doc/debian-os_system-adjustments/copyright") \
             else "Linux Mint"
 
         # Setup the labels in the Mint badge
@@ -214,10 +214,10 @@ class MintWelcome():
     def on_button_toggled(self, button):
         if button.get_active():
             if os_path.exists(NORUN_FLAG):
-                system("rm -rf " + NORUN_FLAG)
+                os_system("rm -rf " + NORUN_FLAG)
         else:
-            system("mkdir -p ~/.linuxmint/mintwelcome")
-            system("touch " + NORUN_FLAG)
+            os_system("mkdir -p ~/.linuxmint/mintwelcome")
+            os_system("touch " + NORUN_FLAG)
 
     def on_dark_mode_changed(self, button, state: bool):
         self.dark_mode = state
@@ -253,13 +253,13 @@ class MintWelcome():
             settings.set_string("icon-theme", icon_theme)
             Gio.Settings(schema="org.mate.Marco.general").set_string("theme", wm_theme)
         elif de == "XFCE":
-            subp_call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
-            subp_call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", icon_theme])
-            subp_call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
+            subprocess_call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
+            subprocess_call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", icon_theme])
+            subprocess_call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
 
     def init_color_info(self):
         """
-        Sets `self.dark_mode` and `self.color` based on current system configuration
+        Sets `self.dark_mode` and `self.color` based on current os_system configuration
         """
         theme: Final = DEFAULT_THEME
         dark_theme: Final = DEFAULT_DARK_THEME
@@ -269,7 +269,7 @@ class MintWelcome():
         elif de == "MATE":
             setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
         elif de == "XFCE":
-            setting = subp_check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
+            setting = subprocess_check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
         elif de is None:
             raise TypeError("No Desktop Environment")
         else:
@@ -292,13 +292,13 @@ class MintWelcome():
         self.dark_mode = False
 
     def visit(self, button, url: str):
-        subp_Popen(["xdg-open", url])
+        subprocess_Popen(["xdg-open", url])
 
     def launch(self, button, command: str):
-        subp_Popen([command])
+        subprocess_Popen([command])
 
     def pkexec(self, button, command: str):
-        subp_Popen(["pkexec", command])
+        subprocess_Popen(["pkexec", command])
 
 if __name__ == "__main__":
     MintWelcome()
