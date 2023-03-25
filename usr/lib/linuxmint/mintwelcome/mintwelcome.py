@@ -65,17 +65,19 @@ class MintWelcome():
         release = config['RELEASE']
         release_notes = config['RELEASE_NOTES_URL']
         new_features = config['NEW_FEATURES_URL']
-        # Since LM is distributed as 64b or 32b,
-        # this is a safe assumption
-        architecture = ("64" if "64" in platform_machine() else "32") + "-bit"
 
-        # distro-specific
-        dist_name = \
-            "LMDE" if os_path.exists("/usr/share/doc/debian-os_system-adjustments/copyright") \
-            else "Linux Mint"
+        architecture = "64-bit"
+        # Since LM is distributed as 64b or 32b, for x86 and AMD,
+        # this is a safe assumption
+        if "64" not in platform_machine():
+            architecture = "32-bit"
+
+        distro_name = "Linux Mint"
+        if os_path.exists("/usr/share/doc/debian-os_system-adjustments/copyright"):
+            distro_name = "LMDE"
 
         # Setup the labels in the Mint badge
-        builder.get_object("label_version").set_text(dist_name + " " + release)
+        builder.get_object("label_version").set_text(distro_name + " " + release)
         builder.get_object("label_edition").set_text(edition + " " + architecture)
 
         # Setup the main stack
@@ -123,7 +125,7 @@ class MintWelcome():
             builder.get_object("box_first_steps").remove(builder.get_object("box_drivers"))
 
         # Hide new features page for LMDE
-        if dist_name == "LMDE":
+        if distro_name == "LMDE":
             builder.get_object("box_documentation").remove(builder.get_object("box_new_features"))
 
         # Construct the stack switcher
