@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-from enum import Enum
-
 from os import path as os_path, getenv as os_get_env, system as os_system
 from subprocess import call as subprocess_call, check_output as subprocess_check_output, Popen as subprocess_Popen
 
@@ -17,22 +15,8 @@ locale_text_domain("mintwelcome")
 
 NORUN_FLAG = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
-class Color(Enum):
-    BLUE = "blue"
-    AQUA = "aqua"
-    TEAL = "teal"
-    GREEN = "green"
-    SAND = "sand"
-    BROWN = "brown"
-    GREY = "grey"
-    ORANGE = "orange"
-    RED = "red"
-    PINK = "pink"
-    PURPLE = "purple"
-
-COLORSET = set(e.value for e in Color)
-
-DEFAULT_COLOR = Color.GREEN.value
+VALID_COLORS = ("blue", "aqua", "teal", "green", "sand", "brown", "grey", "orange", "red", "pink", "purple")
+DEFAULT_COLOR = VALID_COLORS[3]
 DEFAULT_THEME = "Mint-Y"
 DARK_SUFFIX = "-Dark"
 DEFAULT_DARK_THEME = DEFAULT_THEME + DARK_SUFFIX
@@ -185,8 +169,7 @@ class MintWelcome():
         path = "/usr/share/linuxmint/mintwelcome/colors/"
         if scale >= 2:
             path += "hidpi/"
-        for c in Color:
-            color = c.value
+        for color in VALID_COLORS:
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path(f"{path}/{color}.png", scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
@@ -279,7 +262,7 @@ class MintWelcome():
                 self.color = DEFAULT_COLOR
             else:
                 self.color = setting[1:].lower()
-                if self.color not in COLORSET:
+                if self.color not in VALID_COLORS:
                     self.color = DEFAULT_COLOR
         else: # Not working with a Mint-Y theme, or theme is unknown
             self.init_default_color_info() # Fall-back
