@@ -37,8 +37,6 @@ DEFAULT_THEME = "Mint-Y"
 DARK_SUFFIX = "-Dark"
 DEFAULT_DARK_THEME = DEFAULT_THEME + DARK_SUFFIX
 
-MMC = "mint-meta-codecs"
-
 def get_desktop_env():
     """
     Get `XDG_CURRENT_DESKTOP` environment variable,
@@ -107,7 +105,7 @@ class MintWelcome():
         builder.get_object("button_documentation").connect("clicked", self.visit, "https://linuxmint.com/documentation.php")
         builder.get_object("button_contribute").connect("clicked", self.visit, "https://linuxmint.com/getinvolved.php")
         builder.get_object("button_irc").connect("clicked", self.visit, "irc://irc.spotchat.org/linuxmint-help")
-        builder.get_object("button_codecs").connect("clicked", self.visit, f"apt://{MMC}?refresh=yes")
+        builder.get_object("button_codecs").connect("clicked", self.visit, f"apt://mint-meta-codecs?refresh=yes")
         builder.get_object("button_new_features").connect("clicked", self.visit, new_features)
         builder.get_object("button_release_notes").connect("clicked", self.visit, release_notes)
         builder.get_object("button_mintupdate").connect("clicked", self.launch, "mintupdate")
@@ -133,7 +131,7 @@ class MintWelcome():
 
         # Hide codecs box if they're already installed
         cache = apt_Cache()
-        if MMC in cache and cache[MMC].is_installed:
+        if "mint-meta-codecs" in cache and cache["mint-meta-codecs"].is_installed:
             builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
 
         # Hide drivers if mintdrivers is absent (LMDE)
