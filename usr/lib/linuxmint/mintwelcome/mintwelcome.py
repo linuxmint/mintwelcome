@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from typing import Final
 from enum import Enum
 
 from os import path as os_path, getenv as os_get_env, system as os_system
@@ -16,7 +15,7 @@ from locale import gettext as _, bindtextdomain as locale_bind_text_domain, text
 locale_bind_text_domain("mintwelcome", "/usr/share/linuxmint/locale")
 locale_text_domain("mintwelcome")
 
-NORUN_FLAG: Final = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
+NORUN_FLAG = os_path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
 class Color(Enum):
     BLUE = "blue"
@@ -31,14 +30,14 @@ class Color(Enum):
     PINK = "pink"
     PURPLE = "purple"
 
-COLORSET: Final[set[str]] = set(e.value for e in Color)
+COLORSET = set(e.value for e in Color)
 
-DEFAULT_COLOR: Final = Color.GREEN.value
-DEFAULT_THEME: Final = "Mint-Y"
-DARK_SUFFIX: Final = "-Dark"
-DEFAULT_DARK_THEME: Final = DEFAULT_THEME + DARK_SUFFIX
+DEFAULT_COLOR = Color.GREEN.value
+DEFAULT_THEME = "Mint-Y"
+DARK_SUFFIX = "-Dark"
+DEFAULT_DARK_THEME = DEFAULT_THEME + DARK_SUFFIX
 
-MMC: Final = "mint-meta-codecs"
+MMC = "mint-meta-codecs"
 
 def get_desktop_env():
     """
@@ -50,7 +49,7 @@ def get_desktop_env():
 
 class SidebarRow(Gtk.ListBoxRow):
 
-    def __init__(self, page_widget, page_name: str, icon_name: str):
+    def __init__(self, page_widget, page_name, icon_name):
         Gtk.ListBoxRow.__init__(self)
         self.page_widget = page_widget
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
@@ -68,28 +67,28 @@ class MintWelcome():
         from platform import machine as platform_machine
         from apt import Cache as apt_Cache
 
-        builder: Final = Gtk.Builder()
+        builder = Gtk.Builder()
         builder.set_translation_domain("mintwelcome")
         builder.add_from_file("/usr/share/linuxmint/mintwelcome/mintwelcome.ui")
 
-        window: Final = builder.get_object("main_window")
+        window = builder.get_object("main_window")
         window.set_icon_name("mintwelcome")
         window.set_position(Gtk.WindowPosition.CENTER)
         window.connect("destroy", Gtk.main_quit)
 
         with open("/etc/linuxmint/info") as f:
             # In this case, tuples seem slower than lists
-            config: Final = dict([line.strip().split("=") for line in f])
-        edition: Final = config['EDITION'].replace('"', '')
-        release: Final = config['RELEASE']
-        release_notes: Final = config['RELEASE_NOTES_URL']
-        new_features: Final = config['NEW_FEATURES_URL']
+            config = dict([line.strip().split("=") for line in f])
+        edition = config['EDITION'].replace('"', '')
+        release = config['RELEASE']
+        release_notes = config['RELEASE_NOTES_URL']
+        new_features = config['NEW_FEATURES_URL']
         # Since LM is distributed as 64b or 32b,
         # this is a safe assumption
-        architecture: Final = ("64" if "64" in platform_machine() else "32") + "-bit"
+        architecture = ("64" if "64" in platform_machine() else "32") + "-bit"
 
         # distro-specific
-        dist_name: Final = \
+        dist_name = \
             "LMDE" if os_path.exists("/usr/share/doc/debian-os_system-adjustments/copyright") \
             else "Linux Mint"
 
@@ -120,7 +119,7 @@ class MintWelcome():
 
         # Settings button depends on DE
         self.theme = ""
-        de: Final = get_desktop_env()
+        de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
             self.theme = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
@@ -133,7 +132,7 @@ class MintWelcome():
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
 
         # Hide codecs box if they're already installed
-        cache: Final = apt_Cache()
+        cache = apt_Cache()
         if MMC in cache and cache[MMC].is_installed:
             builder.get_object("box_first_steps").remove(builder.get_object("box_codecs"))
 
@@ -173,15 +172,15 @@ class MintWelcome():
         self.list_box.connect("row-activated", self.sidebar_row_selected_cb)
 
         # Construct the bottom toolbar
-        box: Final = builder.get_object("toolbar_bottom")
-        checkbox: Final = Gtk.CheckButton()
+        box = builder.get_object("toolbar_bottom")
+        checkbox = Gtk.CheckButton()
         checkbox.set_label(_("Show this dialog at startup"))
         if not os_path.exists(NORUN_FLAG):
             checkbox.set_active(True)
         checkbox.connect("toggled", self.on_button_toggled)
         box.pack_end(checkbox)
 
-        scale: int = window.get_scale_factor()
+        scale = window.get_scale_factor()
 
         self.init_color_info()
 
@@ -189,7 +188,7 @@ class MintWelcome():
         if scale >= 2:
             path += "hidpi/"
         for c in Color:
-            color: str = c.value
+            color = c.value
             builder.get_object("img_" + color).set_from_surface(self.surface_for_path(f"{path}/{color}.png", scale))
             builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
 
@@ -203,7 +202,7 @@ class MintWelcome():
         self.list_box.select_row(self.first_steps_row)
         self.stack.set_visible_child_name("page_first_steps")
 
-    def surface_for_path(self, path: str, scale: int):
+    def surface_for_path(self, path, scale):
         pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
 
         return Gdk.cairo_surface_create_from_pixbuf(pixbuf, scale)
@@ -219,28 +218,28 @@ class MintWelcome():
             os_system("mkdir -p ~/.linuxmint/mintwelcome")
             os_system("touch " + NORUN_FLAG)
 
-    def on_dark_mode_changed(self, button, state: bool):
+    def on_dark_mode_changed(self, button, state):
         self.dark_mode = state
         self.change_color()
 
-    def on_color_button_clicked(self, button, color: str):
+    def on_color_button_clicked(self, button, color):
         self.color = color
         self.change_color()
 
     def change_color(self):
         theme = DEFAULT_THEME
         icon_theme = DEFAULT_THEME
-        wm_theme: Final = DEFAULT_THEME
+        wm_theme = DEFAULT_THEME
         cinnamon_theme = DEFAULT_DARK_THEME
         if self.dark_mode:
             theme += DARK_SUFFIX
-        color_suffix: Final = "-" + self.color.title()
+        color_suffix = "-" + self.color.title()
         if self.color != DEFAULT_COLOR:
             theme += color_suffix
             icon_theme += color_suffix
             cinnamon_theme = DEFAULT_DARK_THEME + color_suffix
 
-        de: Final = get_desktop_env()
+        de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             settings = Gio.Settings(schema="org.cinnamon.desktop.interface")
             settings.set_string("gtk-theme", theme)
@@ -261,9 +260,9 @@ class MintWelcome():
         """
         Sets `self.dark_mode` and `self.color` based on current os_system configuration
         """
-        theme: Final = DEFAULT_THEME
-        dark_theme: Final = DEFAULT_DARK_THEME
-        de: Final = get_desktop_env()
+        theme = DEFAULT_THEME
+        dark_theme = DEFAULT_DARK_THEME
+        de = get_desktop_env()
         if de in ("Cinnamon", "X-Cinnamon"):
             setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
         elif de == "MATE":
@@ -291,13 +290,13 @@ class MintWelcome():
         self.color = DEFAULT_COLOR
         self.dark_mode = False
 
-    def visit(self, button, url: str):
+    def visit(self, button, url):
         subprocess_Popen(["xdg-open", url])
 
-    def launch(self, button, command: str):
+    def launch(self, button, command):
         subprocess_Popen([command])
 
-    def pkexec(self, button, command: str):
+    def pkexec(self, button, command):
         subprocess_Popen(["pkexec", command])
 
 if __name__ == "__main__":
