@@ -639,6 +639,26 @@
                           </packing>
                         </child>
                         <child>
+                          <object class="GtkButton" id="button_themes">
+                            <property name="label" translatable="yes">Launch</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="halign">center</property>
+                            <property name="margin-top">3</property>
+                            <style>
+                              <class name="suggested-action"/>
+                              <class name="text-button"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="pack-type">end</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -649,279 +669,7 @@
                           <packing>
                             <property name="expand">True</property>
                             <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButtonBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="hexpand">False</property>
-                            <property name="border-width">6</property>
-                            <property name="homogeneous">True</property>
-                            <property name="layout-style">expand</property>
-                            <child>
-                              <object class="GtkButton" id="button_aqua">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_aqua">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_green">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_green">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_blue">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_blue">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_brown">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_brown">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_grey">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_grey">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_orange">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_orange">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_pink">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_pink">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_purple">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_purple">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_red">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_red">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_sand">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_sand">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">10</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="button_teal">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkImage" id="img_teal">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="stock">gtk-missing-image</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">10</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
                             <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="spacing">6</property>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="icon-name">display-brightness-symbolic</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkSwitch" id="switch_dark">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="icon-name">weather-clear-night-symbolic</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">4</property>
                           </packing>
                         </child>
                       </object>

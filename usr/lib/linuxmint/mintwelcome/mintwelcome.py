@@ -7,7 +7,7 @@ import platform
 import subprocess
 import locale
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gio, Gdk, GdkPixbuf
+from gi.repository import Gtk, Gio
 
 NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
@@ -83,23 +83,21 @@ class MintWelcome():
         builder.get_object("button_mintupdate").connect("clicked", self.launch, "mintupdate")
         builder.get_object("button_mintinstall").connect("clicked", self.launch, "mintinstall")
         builder.get_object("button_timeshift").connect("clicked", self.pkexec, "timeshift-gtk")
+        builder.get_object("button_themes").connect("clicked", self.themes)
         builder.get_object("button_mintdrivers").connect("clicked", self.launch, "driver-manager")
         builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
         builder.get_object("go_button").connect("clicked", self.go)
 
         # Settings button depends on DE
-        de_is_cinnamon = False
-        self.theme = None
         if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
-            de_is_cinnamon = True
-            self.theme = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
         elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
             builder.get_object("button_settings").connect("clicked", self.launch, "mate-control-center")
         elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
             builder.get_object("button_settings").connect("clicked", self.launch, "xfce4-settings-manager")
         else:
             # Hide settings
+            builder.get_object("box_first_steps").remove(builder.get_object("box_colors"))
             builder.get_object("box_first_steps").remove(builder.get_object("box_settings"))
 
         # Hide codecs box if they're already installed
@@ -151,32 +149,12 @@ class MintWelcome():
         checkbox.connect("toggled", self.on_button_toggled)
         box.pack_end(checkbox)
 
-        scale = window.get_scale_factor()
-
-        self.all_colors = ["blue", "aqua", "teal", "green", "sand", "grey", "orange", "red", "pink", "purple"]
-        self.init_color_info()  # Sets self.dark_mode and self.color based on current system configuration
-
-        path = "/usr/share/linuxmint/mintwelcome/colors/"
-        if scale == 2:
-            path = "/usr/share/linuxmint/mintwelcome/colors/hidpi/"
-        for color in self.all_colors:
-            builder.get_object("img_" + color).set_from_surface(self.surface_for_path("%s/%s.png" % (path, color), scale))
-            builder.get_object("button_" + color).connect("clicked", self.on_color_button_clicked, color)
-
-        builder.get_object("switch_dark").set_active(self.dark_mode)
-        builder.get_object("switch_dark").connect("state-set", self.on_dark_mode_changed)
-
         window.set_default_size(800, 500)
         window.show_all()
 
     def go(self, button):
         self.list_box.select_row(self.first_steps_row)
         self.stack.set_visible_child_name("page_first_steps")
-
-    def surface_for_path(self, path, scale):
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
-
-        return Gdk.cairo_surface_create_from_pixbuf(pixbuf, scale)
 
     def sidebar_row_selected_cb(self, list_box, row):
         self.stack.set_visible_child(row.page_widget)
@@ -189,70 +167,13 @@ class MintWelcome():
             os.system("mkdir -p ~/.linuxmint/mintwelcome")
             os.system("touch %s" % NORUN_FLAG)
 
-    def on_dark_mode_changed(self, button, state):
-        self.dark_mode = state
-        self.change_color()
-
-    def on_color_button_clicked(self, button, color):
-        self.color = color
-        self.change_color()
-
-    def change_color(self):
-        theme = "Mint-Y"
-        icon_theme = "Mint-Y"
-        wm_theme = "Mint-Y"
-        cinnamon_theme = "Mint-Y-Dark"
-        if self.dark_mode:
-            theme = "%s-Dark" % theme
-        if self.color != "green":
-            theme = "%s-%s" % (theme, self.color.title())
-            icon_theme = "%s-%s" % (icon_theme, self.color.title())
-            cinnamon_theme = "Mint-Y-Dark-%s" % self.color.title()
-
+    def themes(self, button):
         if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
-            settings = Gio.Settings(schema="org.cinnamon.desktop.interface")
-            settings.set_string("gtk-theme", theme)
-            settings.set_string("icon-theme", icon_theme)
-            Gio.Settings(schema="org.cinnamon.desktop.wm.preferences").set_string("theme", wm_theme)
-            Gio.Settings(schema="org.cinnamon.theme").set_string("name", cinnamon_theme)
+            subprocess.Popen(["cinnamon-settings", "themes"])
         elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
-            settings = Gio.Settings(schema="org.mate.interface")
-            settings.set_string("gtk-theme", theme)
-            settings.set_string("icon-theme", icon_theme)
-            Gio.Settings(schema="org.mate.Marco.general").set_string("theme", wm_theme)
+            subprocess.Popen(["mate-appearance-properties"])
         elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
-            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName", "-s", theme])
-            subprocess.call(["xfconf-query", "-c", "xsettings", "-p", "/Net/IconThemeName", "-s", icon_theme])
-            subprocess.call(["xfconf-query", "-c", "xfwm4", "-p", "/general/theme", "-s", theme])
-
-    def init_color_info(self):
-        theme = "Mint-Y"
-        dark_theme = "Mint-Y-Dark"
-        if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
-            setting = Gio.Settings(schema="org.cinnamon.desktop.interface").get_string("gtk-theme")
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
-            setting = Gio.Settings(schema="org.mate.interface").get_string("gtk-theme")
-        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
-            setting = subprocess.check_output(["xfconf-query", "-c", "xsettings", "-p", "/Net/ThemeName"]).decode("utf-8").strip()
-        
-        if setting.startswith(theme):
-            self.dark_mode = setting.startswith(dark_theme)
-            if self.dark_mode:
-                setting = setting.replace(dark_theme, "")
-            else:
-                setting = setting.replace(theme, "")
-            if len(setting) <= 1:
-                self.color = "green"
-            else:
-                self.color = setting[1:].lower()
-                if not self.color in self.all_colors:  # Assume green if our color is invalid
-                    self.color = "green"
-        else:
-            self.init_default_color_info()  # Bail out if we aren't working with a Mint-Y theme or the theme is unknown
-    
-    def init_default_color_info(self):
-        self.color = "green"
-        self.dark_mode = False
+            subprocess.Popen(["xfce4-appearance-settings"])
 
     def visit(self, button, url):
         subprocess.Popen(["xdg-open", url])
