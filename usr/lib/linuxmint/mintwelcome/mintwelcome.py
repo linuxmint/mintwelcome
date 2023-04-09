@@ -67,9 +67,7 @@ class MintWelcome():
         new_features = config['NEW_FEATURES_URL']
 
         architecture = "64-bit"
-        # Since LM is distributed as 64b or 32b, for x86 and AMD,
-        # this is a safe assumption
-        if "64" not in platform_machine():
+        if platform_machine() != "x86_64":
             architecture = "32-bit"
 
         distro_name = "Linux Mint"
