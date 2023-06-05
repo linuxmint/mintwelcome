@@ -1,3 +1,24 @@
+mintwelcome (2.5.8) victoria; urgency=medium
+
+  [ Ricardo Fernández Serrata ]
+  * convert /usr/bin/mintwelcome to POSIX-sh
+
+  [ Clement Lefebvre ]
+  * Colors: Rearrange colors
+  * Remove refs to dark Mint-Y icon themes
+  * Remove Cinnamon layout selection
+  * Colors: Remove brown
+  * Remove color section
+
+  [ UserRoot-Luca ]
+  * Updated image to latest Welcome page (Linux mint 21.1) (#61)
+
+  [ Clement Lefebvre ]
+  * l10n: Update POT
+  * l10n: Generate files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 05 Jun 2023 13:38:20 +0100
+
 mintwelcome (2.5.7) vera; urgency=medium
 
   * panel layout: Remove pictures
