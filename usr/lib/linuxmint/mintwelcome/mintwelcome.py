@@ -54,7 +54,7 @@ class MintWelcome():
         release_notes = config['RELEASE_NOTES_URL']
         new_features = config['NEW_FEATURES_URL']
         architecture = "64-bit"
-        if platform.machine() != "x86_64":
+        if platform.machine() not in ["x86_64", "aarch64"]:
             architecture = "32-bit"
 
         # distro-specific
