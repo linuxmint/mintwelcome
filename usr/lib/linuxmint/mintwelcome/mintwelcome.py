@@ -76,7 +76,7 @@ class MintWelcome():
         builder.get_object("button_forums").connect("clicked", self.visit, "https://forums.linuxmint.com")
         builder.get_object("button_documentation").connect("clicked", self.visit, "https://linuxmint.com/documentation.php")
         builder.get_object("button_contribute").connect("clicked", self.visit, "https://linuxmint.com/getinvolved.php")
-        builder.get_object("button_irc").connect("clicked", self.visit, "irc://irc.spotchat.org/linuxmint-help")
+        builder.get_object("button_irc").connect("clicked", self.launch, "mintchat")
         builder.get_object("button_codecs").connect("clicked", self.visit, "apt://mint-meta-codecs?refresh=yes")
         builder.get_object("button_new_features").connect("clicked", self.visit, new_features)
         builder.get_object("button_release_notes").connect("clicked", self.visit, release_notes)

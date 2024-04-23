@@ -1576,7 +1576,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">center</property>
-                            <property name="icon-name">xchat</property>
+                            <property name="icon-name">mintchat</property>
                             <property name="icon_size">6</property>
                           </object>
                           <packing>
@@ -1602,7 +1602,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">IRC Chat Room</property>
+                            <property name="label" translatable="yes">Chat Room</property>
                             <property name="xalign">0</property>
                             <attributes>
                               <attribute name="weight" value="bold"/>
@@ -1619,7 +1619,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">You can also connect to the IRC chat room and chat with users who are currently online. Ask a question, maybe someone there knows the solution?</property>
+                            <property name="label" translatable="yes">You can also connect to Matrix and chat with users who are currently online. Ask a question, maybe someone there knows the solution?</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
                           </object>
