@@ -1,3 +1,10 @@
+mintwelcome (2.5.9) wilma; urgency=medium
+
+  * Replace hexchat with mintchat
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 23 Apr 2024 11:47:09 +0100
+
 mintwelcome (2.5.8) victoria; urgency=medium
 
   [ Ricardo Fernández Serrata ]
