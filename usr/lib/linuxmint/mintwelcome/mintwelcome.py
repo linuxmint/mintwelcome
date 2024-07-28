@@ -3,7 +3,7 @@ import apt
 import gettext
 import gi
 import os
-import platform
+import struct
 import subprocess
 import locale
 gi.require_version("Gtk", "3.0")
@@ -53,9 +53,7 @@ class MintWelcome():
         desktop = config['DESKTOP']
         release_notes = config['RELEASE_NOTES_URL']
         new_features = config['NEW_FEATURES_URL']
-        architecture = "64-bit"
-        if platform.machine() != "x86_64":
-            architecture = "32-bit"
+        architecture = str(struct.calcsize('P') * 8) + "-bit"
 
         # distro-specific
         dist_name = "Linux Mint"
