@@ -12,7 +12,7 @@ Depends: python3 (>= 3.3),
          python3-xapp (>= 1.0.1),
          mint-info,
          mint-common,
-         apturl | apturl-kde,
+         captain,
          ${misc:Depends},
 Conflicts: mintassistant, mintassistant-gnome, mintassistant-kde
 Replaces: mintassistant, mintassistant-gnome, mintassistant-kde

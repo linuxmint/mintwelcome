@@ -37,7 +37,7 @@ StartupNotify=false
 additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/mintwelcome.desktop", prefix, _("Welcome Screen"), _("Introduction to Linux Mint"), "", genericName=_("Welcome Screen"))
 
 prefix = """[Desktop Entry]
-Exec=apturl apt://mint-meta-codecs?refresh=yes
+Exec=xdg-open apt://mint-meta-codecs?refresh=yes
 Icon=applications-multimedia
 Terminal=false
 Type=Application
