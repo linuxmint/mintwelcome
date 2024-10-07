@@ -143,7 +143,7 @@ class MintWelcome():
         # Construct the bottom toolbar
         box = builder.get_object("toolbar_bottom")
         checkbox = Gtk.CheckButton()
-        checkbox.set_label(_("Show this dialog at startup"))
+        checkbox.set_label(_("Always show this window"))
         if not os.path.exists(NORUN_FLAG):
             checkbox.set_active(True)
         checkbox.connect("toggled", self.on_button_toggled)
