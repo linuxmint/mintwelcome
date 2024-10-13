@@ -1,19 +1,22 @@
 #!/usr/bin/python3
-import apt
 import gettext
-import gi
+import locale
 import os
 import platform
 import subprocess
-import locale
+
+import apt
+import gi
+
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk
 
 NORUN_FLAG = os.path.expanduser("~/.linuxmint/mintwelcome/norun.flag")
 
 # i18n
 gettext.install("mintwelcome", "/usr/share/linuxmint/locale")
 from locale import gettext as _
+
 locale.bindtextdomain("mintwelcome", "/usr/share/linuxmint/locale")
 locale.textdomain("mintwelcome")
 
@@ -32,6 +35,7 @@ class SidebarRow(Gtk.ListBoxRow):
         label.set_text(page_name)
         box.pack_start(label, False, False, 0)
         self.add(box)
+
 
 class MintWelcome():
 
