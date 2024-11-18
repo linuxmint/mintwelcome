@@ -5,6 +5,7 @@ Comment=Linux Mint Welcome Screen
 Icon=mintwelcome
 Exec=mintwelcome-launcher
 Terminal=false
+NoDisplay=true
 Type=Application
 Categories=
 
