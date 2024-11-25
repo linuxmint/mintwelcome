@@ -1,3 +1,17 @@
+mintwelcome (2.6.0) xia; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Switch from apturl to captain
+  * Add support for 64-bit ARM
+
+  [ Michael Webster ]
+  * Don't display the autostart desktop entry in Startup Applications.
+
+  [ Markus Hackspacher ]
+  * sort import, remove unused gio (#69)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 25 Nov 2024 14:42:35 +0000
+
 mintwelcome (2.5.9) wilma; urgency=medium
 
   * Replace hexchat with mintchat
