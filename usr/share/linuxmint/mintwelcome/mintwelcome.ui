@@ -1272,7 +1272,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">There are about 60,000 applications available. Linux Mint comes with the bare minimum to get you started. The Software Manager is there if you're looking for more. Applications in the Software Manager are available as system packages and/or Flatpaks. System packages are more suitable for Linux Mint, but can be more outdated, while Flatpaks are usually more up-to-date, but can take more storage.</property>
+                            <property name="label" translatable="yes">There are about 60,000 applications available. Linux Mint comes with the bare minimum to get you started. The Software Manager is there if you're looking for more. Applications in the Software Manager are available as system packages and/or Flatpaks. System packages are more suitable for Linux Mint, but can be more outdated, while Flatpaks are usually more up-to-date, but can take up more storage.</property>
                             <property name="wrap">True</property>
                             <property name="xalign">0</property>
                           </object>
