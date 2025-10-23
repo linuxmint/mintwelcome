@@ -122,25 +122,25 @@ class MintWelcome():
 
         page = builder.get_object("page_home")
         self.stack.add_named(page, "page_home")
-        self.list_box.add(SidebarRow(page, _("Welcome"), "xapp-go-home-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Welcome"), "xsi-go-home-symbolic"))
         self.stack.set_visible_child(page)
 
         page = builder.get_object("page_first_steps")
         self.stack.add_named(page, "page_first_steps")
-        self.first_steps_row = SidebarRow(page, _("First Steps"), "xapp-dialog-information-symbolic")
+        self.first_steps_row = SidebarRow(page, _("First Steps"), "xsi-dialog-information-symbolic")
         self.list_box.add(self.first_steps_row)
 
         page = builder.get_object("page_documentation")
         self.stack.add_named(page, "page_documentation")
-        self.list_box.add(SidebarRow(page, _("Documentation"), "xapp-dictionary-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Documentation"), "xsi-dictionary-symbolic"))
 
         page = builder.get_object("page_help")
         self.stack.add_named(page, "page_help")
-        self.list_box.add(SidebarRow(page, _("Help"), "xapp-help-browser-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Help"), "xsi-help-browser-symbolic"))
 
         page = builder.get_object("page_contribute")
         self.stack.add_named(page, "page_contribute")
-        self.list_box.add(SidebarRow(page, _("Contribute"), "xapp-starred-symbolic"))
+        self.list_box.add(SidebarRow(page, _("Contribute"), "xsi-starred-symbolic"))
 
         self.list_box.connect("row-activated", self.sidebar_row_selected_cb)
 
