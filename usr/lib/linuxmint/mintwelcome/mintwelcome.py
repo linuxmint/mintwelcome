@@ -92,6 +92,20 @@ class MintWelcome():
         builder.get_object("button_gufw").connect("clicked", self.launch, "gufw")
         builder.get_object("go_button").connect("clicked", self.go)
 
+        # Accessibility button depends on DE
+        if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
+            builder.get_object("top_box_access").remove(builder.get_object("box_no_access"))
+            builder.get_object("button_access").connect("clicked", self.launch, ["cinnamon-settings", "accessibility"])
+        elif os.getenv("XDG_CURRENT_DESKTOP") == "MATE":
+            builder.get_object("top_box_access").remove(builder.get_object("box_no_access"))
+            builder.get_object("button_access").connect("clicked", self.launch, "mate-at-properties")
+        elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+            builder.get_object("top_box_access").remove(builder.get_object("box_no_access"))
+            builder.get_object("button_access").connect("clicked", self.launch, "xfce4-accessibility-settings")
+        else:
+            # Hide settings
+            builder.get_object("top_box_access").remove(builder.get_object("box_access"))
+
         # Settings button depends on DE
         if os.getenv("XDG_CURRENT_DESKTOP") in ["Cinnamon", "X-Cinnamon"]:
             builder.get_object("button_settings").connect("clicked", self.launch, "cinnamon-settings")
@@ -99,6 +113,7 @@ class MintWelcome():
             builder.get_object("button_settings").connect("clicked", self.launch, "mate-control-center")
         elif os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
             builder.get_object("button_settings").connect("clicked", self.launch, "xfce4-settings-manager")
+
         else:
             # Hide settings
             builder.get_object("box_first_steps").remove(builder.get_object("box_colors"))
@@ -142,6 +157,10 @@ class MintWelcome():
         self.stack.add_named(page, "page_contribute")
         self.list_box.add(SidebarRow(page, _("Contribute"), "xsi-starred-symbolic"))
 
+        page = builder.get_object("page_accessibility")
+        self.stack.add_named(page, "page_accessibility")
+        self.list_box.add(SidebarRow(page, _("Accessibility"), "xsi-accessibility-symbolic"))
+
         self.list_box.connect("row-activated", self.sidebar_row_selected_cb)
 
         # Construct the bottom toolbar
@@ -182,8 +201,11 @@ class MintWelcome():
     def visit(self, button, url):
         subprocess.Popen(["xdg-open", url])
 
-    def launch(self, button, command):
-        subprocess.Popen([command])
+    def launch(self,button, command):
+        if isinstance(command, str):
+            subprocess.Popen(command.split())
+        else:
+            subprocess.Popen(command)
 
     def pkexec(self, button, command):
         subprocess.Popen(["pkexec", command])
